@@ -1,33 +1,78 @@
+/* 共通スタイル */
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-  }
-  
-  .site-header {
-    background-color: #E1F5FE;
-    color: #FFFFFF;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .map-container {
-    padding: 20px;
-  }
-  
-  .map {
-    height: 500px;
-    background-color: #EEE;
-  }
-  
-  .events-container {
-    padding: 20px;
-  }
-  
-  .event-item {
-    padding: 10px;
-    border: 1px solid #CCC;
-    margin-bottom: 10px;
-  }
-  
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* ヘッダー部分 */
+.site-header {
+  background-color: #E1F5FE; /* 薄い水色 */
+  color: #FFFFFF;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ロゴのスタイル */
+.logo img {
+  height: 50px; /* ロゴ画像の高さ */
+  margin-right: 20px; /* タイトルとの間隔 */
+}
+
+/* サイトタイトル */
+.site-title {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+/* ボタン部分 */
+.nav-buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-button {
+  text-decoration: none;
+  color: #FFFFFF;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  display: inline-block;
+  text-align: center;
+}
+
+/* 楕円形のデザイン */
+.oval {
+  background-color: #007BFF; /* 青色 */
+  border-radius: 50px; /* 楕円形 */
+  border: 2px solid #0056b3; /* ボーダー */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* 影 */
+}
+
+.oval:hover {
+  background-color: #0056b3; /* ホバー時の背景色 */
+  color: #E1F5FE; /* ホバー時のテキスト色 */
+}
+
+/* マップ部分 */
+.map-container {
+  padding: 20px;
+}
+
+.map {
+  height: 500px;
+  background-color: #EEE;
+}
+
+/* イベント部分 */
+.events-container {
+  padding: 20px;
+}
+
+.event-item {
+  padding: 10px;
+  border: 1px solid #CCC;
+  margin-bottom: 10px;
+}
+
