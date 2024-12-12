@@ -7,7 +7,7 @@ body {
 /* ヘッダー部分 */
 .site-header {
   background-color: #E1F5FE; /* 薄い水色 */
-  color: #FFFFFF;
+  color: #000000;
   padding: 10px 20px;
   display: flex;
   justify-content: space-between;
