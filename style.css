@@ -1,0 +1,33 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .site-header {
+    background-color: #007BFF;
+    color: #FFFFFF;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .map-container {
+    padding: 20px;
+  }
+  
+  .map {
+    height: 500px;
+    background-color: #EEE;
+  }
+  
+  .events-container {
+    padding: 20px;
+  }
+  
+  .event-item {
+    padding: 10px;
+    border: 1px solid #CCC;
+    margin-bottom: 10px;
+  }
+  
