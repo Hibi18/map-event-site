@@ -25,13 +25,13 @@ body {
   flex-direction: column;
   justify-content: space-between;
   height: 24px;
-  width: 30px;
+  width: 40px;
   margin-right: auto; /* 左詰めに配置 */
 }
 
 .menu-button span {
   display: block;
-  height: 3px;
+  height: 4px;
   width: 100%;
   background-color: #000; /* 黒色 */
   border-radius: 2px;
