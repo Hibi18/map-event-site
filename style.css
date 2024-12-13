@@ -74,8 +74,10 @@ body {
   height: 29px; /* 高さを明示的に指定 */
 }
 
+/* Event Icon専用のスタイル */
 .event-icon {
-  height: 15px; /* 高さを明示的に指定 */
+  width: 30px; /* 横幅を30pxに設定 */
+  height: 23px; /* 高さを23pxに設定 */
 }
 
 /* ボタンのホバー時のスタイル */
