@@ -43,7 +43,7 @@ body {
   text-align: center;
 }
 
-/* 楕円ボタンのデザイン */
+/* 楕円ボタンのスタイル */
 .oval {
   background-color: #FFFFFF; /* 白背景 */
   color: #000000; /* 黒文字 */
@@ -52,10 +52,19 @@ body {
   padding: 10px 20px;
   font-size: 1rem;
   font-weight: bold;
-  display: inline-block;
+  display: flex; /* フレックスボックスで画像と文字を横並びに */
+  align-items: center; /* 垂直方向に中央揃え */
   text-align: center;
   text-decoration: none;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* 軽い影 */
+  gap: 10px; /* 画像と文字の間隔 */
+}
+
+/* ボタン内の画像スタイル */
+.button-icon {
+  width: 20px; /* 画像の横幅 */
+  height: 20px; /* 画像の高さ */
+  display: inline-block; /* 画像をインラインブロックに */
 }
 
 /* ボタンのホバー時のスタイル */
