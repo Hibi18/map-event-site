@@ -8,6 +8,16 @@ fetch('header.html')
   })
   .then(data => {
     document.getElementById('header-container').innerHTML = data;
+
+    // メニューボタンのスクリプトをここで設定
+    const menuButton = document.getElementById('menu-button');
+    const sideMenu = document.getElementById('side-menu');
+
+    if (menuButton && sideMenu) {
+      menuButton.addEventListener('click', () => {
+        sideMenu.classList.toggle('open'); // メニューの開閉
+      });
+    }
   })
   .catch(error => {
     console.error('Error loading header:', error);
