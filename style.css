@@ -29,6 +29,7 @@ body {
 /* ボタン部分 */
 .nav-buttons {
   display: flex;
+  justify-content: center;
   gap: 20px;
 }
 
