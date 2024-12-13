@@ -10,8 +10,9 @@ body {
   color: #000000;
   padding: 10px 20px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
 /* ロゴのスタイル */
