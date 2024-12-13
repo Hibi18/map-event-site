@@ -49,9 +49,6 @@ body {
   margin: 0 auto; /* 中央揃え */
   font-size: 1.5rem;
   text-align: center;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
 }
 
 /* ボタン部分 */
