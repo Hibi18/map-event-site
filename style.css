@@ -42,18 +42,28 @@ body {
   text-align: center;
 }
 
-/* 楕円形のデザイン */
+/* 楕円ボタンのデザイン */
 .oval {
-  background-color: #007BFF; /* 青色 */
+  background-color: #FFFFFF; /* 白背景 */
+  color: #000000; /* 黒文字 */
   border-radius: 50px; /* 楕円形 */
-  border: 2px solid #0056b3; /* ボーダー */
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* 影 */
+  border: 2px solid #CCCCCC; /* 灰色の枠線 */
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* 軽い影 */
 }
 
+/* ボタンのホバー時のスタイル */
 .oval:hover {
-  background-color: #0056b3; /* ホバー時の背景色 */
-  color: #E1F5FE; /* ホバー時のテキスト色 */
+  background-color: #F0F0F0; /* ホバー時の少し濃い白 */
+  color: #007BFF; /* ホバー時の文字色（青） */
+  border-color: #007BFF; /* ホバー時の枠線色 */
 }
+
 
 /* マップ部分 */
 .map-container {
