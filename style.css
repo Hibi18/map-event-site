@@ -187,3 +187,12 @@ body {
   left: 0; /* メニューが開いた状態 */
 }
 
+@media (max-width: 768px) {
+  .menu-button {
+    width: 50px; /* スマホでのボタン幅を広げる */
+  }
+
+  .menu-button span {
+    height: 5px; /* 横線の太さを少し太くする */
+  }
+}
