@@ -63,8 +63,16 @@ body {
 /* ボタン内の画像スタイル */
 .button-icon {
   width: 20px; /* 画像の横幅 */
-  height: 20px; /* 画像の高さ */
-  display: inline-block; /* 画像をインラインブロックに */
+  height: auto; /* 画像の高さ */
+}
+
+
+.map-icon {
+  height: 29px; /* 高さを明示的に指定 */
+}
+
+.event-icon {
+  height: 15px; /* 高さを明示的に指定 */
 }
 
 /* ボタンのホバー時のスタイル */
