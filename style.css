@@ -64,6 +64,8 @@ body {
 .button-icon {
   width: 20px; /* 画像の横幅 */
   height: auto; /* 画像の高さ */
+  display: inline-block; /* サイズ指定を有効に */
+  margin-right: 10px; /* 文字との間隔を調整 */
 }
 
 
