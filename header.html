@@ -1,29 +1,46 @@
-<header class="site-header">
-  <div class="container">
-    <!-- ハンバーガーメニューボタン -->
-    <button class="menu-button" id="menu-button">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button> 
-    <h1 class="site-title">ぼうそうV</h1>
-    <nav class="nav-buttons">
-      <a href="index.html" class="nav-button oval">
-        <img src="assets/map-icon.jpg" alt="Map Icon" class="button-icon map-icon"> Map
-      </a>
-      <a href="events.html" class="nav-button oval">
-        <img src="assets/event-icon.jpg" alt="Event Icon" class="button-icon event-icon"> Event
-      </a>
-    </nav>
-  </div>
-</header>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <!-- ビューポート設定で viewport-fit=cover を追加 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>ぼうそうV</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- ヘッダー部分 -->
+  <header class="site-header">
+    <div class="container">
+      <!-- ハンバーガーメニューボタン -->
+      <button class="menu-button" id="menu-button">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button> 
+      <!-- サイトタイトル -->
+      <h1 class="site-title">ぼうそうV</h1>
+      <!-- ナビゲーションボタン -->
+      <nav class="nav-buttons">
+        <a href="index.html" class="nav-button oval">
+          <img src="assets/map-icon.jpg" alt="Map Icon" class="button-icon map-icon"> Map
+        </a>
+        <a href="events.html" class="nav-button oval">
+          <img src="assets/event-icon.jpg" alt="Event Icon" class="button-icon event-icon"> Event
+        </a>
+      </nav>
+    </div>
+  </header>
 
-<!-- メニューバー -->
-<div class="side-menu" id="side-menu">
-  <ul>
-    <li><a href="index.html">マップ</a></li>
-    <li><a href="events.html">イベント</a></li>
-    <li><a href="about.html">ぼうそうV説明</a></li>
-    <li><a href="contact.html">お問い合わせ</a></li>
-  </ul>
-</div>
+  <!-- サイドメニューバー -->
+  <div class="side-menu" id="side-menu">
+    <ul>
+      <li><a href="index.html">マップ</a></li>
+      <li><a href="events.html">イベント</a></li>
+      <li><a href="about.html">ぼうそうV説明</a></li>
+      <li><a href="contact.html">お問い合わせ</a></li>
+    </ul>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
