@@ -1,7 +1,9 @@
 /* 共通スタイル */
 body {
+  background-color: #E1F5FE; /* ステータスバー部分の背景色 */
   margin: 0;
   font-family: Arial, sans-serif;
+  padding: 0;
 }
 
 /* ヘッダー部分 */
@@ -13,6 +15,7 @@ body {
   justify-content: center;
   align-items: center;
   position: relative;
+  padding-top: env(safe-area-inset-top); /* セーフエリアを考慮してパディングを追加 */
 }
 
 
