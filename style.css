@@ -194,7 +194,7 @@ body {
 @media (max-width: 768px) {
   .menu-button {
     width: 50px; /* スマホでのボタン幅を広げる */
-    left: 5px;
+    right: 5px;
   }
 
   .menu-button span {
