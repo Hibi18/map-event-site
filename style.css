@@ -149,6 +149,19 @@ body {
   width: 30px;
 }
 
+/* サイドメニューの閉じるボタン */
+.close-button {
+  position: absolute;
+  top: 10px; /* メニュー内の上端 */
+  right: 10px; /* メニュー内の右端 */
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #000; /* ボタンの色 */
+}
+
+
 .menu-button span {
   display: block;
   height: 3px;
