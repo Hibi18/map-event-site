@@ -153,12 +153,12 @@ body {
 .close-button {
   position: absolute;
   top: 10px; /* メニュー内の上端 */
-  right: 10px; /* メニュー内の右端 */
+  left: 20px; /* メニュー内の左端 */
   background: none;
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
-  color: #000; /* ボタンの色 */
+  color: #fff; /* ボタンの色 */
 }
 
 /* オーバーレイ（メニュー画面外の薄暗い背景） */
