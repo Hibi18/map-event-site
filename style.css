@@ -188,7 +188,7 @@ body {
 }
 
 .side-menu.open {
-  left: 0; /* メニューが開いた状態 */
+  right: 0; /* メニューが開いた状態 */
 }
 
 @media (max-width: 768px) {
