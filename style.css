@@ -29,6 +29,7 @@ body {
   justify-content: space-between;
   height: 24px;
   width: 40px;
+  position: absolute; /* これを追加 */
   right: 10px; /* これを追加 */
 }
 
