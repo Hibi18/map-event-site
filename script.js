@@ -9,13 +9,29 @@ fetch('header.html')
   .then(data => {
     document.getElementById('header-container').innerHTML = data;
 
-    // メニューボタンのスクリプトをここで設定
+    // メニューボタン、閉じるボタン、オーバーレイを取得
     const menuButton = document.getElementById('menu-button');
     const sideMenu = document.getElementById('side-menu');
+    const closeButton = document.getElementById('close-button');
+    const overlay = document.getElementById('overlay');
 
-    if (menuButton && sideMenu) {
+    if (menuButton && sideMenu && closeButton && overlay) {
+      // メニューボタンを押したときの動作
       menuButton.addEventListener('click', () => {
-        sideMenu.classList.toggle('open'); // メニューの開閉
+        sideMenu.classList.add('open'); // メニューを開く
+        overlay.classList.add('active'); // オーバーレイを表示
+      });
+
+      // 閉じるボタンを押したときの動作
+      closeButton.addEventListener('click', () => {
+        sideMenu.classList.remove('open'); // メニューを閉じる
+        overlay.classList.remove('active'); // オーバーレイを非表示
+      });
+
+      // オーバーレイを押したときの動作
+      overlay.addEventListener('click', () => {
+        sideMenu.classList.remove('open'); // メニューを閉じる
+        overlay.classList.remove('active'); // オーバーレイを非表示
       });
     }
   })
