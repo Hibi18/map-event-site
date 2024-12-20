@@ -30,6 +30,7 @@ body {
   height: 24px;
   width: 40px;
   margin-right: auto; /* 左詰めに配置 */
+  right: 10px; /* これを追加 */
 }
 
 .menu-button span {
@@ -160,12 +161,12 @@ body {
 .side-menu {
   position: fixed;
   top: 0;
-  left: -100%; /* 初期状態では画面外 */
+  right: -100%; /* 初期状態では画面外 */
   width: 250px;
   height: 100%;
   background-color: #E1F5FE; /* メニューバーの背景色 */
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
-  transition: left 0.3s ease; /* アニメーション */
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+  transition: right 0.3s ease; /* アニメーション */
   z-index: 1000;
   padding: 20px;
 }
