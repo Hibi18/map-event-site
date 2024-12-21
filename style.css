@@ -31,6 +31,7 @@ body {
   height: 24px;
   width: 40px;
   position: absolute; 
+  top: 5px;
   right: 10px; /* これを追加 */
 }
 
