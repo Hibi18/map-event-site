@@ -9,7 +9,7 @@ body {
 /* ヘッダー部分 */
 .site-header {
   background-color: #0082CA; 
-  color: #000000;
+  color: #FFFFFF;
   padding:  calc(env(safe-area-inset-top) + 10px) 20px 10px;
   display: flex;
   justify-content: center;
