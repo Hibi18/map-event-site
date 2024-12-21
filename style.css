@@ -10,7 +10,7 @@ body {
 .site-header {
   background-color: #E1F5FE; /* 薄い水色 */
   color: #000000;
-  padding: 10px 20px;
+  padding:  calc(env(safe-area-inset-top) + 10px) 20px 10px;
   display: flex;
   justify-content: center;
   align-items: center;
