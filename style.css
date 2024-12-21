@@ -51,9 +51,9 @@ body {
 
 /* サイトタイトル */
 .site-title {
-  margin: 0 auto; /* 中央揃え */
+  margin: 0; /* 左詰め */
   font-size: 1.5rem;
-  text-align: center;
+  text-align: left;
 }
 
 /* ボタン部分 */
