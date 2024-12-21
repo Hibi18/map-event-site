@@ -15,7 +15,7 @@ body {
   justify-content: center;
   align-items: center;
   position: relative;
-  z-index: 1000;
+  z-index: 999;
   padding-top: env(safe-area-inset-top); /* セーフエリアを考慮してパディングを追加 */
 }
 
