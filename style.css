@@ -61,10 +61,10 @@ body {
 /* サブタイトル */
 .site-subtitle {
   display: block; /* サブタイトルをブロック要素にする */
-  font-size: 0.8rem; /* サブタイトルのフォントサイズを小さく */
+  font-size: 0.5rem; /* サブタイトルのフォントサイズを小さく */
   font-weight: normal; /* サブタイトルは軽いフォントに */
   color: #ffffff; /* サブタイトルの文字色（背景に合わせて調整） */
-  margin-bottom: 5px; /* タイトルとの間に余白を設定 */
+  margin-bottom: 3px; /* タイトルとの間に余白を設定 */
 }
 
 /* ボタン部分 */
