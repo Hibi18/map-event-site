@@ -281,7 +281,7 @@ body {
 /* カルーセルの調整 */
 .swiper-container {
   width: 100%; /* カルーセルの幅 */
-  height: 300px; /* 高さ */
+  height: 500px; /* 高さ */
   margin-top: 20px;
 }
 
