@@ -6,12 +6,10 @@
   <meta name="theme-color" content="#0082CA"> <!-- ステータスバーの背景色を指定 -->
   <title>ぼうそうV - 旅行プラン</title>
   <link rel="stylesheet" href="style.css">
-  <!-- 以下が追加した内容 -->
   <!-- Swiper CSS -->
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
   <!-- Swiper JS -->
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-  <!-- 以上が追加した内容 -->
 </head>
 <body>
   <!-- ヘッダー -->
@@ -21,7 +19,6 @@
   <main class="plan-container"> 
     <h1>旅行プランを探す</h1>
 
-    <!-- 以下が追加した内容 -->
     <!-- カルーセル -->
     <div class="swiper-container">
       <div class="swiper-wrapper">
@@ -29,13 +26,16 @@
         <div class="swiper-slide">プラン2: アウトドアアドベンチャー</div>
         <div class="swiper-slide">プラン3: 歴史探訪と文化体験</div>
       </div>
-      <!-- ナビゲーションボタン -->
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
-      <!-- ページネーション -->
-      <div class="swiper-pagination"></div>
+      <!-- ページネーションとボタンのラッパー -->
+      <div class="swiper-controls">
+        <!-- 前へボタン -->
+        <div class="swiper-button-prev"></div>
+        <!-- ページネーション -->
+        <div class="swiper-pagination"></div>
+        <!-- 次へボタン -->
+        <div class="swiper-button-next"></div>
+      </div>
     </div>
-    <!-- 以上まで追加した内容 -->
   </main>
 
   <script src="script.js"></script>
