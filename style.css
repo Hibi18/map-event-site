@@ -314,6 +314,7 @@ body {
 .swiper-pagination {
   flex: 1; /* ページネーションを中央に広げる */
   text-align: center;
+  margin-top: 5px;
 }
 
 .swiper-button-prev,
@@ -323,10 +324,3 @@ body {
   cursor: pointer;
 }
 
-.swiper-button-prev {
-  margin-right: 10px; /* ページネーションとの間隔 */
-}
-
-.swiper-button-next {
-  margin-left: 10px; /* ページネーションとの間隔 */
-}
