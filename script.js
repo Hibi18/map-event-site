@@ -46,10 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
     autoplay: {
       delay: 3000, // 自動再生（3秒ごと）
     },
-    navigation: {
-      nextEl: '.swiper-button-next', // 次のスライドボタン
-      prevEl: '.swiper-button-prev', // 前のスライドボタン
-    },
     pagination: {
       el: '.swiper-pagination', // ページネーション
       clickable: true, // ページネーションをクリック可能に
