@@ -242,6 +242,11 @@ body {
 }
 
 @media (max-width: 768px) {
+  body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  
   .menu-button {
     width: 50px; /* スマホでのボタン幅を広げる */
     right: 5px;
