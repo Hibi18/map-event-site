@@ -248,3 +248,9 @@ body {
     height: 5px; /* 横線の太さを少し太くする */
   }
 }
+
+ /* 旅行プラン提案画面 */
+  .plan-container h1 {
+    font-size: 1.8rem;　 /* 見出しのサイズ */
+    margin-left: 10px;
+  }
