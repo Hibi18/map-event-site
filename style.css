@@ -259,7 +259,7 @@ body {
 /* カルーセルの調整 */
 .swiper-container {
   width: 100%; /* カルーセルの幅 */
-  height: 200px; /* 高さ */
+  height: auto; /* 高さ */
   margin-top: 20px;
 }
 
@@ -274,4 +274,36 @@ body {
   border: 1px solid #ccc;
   border-radius: 10px;
   color: #333;
+}
+
+/* 以下の内容を追加 */
+.swiper-wrapper {
+  width: 100%;
+}
+
+.swiper-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px; /* ページネーションとスライド間の余白 */
+}
+
+.swiper-pagination {
+  flex: 1; /* ページネーションを中央に広げる */
+  text-align: center;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  color: #0082CA; /* ボタンの色 */
+  font-size: 18px; /* ボタンサイズ */
+  cursor: pointer;
+}
+
+.swiper-button-prev {
+  margin-right: 10px; /* ページネーションとの間隔 */
+}
+
+.swiper-button-next {
+  margin-left: 10px; /* ページネーションとの間隔 */
 }
