@@ -252,6 +252,24 @@ body {
  /* 旅行プラン提案画面 */
   .plan-container h1 {
     font-size: 1.4rem;　 /* 見出しのサイズ */
-    text-align: left; /* この部分を追加、いらないかも */
+    text-align: left; 
     margin-left: 20px;
   }
+
+/* カルーセルの調整 */
+.swiper-container {
+  width: 100%; /* カルーセルの幅 */
+  height: 200px; /* 高さ */
+  margin-top: 20px;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  background: #f8f8f8;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  color: #333;
+}
