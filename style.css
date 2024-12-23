@@ -314,6 +314,7 @@ body {
 .swiper-pagination {
   flex: 1; /* ページネーションを中央に広げる */
   text-align: center;
+  position: relative; /* スライドの下に配置 */
   margin-top: 5px;
 }
 
