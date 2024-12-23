@@ -43,7 +43,6 @@ fetch('header.html')
 document.addEventListener('DOMContentLoaded', () => {
   const swiper = new Swiper('.swiper-container', {
     loop: true, // 無限ループ
-    slidesPerView: 'auto', // スライドの幅をCSSで制御可能に
     autoplay: {
       delay: 3000, // 自動再生（3秒ごと）
     },
