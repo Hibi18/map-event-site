@@ -251,6 +251,7 @@ body {
 
  /* 旅行プラン提案画面 */
   .plan-container h1 {
-    font-size: 1.8rem;　 /* 見出しのサイズ */
-    margin-left: 10px;
+    font-size: 1.4rem;　 /* 見出しのサイズ */
+    text-align: left; /* この部分を追加、いらないかも */
+    margin-left: 20px;
   }
