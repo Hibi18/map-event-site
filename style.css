@@ -307,6 +307,8 @@ body {
   justify-content: center;
   align-items: center;
   margin-top: 10px; /* ページネーションとスライド間の余白 */
+  position: relative; /* 子要素の配置に影響を与える */
+  width: 100%;
 }
 
 .swiper-pagination {
