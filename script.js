@@ -39,7 +39,7 @@ fetch('header.html')
     console.error('Error loading header:', error);
   });
 
-// Swiper.js の初期化以下の内容を追加
+// Swiper.js の初期化
 document.addEventListener('DOMContentLoaded', () => {
   const swiper = new Swiper('.swiper-container', {
     loop: true, // 無限ループ
