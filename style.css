@@ -4,6 +4,9 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   padding: 0;
+  /* 以下の2つを追加 */
+  max-width: 100%; /* 横幅をビューポートに制限 */
+  overflow-x: hidden; /* 横スクロールを無効化 */
 }
 
 /* ヘッダー部分 */
