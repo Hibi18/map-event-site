@@ -251,10 +251,34 @@ body {
 
  /* 旅行プラン提案画面 */
   .plan-container h1 {
-    font-size: 1.4rem;　 /* 見出しのサイズ */
+    font-size: 1.5rem;　 /* 見出しのサイズ */
     text-align: left; 
     margin-left: 20px;
   }
+
+.plan-description {
+  margin-top: 20px; /* カルーセルとの余白 */
+  padding: 10px;
+  background-color: #f9f9f9; /* 背景色を設定 */
+  border-radius: 8px; /* 角を丸める */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 影を追加 */
+}
+
+.plan-description h2 {
+  font-size: 1.3rem; /* 見出しのサイズ */
+  margin-bottom: 10px;
+  text-align: left; 
+  margin-left: 20px;
+}
+
+.plan-description p {
+  font-size: 1rem; /* 段落の文字サイズ */
+  line-height: 1.6; /* 行間を調整 */
+  color: #333; /* 文字色 */
+  text-align: left; 
+  margin-left: 20px;
+}
+
 
 /* カルーセルの調整 */
 .swiper-container {
