@@ -38,3 +38,21 @@ fetch('header.html')
   .catch(error => {
     console.error('Error loading header:', error);
   });
+
+// Swiper.js の初期化以下の内容を追加
+document.addEventListener('DOMContentLoaded', () => {
+  const swiper = new Swiper('.swiper-container', {
+    loop: true, // 無限ループ
+    autoplay: {
+      delay: 3000, // 自動再生（3秒ごと）
+    },
+    navigation: {
+      nextEl: '.swiper-button-next', // 次のスライドボタン
+      prevEl: '.swiper-button-prev', // 前のスライドボタン
+    },
+    pagination: {
+      el: '.swiper-pagination', // ページネーション
+      clickable: true, // ページネーションをクリック可能に
+    },
+  });
+});
