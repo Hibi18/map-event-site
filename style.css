@@ -292,6 +292,7 @@ body {
   height: 300px; /* 高さ */
   margin-top: 20px;
   overflow: hidden; /* 横スクロールを防ぐ */
+  max-width: 100%; /* 画面幅を超えないようにするこれを追加 */
 }
 
 .swiper-slide {
