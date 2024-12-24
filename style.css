@@ -291,6 +291,7 @@ body {
   width: 100%; /* カルーセルの幅 */
   height: 300px; /* 高さ */
   margin-top: 20px;
+  overflow: hidden; /* 横スクロールを防ぐ */
 }
 
 .swiper-slide {
@@ -340,4 +341,5 @@ body {
   font-size: 18px; /* ボタンサイズ */
   cursor: pointer;
 }
+
 
