@@ -358,9 +358,9 @@ body {
   padding: 15px; /* ボタンの上下左右の余白 */
   margin-bottom: 10px; /* ボタン同士の間隔 */
   font-size: 1.2rem; /* ボタン内の文字サイズ */
-  background-color: #0082CA; /* ボタンの背景色 */
-  color: #FFFFFF; /* ボタンの文字色 */
-  border: none; /* ボタンの枠線を消す */
+  background-color: #FFFFFF; /* ボタンの背景色 */
+  color: #000000; /* ボタンの文字色 */
+  border: 2px solid #000000; /* 黒の枠線 */
   border-radius: 8px; /* ボタンの角を丸める */
   cursor: pointer; /* カーソルをポインタに変更 */
   text-align: center; /* 文字を中央揃え */
