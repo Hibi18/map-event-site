@@ -360,12 +360,21 @@ body {
   font-size: 1.2rem; /* ボタン内の文字サイズ */
   background-color: #FFFFFF; /* ボタンの背景色 */
   color: #000000; /* ボタンの文字色 */
-  border: 2px solid #000000; /* 黒の枠線 */
+  border: 1px solid #000000; /* 黒の枠線 */
   border-radius: 8px; /* ボタンの角を丸める */
   cursor: pointer; /* カーソルをポインタに変更 */
   text-align: center; /* 文字を中央揃え */
+  display: flex; /* これを追加 */
+  justify-content: center; /* これを追加 */
+  align-items: center; /* これを追加 */
+  gap: 5px; /* これを追加 */
+}
+
+.filter-button-icon {
+  width: 24px; /* アイコンの幅 */
+  height: 24px; /* アイコンの高さ */
 }
 
 .filter-button:hover {
-  background-color: #005A99; /* ホバー時の色 */
+  background-color: #CCCCCC; /* ホバー時の色 */
 }
