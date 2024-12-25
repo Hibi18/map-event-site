@@ -268,8 +268,6 @@ body {
 .plan-description {
   margin-top: 20px; /* カルーセルとの余白 */
   padding: 10px;
-  background-color: #F5F5F5;
-  padding: 20px 0; 
 }
 
 .plan-description h2 {
@@ -352,7 +350,6 @@ body {
   flex-direction: column; /* ボタンを縦に並べる */
   align-items: center; /* 中央揃え */
   margin-top: 20px; /* 上部に余白 */
-  background-color: #F5F5F5;
 }
 
 .filter-button {
