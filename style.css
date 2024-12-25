@@ -367,7 +367,7 @@ body {
   display: flex; 
   justify-content: flex-start; /* これを変更 */
   align-items: center; 
-  gap: 5px; 
+  gap: 10px; 
 }
 
 .filter-button-icon {
