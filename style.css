@@ -364,10 +364,10 @@ body {
   border-radius: 8px; /* ボタンの角を丸める */
   cursor: pointer; /* カーソルをポインタに変更 */
   text-align: center; /* 文字を中央揃え */
-  display: flex; /* これを追加 */
-  justify-content: center; /* これを追加 */
-  align-items: center; /* これを追加 */
-  gap: 5px; /* これを追加 */
+  display: flex; 
+  justify-content: flex-start; /* これを変更 */
+  align-items: center; 
+  gap: 5px; 
 }
 
 .filter-button-icon {
