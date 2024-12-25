@@ -352,6 +352,7 @@ body {
   flex-direction: column; /* ボタンを縦に並べる */
   align-items: center; /* 中央揃え */
   margin-top: 20px; /* 上部に余白 */
+  background-color: #F5F5F5;
 }
 
 .filter-button {
