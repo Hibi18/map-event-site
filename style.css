@@ -336,7 +336,7 @@ body {
 
 .slide-image {
   width: 100%; /* 画像の幅をスライドに合わせる */
-  height: auto; /* アスペクト比を維持 */
+  height: 100%; /* アスペクト比を維持 */
   object-fit: cover; /* 画像をスライドにフィットさせる */
   border-radius: 10px; /* 画像の角を丸める（任意） */
 }
