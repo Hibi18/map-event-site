@@ -255,6 +255,12 @@ body {
   .menu-button span {
     height: 5px; /* 横線の太さを少し太くする */
   }
+
+  .swiper-container {
+    width: 100%;
+    height: 100vw;
+  }
+  
 }
 
  /* 旅行プラン提案画面 */
