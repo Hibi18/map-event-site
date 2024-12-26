@@ -281,7 +281,7 @@ body {
   width: calc(100% - 20px); /* 両端10pxを除く */
   height: 2px; /* 線の高さ */
   background-color: #E6E6E6; /* 薄い灰色の線 */
-  margin: 10px auto; /* 上下の余白と中央揃え */
+  margin: 5px auto; /* 上下の余白と中央揃え */
 }
 
 .blue-highlight {
