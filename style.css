@@ -276,6 +276,25 @@ body {
   padding: 10px;
 }
 
+.decorative-line {
+  position: relative;
+  width: calc(100% - 20px); /* 両端10pxを除く */
+  height: 2px; /* 線の高さ */
+  background-color: #E6E6E6; /* 薄い灰色の線 */
+  margin: 10px auto; /* 上下の余白と中央揃え */
+}
+
+.blue-highlight {
+  position: absolute;
+  top: 0;
+  left: 50%; /* 親要素の中央から開始 */
+  transform: translateX(-50%);
+  width: 100px; /* 青い部分の幅 */
+  height: 2px; /* 青い部分の高さ */
+  background-color: #0082CA; /* 青色 */
+}
+
+
 .plan-description h2 {
   font-size: 1.3rem; /* 見出しのサイズ */
   margin-top: 10px;
