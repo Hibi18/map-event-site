@@ -294,6 +294,7 @@ body {
   overflow: hidden; /* 横スクロールを防ぐ */
   max-width: 100%; /* 画面幅を超えないようにするこれを追加 */
   padding-bottom: 30px;
+  margin: 0;
 }
 
 .swiper-slide {
