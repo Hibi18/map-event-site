@@ -287,9 +287,8 @@ body {
 .blue-highlight {
   position: absolute;
   top: 0;
-  left: 50%; /* 親要素の中央から開始 */
-  transform: translateX(-50%);
-  width: 100px; /* 青い部分の幅 */
+  left: 0; /* 親要素の左端から開始 */
+  width: 210px; /* 青い部分の幅 */
   height: 2px; /* 青い部分の高さ */
   background-color: #0082CA; /* 青色 */
 }
