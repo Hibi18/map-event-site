@@ -288,7 +288,7 @@ body {
   position: absolute;
   top: 0;
   left: 0; /* 親要素の左端から開始 */
-  width: 210px; /* 青い部分の幅 */
+  width: 200px; /* 青い部分の幅 */
   height: 2px; /* 青い部分の高さ */
   background-color: #0082CA; /* 青色 */
 }
