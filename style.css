@@ -259,7 +259,7 @@ body {
 
  /* 旅行プラン提案画面 */
   .plan-container h1 {
-    font-size: 1.5rem;　 /* 見出しのサイズ */
+    font-size: 1.3rem;　 /* 見出しのサイズ */
     text-align: left; 
     margin-left: 20px;
     margin-top: 5px;
@@ -290,7 +290,7 @@ body {
 .swiper-container {
   width: 100%; /* カルーセルの幅 */
   height: 300px; /* 高さ */
-  margin-top: 0px;
+  margin-top: 0;
   overflow: hidden; /* 横スクロールを防ぐ */
   max-width: 100%; /* 画面幅を超えないようにするこれを追加 */
   padding-bottom: 30px;
