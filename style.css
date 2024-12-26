@@ -269,6 +269,7 @@ body {
     text-align: left; 
     margin-left: 20px;
     margin-top: 5px;
+    margin-bottom: 10px;
   }
 
 .plan-description {
@@ -281,14 +282,14 @@ body {
   width: calc(100% - 20px); /* 両端10pxを除く */
   height: 2px; /* 線の高さ */
   background-color: #E6E6E6; /* 薄い灰色の線 */
-  margin: 5px auto; /* 上下の余白と中央揃え */
+  margin: 15px auto; /* 上下の余白と中央揃え */
 }
 
 .blue-highlight {
   position: absolute;
   top: 0;
   left: 0; /* 親要素の左端から開始 */
-  width: 200px; /* 青い部分の幅 */
+  width: 180px; /* 青い部分の幅 */
   height: 2px; /* 青い部分の高さ */
   background-color: #0082CA; /* 青色 */
 }
@@ -299,6 +300,7 @@ body {
   margin-top: 10px;
   text-align: left; 
   margin-left: 20px;
+  margin-bottom: 10px;
 }
 
 .plan-description p {
@@ -307,6 +309,8 @@ body {
   color: #333; /* 文字色 */
   text-align: left; 
   margin-left: 20px;
+  margin-top: 15px;
+  margin-bottom: 20px;
 }
 
 
