@@ -78,9 +78,52 @@ function showBanner(content_detail) {
   banner.classList.remove('hidden');
   banner.classList.add('visible');
 
-  // 一定時間後に自動で隠す　これいらなくない？
+  // 一定時間後に自動で隠す　
   setTimeout(() => {
     banner.classList.remove('visible');
     banner.classList.add('hidden');
   }, 7000); // 7秒後に戻る
+}
+
+function handleCheckIn(placeName) {
+    // チェックイン機能の同心円アニメーションを作成
+    const overlay = document.createElement('div');
+    overlay.className = 'circle-overlay';
+    document.body.appendChild(overlay);
+
+    // 中心をピンの座標に合わせて計算
+    const mapCenter = document.getElementById('map').getBoundingClientRect();
+    const mapWidth = mapCenter.width;
+    const mapHeight = mapCenter.height;
+    const circleX = mapCenter.left + mapWidth / 2; // 中心のX座標
+    const circleY = mapCenter.top + mapHeight / 2; // 中心のY座標
+
+    overlay.style.left = `${circleX}px`;
+    overlay.style.top = `${circleY}px`;
+
+    // メッセージ表示の準備
+    const messageBox = document.createElement('div');
+    messageBox.className = 'message-box';
+    messageBox.innerHTML = `
+        <h2>${placeName} で防災チェックイン</h2>
+        <p>提案: ${
+          placeName.includes('避難所') ? 
+          '最寄りの避難所を確認しましたか？' : 
+          '防災設備（給水所、消火器など）を見つけてみましょう。'
+        }</p>
+        <button onclick="closeCheckIn()">閉じる</button>
+    `;
+    document.body.appendChild(messageBox);
+
+    // アニメーション終了後にメッセージを表示
+    setTimeout(() => {
+        overlay.style.opacity = '0'; // 円をフェードアウト
+        messageBox.style.display = 'block'; // メッセージを表示
+    }, 2000); // 2秒後
+}
+
+function closeCheckIn() {
+    // チェックイン画面を閉じる
+    document.querySelector('.circle-overlay').remove();
+    document.querySelector('.message-box').remove();
 }
