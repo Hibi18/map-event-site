@@ -96,3 +96,69 @@
     }
 }
 
+/* 同心円アニメーションこれ以下を追加 */
+.circle-overlay {
+    position: fixed;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background-color: rgba(0, 123, 255, 0.3);
+    animation: expandCircle 2s ease-out forwards;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+@keyframes expandCircle {
+    0% {
+        width: 0;
+        height: 0;
+        opacity: 1;
+    }
+    100% {
+        width: 2000px; /* 十分大きく広がる */
+        height: 2000px;
+        margin-left: -1000px;
+        margin-top: -1000px;
+        opacity: 0.5;
+    }
+}
+
+/* メッセージボックス */
+.message-box {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    z-index: 2000;
+    padding: 20px;
+    text-align: center;
+}
+
+.message-box h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.message-box p {
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.message-box button {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.message-box button:hover {
+    background-color: #0056b3;
+}
