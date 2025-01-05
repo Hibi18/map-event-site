@@ -66,29 +66,8 @@ script.onload = function() {
 document.head.appendChild(script);
 
 // 「チェックイン」ボタンの動作
-function handleCheckIn(placeName) {
-  alert(`${placeName} にチェックインしました！`);
-  // ここにチェックイン時の処理を追加
-}
-
-// バナー表示関数
-function showBanner(content_detail) {
-  const banner = document.getElementById('banner');
-  const bannerContent = document.getElementById('banner-content');
-
-  bannerContent.textContent = content_detail; // バナーに内容をセット
-  banner.classList.remove('hidden');
-  banner.classList.add('visible');
-
-  // 一定時間後に自動で隠す　
-  setTimeout(() => {
-    banner.classList.remove('visible');
-    banner.classList.add('hidden');
-  }, 7000); // 7秒後に戻る
-}
-
-function handleCheckIn(placeName) {
-    // チェックイン機能の同心円アニメーションを作成
+function handleCheckIn(placeName, suggestion) {
+    // 同心円アニメーションを作成
     const overlay = document.createElement('div');
     overlay.className = 'circle-overlay';
     document.body.appendChild(overlay);
@@ -113,7 +92,7 @@ function handleCheckIn(placeName) {
     `;
     document.body.appendChild(messageBox);
 
-    // アニメーション開始後１秒でメッセージを表示
+    // アニメーション開始後1秒でメッセージを表示
     setTimeout(() => {
         messageBox.style.display = 'block'; // メッセージを表示
     }, 1000); // 1秒後
