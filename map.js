@@ -2,26 +2,26 @@ var mapContainer = document.createElement('div');
 mapContainer.id = 'map';
 document.body.appendChild(mapContainer);
 
-//banner
+// banner
 var banner = document.createElement('div');
 banner.id = 'banner';
 banner.className = 'hidden';
 banner.innerHTML = '<p id="banner-content"></p>';
 document.body.appendChild(banner);
 
-//leafret
+// leaflet
 var link = document.createElement('link');
 link.rel = 'stylesheet';
 link.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
 document.head.appendChild(link);
 
-//map.css
+// map.css
 var link = document.createElement('link');
 link.rel = 'stylesheet';
 link.href = 'map.css';
 document.head.appendChild(link);
 
-//leafret
+// leaflet
 var script = document.createElement('script');
 script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
 script.onload = function() {
@@ -33,30 +33,41 @@ script.onload = function() {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
   }).addTo(map);
 
-  //ここでマーカを追加するよ。
+  // マーカーの設定
   var markers = [
     {
       position: [35.71366835962503, 139.77613130188482],
-      content: 'ここ上野駅ね',
-      content_detail: 'こんな感じで作ってみたよ。',
+      content: '上野駅',
+      content_detail: '上野駅は東京都台東区にある駅です。',
     },
     {
       position: [35.612805966761215, 140.11372769961613],
-      content: '千葉駅だ',
-      content_detail: '千葉駅（ちばえき）は、千葉県千葉市中央区新千葉一丁目にある、東日本旅客鉄道（JR東日本）・千葉都市モノレールの駅である。隣接する京成電鉄の京成千葉駅は、乗換駅となっている。(wikipedia)より引用',
+      content: '千葉駅',
+      content_detail: '千葉駅は、千葉県千葉市中央区新千葉一丁目にあります。',
     }
   ];
 
+  // マーカーの追加とポップアップ設定
   markers.forEach(marker => {
-    const mapMarker = L.marker(marker.position).addTo(map)
-      .bindPopup(marker.content);
+    const popupContent = `
+      <div>
+        <h3>${marker.content}</h3>
+        <p>${marker.content_detail}</p>
+        <button onclick="handleCheckIn('${marker.content}')">チェックイン</button>
+      </div>
+    `;
 
-    mapMarker.on('click', function() {
-      showBanner(marker.content_detail); // バナーを表示する
-    });
+    const mapMarker = L.marker(marker.position).addTo(map)
+      .bindPopup(popupContent);
   });
 };
 document.head.appendChild(script);
+
+// 「チェックイン」ボタンの動作
+function handleCheckIn(placeName) {
+  alert(`${placeName} にチェックインしました！`);
+  // ここにチェックイン時の処理を追加
+}
 
 // バナー表示関数
 function showBanner(content_detail) {
