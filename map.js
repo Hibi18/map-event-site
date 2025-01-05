@@ -39,11 +39,13 @@ script.onload = function() {
       position: [35.71366835962503, 139.77613130188482],
       content: '上野駅',
       content_detail: '上野駅は東京都台東区にある駅です。',
+      suggestion: '上野駅の最寄りの避難所は確認しましたか？',
     },
     {
       position: [35.612805966761215, 140.11372769961613],
       content: '千葉駅',
       content_detail: '千葉駅は、千葉県千葉市中央区新千葉一丁目にあります。',
+      suggestion: '千葉駅の消火器などの防災設備を探してみましょう。',
     }
   ];
 
@@ -53,7 +55,7 @@ script.onload = function() {
       <div>
         <h3>${marker.content}</h3>
         <p>${marker.content_detail}</p>
-        <button onclick="handleCheckIn('${marker.content}')">チェックイン</button>
+        <button onclick="handleCheckIn('${marker.content}', '${marker.suggestion}')">チェックイン</button>
       </div>
     `;
 
@@ -106,11 +108,7 @@ function handleCheckIn(placeName) {
     messageBox.className = 'message-box';
     messageBox.innerHTML = `
         <h2>${placeName} で防災チェックイン</h2>
-        <p>提案: ${
-          placeName.includes('避難所') ? 
-          '最寄りの避難所を確認しましたか？' : 
-          '防災設備（給水所、消火器など）を見つけてみましょう。'
-        }</p>
+        <p>提案: ${suggestion}</p>
         <button onclick="closeCheckIn()">閉じる</button>
     `;
     document.body.appendChild(messageBox);
