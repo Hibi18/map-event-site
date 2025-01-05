@@ -115,11 +115,10 @@ function handleCheckIn(placeName) {
     `;
     document.body.appendChild(messageBox);
 
-    // アニメーション終了後にメッセージを表示
+    // アニメーション開始後１秒でメッセージを表示
     setTimeout(() => {
-        overlay.style.opacity = '0'; // 円をフェードアウト
         messageBox.style.display = 'block'; // メッセージを表示
-    }, 2000); // 2秒後
+    }, 1000); // 1秒後
 }
 
 function closeCheckIn() {
