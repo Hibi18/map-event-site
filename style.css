@@ -187,7 +187,7 @@ body {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5); /* 半透明の黒背景 */
-  z-index: 999; /* メニューより下、ボタンより上 */
+  z-index: 1999; /* メニューより下、ボタンより上 */
   opacity: 0; /* 初期状態では透明 */
   visibility: hidden; /* 初期状態では非表示 */
   transition: opacity 0.3s ease; /* スムーズなアニメーション */
@@ -217,7 +217,7 @@ body {
   background-color: #E1F5FE; /* メニューバーの背景色 */
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
   transition: right 0.3s ease; /* アニメーション */
-  z-index: 1000;
+  z-index: 2000;
   padding: 20px;
 }
 
