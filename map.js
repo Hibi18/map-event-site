@@ -25,7 +25,6 @@ document.head.appendChild(link);
 var script = document.createElement('script');
 script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
 script.onload = function() {
-
   // マップの初期状態
   var map = L.map('map').setView([35.682839, 139.759455], 12);
 
@@ -44,8 +43,10 @@ script.onload = function() {
 
   var redIcon = L.icon({
     iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
+    shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
     iconSize: [25, 41],
-    iconAnchor: [12, 41]
+    iconAnchor: [12, 41],
+    shadowSize: [41, 41]
   });
 
   // マーカーの設定
@@ -84,7 +85,7 @@ script.onload = function() {
       position: [35.7636035, 140.3859353],
       content: '成田空港第一ターミナル',
       content_detail: '千葉県の空の玄関口です。',
-      suggestion:[
+      suggestion: [
         '避難経路の確認をしてみましょう',
         '消火器の場所を確認しましょう'
       ],
@@ -111,114 +112,125 @@ script.onload = function() {
 };
 document.head.appendChild(script);
 
-// バッジの保存と取得
-function saveBadge(placeName) {
-    const badges = JSON.parse(localStorage.getItem('badges')) || [];
-    if (!badges.includes(placeName)) {
-        badges.push(placeName);
-        localStorage.setItem('badges', JSON.stringify(badges));
-    }
+// ランダムなバッジを選ぶ
+function getRandomBadge() {
+  const badgeIcons = [
+    'images/badges/badge1.svg',
+    'images/badges/badge2.svg',
+    'images/badges/badge3.svg',
+    'images/badges/badge4.svg'
+  ];
+  const randomIndex = Math.floor(Math.random() * badgeIcons.length);
+  return badgeIcons[randomIndex];
 }
 
-function getBadges() {
-    return JSON.parse(localStorage.getItem('badges')) || [];
+// バッジを保存
+function saveBadge(badge) {
+  const badges = JSON.parse(localStorage.getItem('badges')) || [];
+  badges.push(badge);
+  localStorage.setItem('badges', JSON.stringify(badges));
 }
 
+// バッジを表示
 function displayBadges() {
-    const badgeContainer = document.getElementById('badge-container');
-    badgeContainer.innerHTML = ''; // 一度クリア
+  const badgeContainer = document.getElementById('badge-container');
+  badgeContainer.innerHTML = '';
 
-    const badges = getBadges();
+  const badges = JSON.parse(localStorage.getItem('badges')) || [];
 
-    if (badges.length === 0) {
-        const emptyMessage = document.createElement('p');
-        emptyMessage.textContent = 'チェックインが完了するとバッジがもらえます';
-        emptyMessage.style.color = '#aaa';
-        emptyMessage.style.textAlign = 'center';
-        badgeContainer.appendChild(emptyMessage);
-    } else {
-        badges.forEach(badge => {
-            const badgeElement = document.createElement('div');
-            badgeElement.className = 'badge';
-            badgeElement.textContent = badge;
-            badgeContainer.appendChild(badgeElement);
-        });
-    }
+  if (badges.length === 0) {
+    const emptyMessage = document.createElement('p');
+    emptyMessage.textContent = 'チェックインが完了するとバッジがもらえます';
+    emptyMessage.style.color = '#aaa';
+    emptyMessage.style.textAlign = 'center';
+    badgeContainer.appendChild(emptyMessage);
+  } else {
+    badges.forEach(({ placeName, badgeIcon }) => {
+      const badgeElement = document.createElement('div');
+      badgeElement.className = 'badge';
+      badgeElement.innerHTML = `
+        <img src="${badgeIcon}" alt="${placeName}" class="badge-image">
+        <p class="badge-label">${placeName}</p>
+      `;
+      badgeContainer.appendChild(badgeElement);
+    });
+  }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    displayBadges();
+  displayBadges();
 });
 
 function handleCheckIn(placeName, encodedSuggestion) {
-    const suggestion = JSON.parse(decodeURIComponent(encodedSuggestion));
-    console.log('Check-in:', placeName, suggestion);
+  const suggestion = JSON.parse(decodeURIComponent(encodedSuggestion));
+  console.log('Check-in:', placeName, suggestion);
 
-    const overlay = document.createElement('div');
-    overlay.className = 'circle-overlay';
-    document.body.appendChild(overlay);
+  const overlay = document.createElement('div');
+  overlay.className = 'circle-overlay';
+  document.body.appendChild(overlay);
 
-    const mapCenter = document.getElementById('map').getBoundingClientRect();
-    const circleX = mapCenter.left + mapCenter.width / 2;
-    const circleY = mapCenter.top + mapCenter.height / 2;
+  const mapCenter = document.getElementById('map').getBoundingClientRect();
+  const circleX = mapCenter.left + mapCenter.width / 2;
+  const circleY = mapCenter.top + mapCenter.height / 2;
 
-    overlay.style.left = `${circleX}px`;
-    overlay.style.top = `${circleY}px`;
+  overlay.style.left = `${circleX}px`;
+  overlay.style.top = `${circleY}px`;
 
-    const messageBox = document.createElement('div');
-    messageBox.className = 'message-box';
+  const messageBox = document.createElement('div');
+  messageBox.className = 'message-box';
 
-    const suggestionsHTML = suggestion
-        .map((item, index) => `
-            <div>
-                <label>
-                    <input type="checkbox" class="suggestion-checkbox" data-index="${index}">
-                    ${item}
-                </label>
-            </div>
-        `)
-        .join('');
+  const suggestionsHTML = suggestion
+    .map((item, index) => `
+      <div>
+        <label>
+          <input type="checkbox" class="suggestion-checkbox" data-index="${index}">
+          ${item}
+        </label>
+      </div>
+    `)
+    .join('');
 
-    messageBox.innerHTML = `
-        <h2>${placeName} で防災チェックイン</h2>
-        ${suggestionsHTML}
-        <button onclick="closeCheckIn()">閉じる</button>
-        <button id="completeButton" style="display: none;" onclick="completeCheckIn('${placeName}')">完了</button>
-    `;
-    document.body.appendChild(messageBox);
+  messageBox.innerHTML = `
+    <h2>${placeName} で防災チェックイン</h2>
+    ${suggestionsHTML}
+    <button onclick="closeCheckIn()">閉じる</button>
+    <button id="completeButton" style="display: none;" onclick="completeCheckIn('${placeName}')">完了</button>
+  `;
+  document.body.appendChild(messageBox);
 
-    setTimeout(() => {
-        messageBox.style.display = 'block';
-    }, 1000);
+  setTimeout(() => {
+    messageBox.style.display = 'block';
+  }, 1000);
 
-    const checkboxes = document.querySelectorAll('.suggestion-checkbox');
-    const completeButton = document.getElementById('completeButton');
+  const checkboxes = document.querySelectorAll('.suggestion-checkbox');
+  const completeButton = document.getElementById('completeButton');
 
-    checkboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', () => {
-            const allChecked = Array.from(checkboxes).every(cb => cb.checked);
-            completeButton.style.display = allChecked ? 'inline-block' : 'none';
-        });
+  checkboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', () => {
+      const allChecked = Array.from(checkboxes).every(cb => cb.checked);
+      completeButton.style.display = allChecked ? 'inline-block' : 'none';
     });
+  });
 }
 
 function closeCheckIn() {
-    document.querySelector('.circle-overlay').remove();
-    document.querySelector('.message-box').remove();
+  document.querySelector('.circle-overlay').remove();
+  document.querySelector('.message-box').remove();
 }
 
 function completeCheckIn(placeName) {
-    const overlay = document.querySelector('.circle-overlay');
-    overlay.style.transition = 'opacity 1s ease-out';
-    overlay.style.opacity = '0';
+  const overlay = document.querySelector('.circle-overlay');
+  overlay.style.transition = 'opacity 1s ease-out';
+  overlay.style.opacity = '0';
 
-    setTimeout(() => {
-        overlay.remove();
-        document.querySelector('.message-box').remove();
+  setTimeout(() => {
+    overlay.remove();
+    document.querySelector('.message-box').remove();
 
-        saveBadge(placeName);
-        displayBadges();
+    const randomBadge = getRandomBadge();
+    saveBadge({ placeName, badgeIcon: randomBadge });
+    displayBadges();
 
-        alert(`おめでとうございます！「${placeName}」のバッジを獲得しました！`);
-    }, 1000);
+    alert(`おめでとうございます！「${placeName}」のバッジを獲得しました！`);
+  }, 1000);
 }
