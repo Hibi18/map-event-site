@@ -81,6 +81,16 @@ script.onload = function() {
         '防災設備の位置を確認してみましょう。'
       ],
       icon: redIcon
+    },
+    {
+      position: [35.7636035, 140.3859353],
+      content: '成田空港第一ターミナル',
+      content_detail: '千葉県の空の玄関口です。',
+      suggestion:[
+        '避難経路の確認をしてみましょう',
+        '消火器の場所を確認しましょう'
+      ],
+      icon: redIcon
     }
   ];
 
