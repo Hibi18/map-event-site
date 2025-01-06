@@ -151,14 +151,25 @@ function getBadges() {
 function displayBadges() {
     const badgeContainer = document.getElementById('badge-container');
     badgeContainer.innerHTML = ''; // 一度クリア
+
     const badges = getBadges();
 
-    badges.forEach(badge => {
-        const badgeElement = document.createElement('div');
-        badgeElement.className = 'badge';
-        badgeElement.textContent = badge;
-        badgeContainer.appendChild(badgeElement);
-    });
+    if (badges.length === 0) {
+        // バッジがない場合のメッセージを表示
+        const emptyMessage = document.createElement('p');
+        emptyMessage.textContent = 'チェックインが完了するとバッジがもらえます';
+        emptyMessage.style.color = '#aaa'; // 薄い文字色
+        emptyMessage.style.textAlign = 'center'; // 中央揃え
+        badgeContainer.appendChild(emptyMessage);
+    } else {
+        // バッジを表示
+        badges.forEach(badge => {
+            const badgeElement = document.createElement('div');
+            badgeElement.className = 'badge';
+            badgeElement.textContent = badge;
+            badgeContainer.appendChild(badgeElement);
+        });
+    }
 }
 
 // 初回ロード時にバッジを表示
@@ -173,19 +184,17 @@ function closeCheckIn() {
 }
 
 function completeCheckIn(placeName) {
-    // 特別な演出
     const overlay = document.querySelector('.circle-overlay');
     overlay.style.transition = 'opacity 1s ease-out';
-    overlay.style.opacity = '0'; // フェードアウト
+    overlay.style.opacity = '0';
 
     setTimeout(() => {
         overlay.remove();
         document.querySelector('.message-box').remove();
 
-        // バッジ保存と表示
         saveBadge(placeName);
-        displayBadges();
+        displayBadges(); // バッジを更新して再表示
 
         alert(`おめでとうございます！「${placeName}」のバッジを獲得しました！`);
-    }, 1000); // 1秒後に削除
+    }, 1000);
 }
