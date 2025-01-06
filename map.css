@@ -194,7 +194,6 @@
 .badge-image {
     width: 30px;
     height: 30px;
-    margin-bottom: 5px;
     border-radius: 50%; /* バッジを丸くする */
 }
 
