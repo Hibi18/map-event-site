@@ -114,7 +114,7 @@ function handleCheckIn(placeName, encodedSuggestion) {
         <h2>${placeName} で防災チェックイン</h2>
         ${suggestionsHTML}
         <button onclick="closeCheckIn()">閉じる</button>
-        <button id="completeButton" style="display: none;" onclick="completeCheckIn()">完了</button>
+        <button id="completeButton" style="display: none;" onclick="completeCheckIn('${placeName}')">完了</button>
     `;
     document.body.appendChild(messageBox);
 
@@ -135,13 +135,51 @@ function handleCheckIn(placeName, encodedSuggestion) {
     });
 }
 
+// バッジ状態を保存・取得
+function saveBadge(placeName) {
+    const badges = JSON.parse(localStorage.getItem('badges')) || [];
+    if (!badges.includes(placeName)) {
+        badges.push(placeName);
+        localStorage.setItem('badges', JSON.stringify(badges));
+    }
+}
+
+function getBadges() {
+    return JSON.parse(localStorage.getItem('badges')) || [];
+}
+
+function displayBadges() {
+    const badgeContainer = document.getElementById('badge-container');
+    badgeContainer.innerHTML = ''; // 一度クリア
+    const badges = getBadges();
+
+    badges.forEach(badge => {
+        const badgeElement = document.createElement('div');
+        badgeElement.className = 'badge';
+        badgeElement.textContent = badge;
+        badgeContainer.appendChild(badgeElement);
+    });
+}
+
+// 初回ロード時にバッジを表示
+document.addEventListener('DOMContentLoaded', () => {
+    const badgeContainer = document.createElement('div');
+    badgeContainer.id = 'badge-container';
+    badgeContainer.style.display = 'flex';
+    badgeContainer.style.flexWrap = 'wrap';
+    badgeContainer.style.margin = '10px';
+    document.body.appendChild(badgeContainer);
+
+    displayBadges(); // 既存バッジを表示
+});
+
 function closeCheckIn() {
     // チェックイン画面を閉じる
     document.querySelector('.circle-overlay').remove();
     document.querySelector('.message-box').remove();
 }
 
-function completeCheckIn() {
+function completeCheckIn(placeName) {
     // 特別な演出
     const overlay = document.querySelector('.circle-overlay');
     overlay.style.transition = 'opacity 1s ease-out';
@@ -150,6 +188,11 @@ function completeCheckIn() {
     setTimeout(() => {
         overlay.remove();
         document.querySelector('.message-box').remove();
-        alert('おめでとうございます！すべての防災行動を達成しました！'); // 特別なメッセージ
+
+        // バッジ保存と表示
+        saveBadge(placeName);
+        displayBadges();
+
+        alert(`おめでとうございます！「${placeName}」のバッジを獲得しました！`);
     }, 1000); // 1秒後に削除
 }
