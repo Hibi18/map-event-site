@@ -184,3 +184,11 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
+#badge-container p {
+    font-size: 14px;
+    color: #aaa; /* 薄い文字色 */
+    text-align: center; /* テキスト中央揃え */
+    margin: 0;
+}
+
+
