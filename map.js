@@ -27,11 +27,28 @@ script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
 script.onload = function() {
 
   // マップの初期状態
-  var map = L.map('map').setView([35.682839, 139.759455], 14);
+  var map = L.map('map').setView([35.682839, 139.759455], 12);
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
   }).addTo(map);
+
+  // カスタムアイコンの定義
+  var blueIcon = L.icon({
+    iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
+    shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
+    iconSize: [25, 41], // サイズ
+    iconAnchor: [12, 41], // アンカー
+    shadowSize: [41, 41] // 影のサイズ
+  });
+
+  var redIcon = L.icon({
+    iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-icon-red.png', // 赤いピン
+    shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    shadowSize: [41, 41]
+  });
 
   // マーカーの設定
   var markers = [
@@ -43,6 +60,7 @@ script.onload = function() {
         '上野駅の最寄りの避難所は確認しましたか？',
         '備蓄品のチェックをしましたか？'
       ],
+      icon: blueIcon // 青いピン
     },
     {
       position: [35.612805966761215, 140.11372769961613],
@@ -52,6 +70,17 @@ script.onload = function() {
         '千葉駅の消火器などの防災設備を探してみましょう。',
         '近くの防災公園の位置を確認しましょう'
       ],
+      icon: blueIcon // 青いピン
+    },
+    {
+      position: [35.632896, 139.880394], // ディズニーリゾートの座標
+      content: 'ディズニーリゾート',
+      content_detail: '東京ディズニーリゾートは夢の国として知られています。',
+      suggestion: [
+        'ディズニーリゾート内で安全な避難ルートを確認しましょう。',
+        '防災設備の位置を確認してみましょう。'
+      ],
+      icon: redIcon // 赤いピン
     }
   ];
 
@@ -67,7 +96,8 @@ script.onload = function() {
       </div>
     `;
 
-    const mapMarker = L.marker(marker.position).addTo(map)
+    L.marker(marker.position, { icon: marker.icon })
+      .addTo(map)
       .bindPopup(popupContent);
   });
 };
@@ -135,48 +165,6 @@ function handleCheckIn(placeName, encodedSuggestion) {
     });
 }
 
-// バッジ状態を保存・取得
-function saveBadge(placeName) {
-    const badges = JSON.parse(localStorage.getItem('badges')) || [];
-    if (!badges.includes(placeName)) {
-        badges.push(placeName);
-        localStorage.setItem('badges', JSON.stringify(badges));
-    }
-}
-
-function getBadges() {
-    return JSON.parse(localStorage.getItem('badges')) || [];
-}
-
-function displayBadges() {
-    const badgeContainer = document.getElementById('badge-container');
-    badgeContainer.innerHTML = ''; // 一度クリア
-
-    const badges = getBadges();
-
-    if (badges.length === 0) {
-        // バッジがない場合のメッセージを表示
-        const emptyMessage = document.createElement('p');
-        emptyMessage.textContent = 'チェックインが完了するとバッジがもらえます';
-        emptyMessage.style.color = '#aaa'; // 薄い文字色
-        emptyMessage.style.textAlign = 'center'; // 中央揃え
-        badgeContainer.appendChild(emptyMessage);
-    } else {
-        // バッジを表示
-        badges.forEach(badge => {
-            const badgeElement = document.createElement('div');
-            badgeElement.className = 'badge';
-            badgeElement.textContent = badge;
-            badgeContainer.appendChild(badgeElement);
-        });
-    }
-}
-
-// 初回ロード時にバッジを表示
-document.addEventListener('DOMContentLoaded', () => {
-    displayBadges(); // 既存バッジを表示
-});
-
 function closeCheckIn() {
     // チェックイン画面を閉じる
     document.querySelector('.circle-overlay').remove();
@@ -191,9 +179,6 @@ function completeCheckIn(placeName) {
     setTimeout(() => {
         overlay.remove();
         document.querySelector('.message-box').remove();
-
-        saveBadge(placeName);
-        displayBadges(); // バッジを更新して再表示
 
         alert(`おめでとうございます！「${placeName}」のバッジを獲得しました！`);
     }, 1000);
