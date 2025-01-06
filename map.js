@@ -57,11 +57,13 @@ script.onload = function() {
 
   // マーカーの追加とポップアップ設定
   markers.forEach(marker => {
+    const encodedSuggestion = encodeURIComponent(JSON.stringify(marker.suggestion));
+
     const popupContent = `
       <div>
         <h3>${marker.content}</h3>
         <p>${marker.content_detail}</p>
-        <button onclick="handleCheckIn('${marker.content}', ${JSON.stringify(marker.suggestion)})">チェックイン</button>
+        <button onclick="handleCheckIn('${marker.content}', '${encodedSuggestion}')">チェックイン</button>
       </div>
     `;
 
@@ -72,7 +74,10 @@ script.onload = function() {
 document.head.appendChild(script);
 
 // 「チェックイン」ボタンの動作
-function handleCheckIn(placeName, suggestion) {
+function handleCheckIn(placeName, encodedSuggestion) {
+    const suggestion = JSON.parse(decodeURIComponent(encodedSuggestion));
+    console.log('Check-in:', placeName, suggestion); // デバッグ用
+
     // 同心円アニメーションを作成
     const overlay = document.createElement('div');
     overlay.className = 'circle-overlay';
