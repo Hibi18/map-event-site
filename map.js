@@ -39,13 +39,19 @@ script.onload = function() {
       position: [35.71366835962503, 139.77613130188482],
       content: '上野駅',
       content_detail: '上野駅は東京都台東区にある駅です。',
-      suggestion: '上野駅の最寄りの避難所は確認しましたか？',
+      suggestion: [
+        '上野駅の最寄りの避難所は確認しましたか？',
+        '備蓄品のチェックをしましたか？'
+        ],
     },
     {
       position: [35.612805966761215, 140.11372769961613],
       content: '千葉駅',
       content_detail: '千葉駅は、千葉県千葉市中央区新千葉一丁目にあります。',
-      suggestion: '千葉駅の消火器などの防災設備を探してみましょう。',
+      suggestion: [
+        '千葉駅の消火器などの防災設備を探してみましょう。',
+        '近くの防災公園の位置を確認しましょう'
+        ],
     }
   ];
 
@@ -55,7 +61,7 @@ script.onload = function() {
       <div>
         <h3>${marker.content}</h3>
         <p>${marker.content_detail}</p>
-        <button onclick="handleCheckIn('${marker.content}', '${marker.suggestion}')">チェックイン</button>
+        <button onclick="handleCheckIn('${marker.content}', ${JSON.stringify(marker.suggestions)})">チェックイン</button>
       </div>
     `;
 
@@ -85,14 +91,23 @@ function handleCheckIn(placeName, suggestion) {
     // メッセージ表示の準備
     const messageBox = document.createElement('div');
     messageBox.className = 'message-box';
+
+    // 提案リストを生成
+    const suggestionsHTML = suggestions
+        .map(suggestion => `
+            <div>
+                <label>
+                    <input type="checkbox">
+                    ${suggestion}
+                </label>
+            </div>
+        `)
+        .join('');
+
+    // メッセージボックスの内容
     messageBox.innerHTML = `
         <h2>${placeName} で防災チェックイン</h2>
-        <div class="suggestion-box">
-            <label>
-                <input type="checkbox" class="suggestion-checkbox">
-                <span class="suggestion-text">${suggestion}</span>
-            </label>
-        </div>
+        ${suggestionsHTML}
         <button onclick="closeCheckIn()">閉じる</button>
     `;
     document.body.appendChild(messageBox);
