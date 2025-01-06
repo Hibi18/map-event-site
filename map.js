@@ -42,7 +42,7 @@ script.onload = function() {
       suggestion: [
         '上野駅の最寄りの避難所は確認しましたか？',
         '備蓄品のチェックをしましたか？'
-        ],
+      ],
     },
     {
       position: [35.612805966761215, 140.11372769961613],
@@ -51,7 +51,7 @@ script.onload = function() {
       suggestion: [
         '千葉駅の消火器などの防災設備を探してみましょう。',
         '近くの防災公園の位置を確認しましょう'
-        ],
+      ],
     }
   ];
 
@@ -61,7 +61,7 @@ script.onload = function() {
       <div>
         <h3>${marker.content}</h3>
         <p>${marker.content_detail}</p>
-        <button onclick="handleCheckIn('${marker.content}', ${JSON.stringify(marker.suggestions)})">チェックイン</button>
+        <button onclick="handleCheckIn('${marker.content}', ${JSON.stringify(marker.suggestion)})">チェックイン</button>
       </div>
     `;
 
@@ -93,12 +93,12 @@ function handleCheckIn(placeName, suggestion) {
     messageBox.className = 'message-box';
 
     // 提案リストを生成
-    const suggestionsHTML = suggestions
-        .map(suggestion => `
+    const suggestionsHTML = suggestion
+        .map(item => `
             <div>
                 <label>
                     <input type="checkbox">
-                    ${suggestion}
+                    ${item}
                 </label>
             </div>
         `)
