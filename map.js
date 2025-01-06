@@ -37,14 +37,14 @@ script.onload = function() {
   var blueIcon = L.icon({
     iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
     shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
-    iconSize: [25, 41], // サイズ
-    iconAnchor: [12, 41], // アンカー
-    shadowSize: [41, 41] // 影のサイズ
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    shadowSize: [41, 41]
   });
 
   var redIcon = L.icon({
-    iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-icon-red.png', // 赤いピン
-    shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
+    iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-icon-red.png',
+    shadowUrl: 'https://unpkg.com/leaflet/1.9.4/dist/images/marker-shadow.png',
     iconSize: [25, 41],
     iconAnchor: [12, 41],
     shadowSize: [41, 41]
@@ -60,7 +60,7 @@ script.onload = function() {
         '上野駅の最寄りの避難所は確認しましたか？',
         '備蓄品のチェックをしましたか？'
       ],
-      icon: blueIcon // 青いピン
+      icon: blueIcon
     },
     {
       position: [35.612805966761215, 140.11372769961613],
@@ -70,17 +70,17 @@ script.onload = function() {
         '千葉駅の消火器などの防災設備を探してみましょう。',
         '近くの防災公園の位置を確認しましょう'
       ],
-      icon: blueIcon // 青いピン
+      icon: blueIcon
     },
     {
-      position: [35.632896, 139.880394], // ディズニーリゾートの座標
+      position: [35.632896, 139.880394],
       content: 'ディズニーリゾート',
       content_detail: '東京ディズニーリゾートは夢の国として知られています。',
       suggestion: [
         'ディズニーリゾート内で安全な避難ルートを確認しましょう。',
         '防災設備の位置を確認してみましょう。'
       ],
-      icon: redIcon // 赤いピン
+      icon: redIcon
     }
   ];
 
@@ -103,31 +103,63 @@ script.onload = function() {
 };
 document.head.appendChild(script);
 
-// 「チェックイン」ボタンの動作
+// バッジの保存と取得
+function saveBadge(placeName) {
+    const badges = JSON.parse(localStorage.getItem('badges')) || [];
+    if (!badges.includes(placeName)) {
+        badges.push(placeName);
+        localStorage.setItem('badges', JSON.stringify(badges));
+    }
+}
+
+function getBadges() {
+    return JSON.parse(localStorage.getItem('badges')) || [];
+}
+
+function displayBadges() {
+    const badgeContainer = document.getElementById('badge-container');
+    badgeContainer.innerHTML = ''; // 一度クリア
+
+    const badges = getBadges();
+
+    if (badges.length === 0) {
+        const emptyMessage = document.createElement('p');
+        emptyMessage.textContent = 'チェックインが完了するとバッジがもらえます';
+        emptyMessage.style.color = '#aaa';
+        emptyMessage.style.textAlign = 'center';
+        badgeContainer.appendChild(emptyMessage);
+    } else {
+        badges.forEach(badge => {
+            const badgeElement = document.createElement('div');
+            badgeElement.className = 'badge';
+            badgeElement.textContent = badge;
+            badgeContainer.appendChild(badgeElement);
+        });
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    displayBadges();
+});
+
 function handleCheckIn(placeName, encodedSuggestion) {
     const suggestion = JSON.parse(decodeURIComponent(encodedSuggestion));
-    console.log('Check-in:', placeName, suggestion); // デバッグ用
+    console.log('Check-in:', placeName, suggestion);
 
-    // 同心円アニメーションを作成
     const overlay = document.createElement('div');
     overlay.className = 'circle-overlay';
     document.body.appendChild(overlay);
 
-    // 中心をピンの座標に合わせて計算
     const mapCenter = document.getElementById('map').getBoundingClientRect();
-    const mapWidth = mapCenter.width;
-    const mapHeight = mapCenter.height;
-    const circleX = mapCenter.left + mapWidth / 2; // 中心のX座標
-    const circleY = mapCenter.top + mapHeight / 2; // 中心のY座標
+    const circleX = mapCenter.left + mapCenter.width / 2;
+    const circleY = mapCenter.top + mapCenter.height / 2;
 
     overlay.style.left = `${circleX}px`;
     overlay.style.top = `${circleY}px`;
 
-    // メッセージ表示の準備
     const messageBox = document.createElement('div');
     messageBox.className = 'message-box';
 
-    // 提案リストを生成
     const suggestionsHTML = suggestion
         .map((item, index) => `
             <div>
@@ -139,7 +171,6 @@ function handleCheckIn(placeName, encodedSuggestion) {
         `)
         .join('');
 
-    // メッセージボックスの内容
     messageBox.innerHTML = `
         <h2>${placeName} で防災チェックイン</h2>
         ${suggestionsHTML}
@@ -148,12 +179,10 @@ function handleCheckIn(placeName, encodedSuggestion) {
     `;
     document.body.appendChild(messageBox);
 
-    // アニメーション開始後1秒でメッセージを表示
     setTimeout(() => {
-        messageBox.style.display = 'block'; // メッセージを表示
-    }, 1000); // 1秒後
+        messageBox.style.display = 'block';
+    }, 1000);
 
-    // チェックボックスの状態を監視
     const checkboxes = document.querySelectorAll('.suggestion-checkbox');
     const completeButton = document.getElementById('completeButton');
 
@@ -166,7 +195,6 @@ function handleCheckIn(placeName, encodedSuggestion) {
 }
 
 function closeCheckIn() {
-    // チェックイン画面を閉じる
     document.querySelector('.circle-overlay').remove();
     document.querySelector('.message-box').remove();
 }
@@ -179,6 +207,9 @@ function completeCheckIn(placeName) {
     setTimeout(() => {
         overlay.remove();
         document.querySelector('.message-box').remove();
+
+        saveBadge(placeName);
+        displayBadges();
 
         alert(`おめでとうございます！「${placeName}」のバッジを獲得しました！`);
     }, 1000);
