@@ -87,7 +87,12 @@ function handleCheckIn(placeName, suggestion) {
     messageBox.className = 'message-box';
     messageBox.innerHTML = `
         <h2>${placeName} で防災チェックイン</h2>
-        <p>提案: ${suggestion}</p>
+        <div class="suggestion-box">
+            <label>
+                <input type="checkbox" class="suggestion-checkbox">
+                <span class="suggestion-text">提案: ${suggestion}</span>
+            </label>
+        </div>
         <button onclick="closeCheckIn()">閉じる</button>
     `;
     document.body.appendChild(messageBox);
