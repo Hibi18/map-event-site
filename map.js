@@ -99,10 +99,10 @@ function handleCheckIn(placeName, encodedSuggestion) {
 
     // 提案リストを生成
     const suggestionsHTML = suggestion
-        .map(item => `
+        .map((item, index) => `
             <div>
                 <label>
-                    <input type="checkbox">
+                    <input type="checkbox" class="suggestion-checkbox" data-index="${index}">
                     ${item}
                 </label>
             </div>
@@ -114,6 +114,7 @@ function handleCheckIn(placeName, encodedSuggestion) {
         <h2>${placeName} で防災チェックイン</h2>
         ${suggestionsHTML}
         <button onclick="closeCheckIn()">閉じる</button>
+        <button id="completeButton" style="display: none;" onclick="completeCheckIn()">完了</button>
     `;
     document.body.appendChild(messageBox);
 
@@ -121,10 +122,34 @@ function handleCheckIn(placeName, encodedSuggestion) {
     setTimeout(() => {
         messageBox.style.display = 'block'; // メッセージを表示
     }, 1000); // 1秒後
+
+    // チェックボックスの状態を監視
+    const checkboxes = document.querySelectorAll('.suggestion-checkbox');
+    const completeButton = document.getElementById('completeButton');
+
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', () => {
+            const allChecked = Array.from(checkboxes).every(cb => cb.checked);
+            completeButton.style.display = allChecked ? 'inline-block' : 'none';
+        });
+    });
 }
 
 function closeCheckIn() {
     // チェックイン画面を閉じる
     document.querySelector('.circle-overlay').remove();
     document.querySelector('.message-box').remove();
+}
+
+function completeCheckIn() {
+    // 特別な演出
+    const overlay = document.querySelector('.circle-overlay');
+    overlay.style.transition = 'opacity 1s ease-out';
+    overlay.style.opacity = '0'; // フェードアウト
+
+    setTimeout(() => {
+        overlay.remove();
+        document.querySelector('.message-box').remove();
+        alert('おめでとうございます！すべての防災行動を達成しました！'); // 特別なメッセージ
+    }, 1000); // 1秒後に削除
 }
