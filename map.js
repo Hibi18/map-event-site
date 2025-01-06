@@ -148,10 +148,7 @@ function displayBadges() {
     badges.forEach(({ placeName, badgeIcon }) => {
       const badgeElement = document.createElement('div');
       badgeElement.className = 'badge';
-      badgeElement.innerHTML = `
-        <img src="${badgeIcon}" alt="${placeName}" class="badge-image">
-        <p class="badge-label">${placeName}</p>
-      `;
+      badgeElement.innerHTML = `<img src="${badgeIcon}" alt="バッジ" class="badge-image">`;
       badgeContainer.appendChild(badgeElement);
     });
   }
