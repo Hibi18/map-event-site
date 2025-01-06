@@ -44,10 +44,8 @@ script.onload = function() {
 
   var redIcon = L.icon({
     iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
-    shadowUrl: 'https://unpkg.com/leaflet/1.9.4/dist/images/marker-shadow.png',
     iconSize: [25, 41],
-    iconAnchor: [12, 41],
-    shadowSize: [41, 41]
+    iconAnchor: [12, 41]
   });
 
   // マーカーの設定
