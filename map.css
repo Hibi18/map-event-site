@@ -163,26 +163,3 @@
     background-color: #0056b3;
 }
 
-/* 提案文のチェックボックス以下を追加 */
-.suggestion-box {
-    margin: 15px 0;
-    display: flex;
-    align-items: center;
-}
-
-.suggestion-checkbox {
-    margin-right: 10px;
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-}
-
-.suggestion-text {
-    font-size: 16px;
-}
-
-/* チェックボックスがチェックされたときのスタイル */
-.suggestion-checkbox:checked + .suggestion-text {
-    text-decoration: line-through; /* チェックされた提案を打ち消し線で表示 */
-    color: #888; /* チェック後の文字色を変更 */
-}
