@@ -163,12 +163,19 @@ function displayBadges() {
 
 // 初回ロード時にバッジを表示
 document.addEventListener('DOMContentLoaded', () => {
+    const header = document.querySelector('header') || document.body;
+
+    // バッジコンテナを作成
     const badgeContainer = document.createElement('div');
     badgeContainer.id = 'badge-container';
     badgeContainer.style.display = 'flex';
     badgeContainer.style.flexWrap = 'wrap';
-    badgeContainer.style.margin = '10px';
-    document.body.appendChild(badgeContainer);
+    badgeContainer.style.margin = '10px auto';
+    badgeContainer.style.maxWidth = '80%'; // 中央寄せ
+    badgeContainer.style.padding = '10px';
+
+    // ヘッダーの直後に追加
+    header.insertAdjacentElement('afterend', badgeContainer);
 
     displayBadges(); // 既存バッジを表示
 });
