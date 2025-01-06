@@ -175,13 +175,13 @@
 
 .badge {
     padding: 10px 15px;
-    border-radius: 5px;
     background-color: #fff;
     color: white;
     font-size: 14px;
     text-align: center;
     cursor: default;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
 }
 
 #badge-container p {
