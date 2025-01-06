@@ -90,7 +90,7 @@ function handleCheckIn(placeName, suggestion) {
         <div class="suggestion-box">
             <label>
                 <input type="checkbox" class="suggestion-checkbox">
-                <span class="suggestion-text">提案: ${suggestion}</span>
+                <span class="suggestion-text">${suggestion}</span>
             </label>
         </div>
         <button onclick="closeCheckIn()">閉じる</button>
