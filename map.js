@@ -26,7 +26,7 @@ var script = document.createElement('script');
 script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
 script.onload = function() {
   // マップの初期状態
-  var map = L.map('map').setView([35.682839, 139.759455], 12);
+  var map = L.map('map').setView([35.613110,140.113622], 12);
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
