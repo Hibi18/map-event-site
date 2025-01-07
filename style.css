@@ -317,7 +317,7 @@ body {
 /* カルーセルの調整 */
 .swiper-container {
   width: 100%; /* カルーセルの幅 */
-  height: 300px; /* 高さ */
+  height: 400px; /* 高さ */
   margin-top: -5px;
   overflow: hidden; /* 横スクロールを防ぐ */
   max-width: 100%; /* 画面幅を超えないようにするこれを追加 */
