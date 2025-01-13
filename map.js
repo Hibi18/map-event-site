@@ -27,10 +27,13 @@ var script = document.createElement('script');
 script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
 script.onload = function() {
   // マップの初期状態
-  var map = L.map('map').setView([35.613110, 140.113622], 12);
+  var map = L.map('map', {
+    minZoom: 4 //最小ズームを設定
+  }).setView([35.613110, 140.113622], 12);
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    minZoom: 4 //最小ズームを設定
   }).addTo(map);
 
   // カスタムアイコンの定義
