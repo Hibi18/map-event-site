@@ -1,3 +1,4 @@
+// マップコンテナの生成
 var mapContainer = document.createElement('div');
 mapContainer.id = 'map';
 document.body.appendChild(mapContainer);
@@ -26,7 +27,7 @@ var script = document.createElement('script');
 script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
 script.onload = function() {
   // マップの初期状態
-  var map = L.map('map').setView([35.613110,140.113622], 12);
+  var map = L.map('map').setView([35.613110, 140.113622], 12);
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -52,7 +53,7 @@ script.onload = function() {
   // マーカーの設定
   var markers = [
     {
-      position: [35.71891888,　139.91070346],
+      position: [35.71891888, 139.91070346],
       content: '大洲防災公園',
       content_detail: '市川市にある緊急時に役立つ防災公園です。',
       suggestion: [
@@ -62,7 +63,7 @@ script.onload = function() {
       icon: blueIcon
     },
     {
-      position: [35.6337679,140.1168127],
+      position: [35.6337679, 140.1168127],
       content: '千草台公民館',
       content_detail: '千葉市稲毛区にある避難所の1つです。',
       suggestion: [
@@ -94,21 +95,87 @@ script.onload = function() {
   ];
 
   // マーカーの追加とポップアップ設定
-  markers.forEach(marker => {
-    const encodedSuggestion = encodeURIComponent(JSON.stringify(marker.suggestion));
-
-    const popupContent = `
-      <div>
-        <h3>${marker.content}</h3>
-        <p>${marker.content_detail}</p>
-        <button onclick="handleCheckIn('${marker.content}', '${encodedSuggestion}')">チェックイン</button>
-      </div>
-    `;
-
-    L.marker(marker.position, { icon: marker.icon })
-      .addTo(map)
-      .bindPopup(popupContent);
+  var redPins = markers.filter(marker => marker.icon === redIcon).map(marker => {
+    return L.marker(marker.position, { icon: marker.icon })
+      .bindPopup(`
+        <div>
+          <h3>${marker.content}</h3>
+          <p>${marker.content_detail}</p>
+          <button onclick="handleCheckIn('${marker.content}', '${encodeURIComponent(JSON.stringify(marker.suggestion))}')">チェックイン</button>
+        </div>
+      `);
   });
+
+  var bluePins = markers.filter(marker => marker.icon === blueIcon).map(marker => {
+    return L.marker(marker.position, { icon: marker.icon })
+      .bindPopup(`
+        <div>
+          <h3>${marker.content}</h3>
+          <p>${marker.content_detail}</p>
+          <button onclick="handleCheckIn('${marker.content}', '${encodeURIComponent(JSON.stringify(marker.suggestion))}')">チェックイン</button>
+        </div>
+      `);
+  });
+
+  var redLayer = L.layerGroup(redPins).addTo(map);
+  var blueLayer = L.layerGroup(bluePins).addTo(map);
+
+  // カスタムコントロールの追加
+  var customControl = L.Control.extend({
+    options: { position: 'topright' },
+
+    onAdd: function(map) {
+      var container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
+      container.style.backgroundColor = 'white';
+      container.style.padding = '10px';
+
+      var redCheckbox = document.createElement('input');
+      redCheckbox.type = 'checkbox';
+      redCheckbox.id = 'redPins';
+      redCheckbox.checked = true;
+
+      var redLabel = document.createElement('label');
+      redLabel.htmlFor = 'redPins';
+      redLabel.innerText = '赤ピン';
+
+      var blueCheckbox = document.createElement('input');
+      blueCheckbox.type = 'checkbox';
+      blueCheckbox.id = 'bluePins';
+      blueCheckbox.checked = true;
+
+      var blueLabel = document.createElement('label');
+      blueLabel.htmlFor = 'bluePins';
+      blueLabel.innerText = '青ピン';
+
+      container.appendChild(redCheckbox);
+      container.appendChild(redLabel);
+      container.appendChild(document.createElement('br'));
+      container.appendChild(blueCheckbox);
+      container.appendChild(blueLabel);
+
+      L.DomEvent.disableClickPropagation(container);
+
+      redCheckbox.addEventListener('change', function() {
+        if (redCheckbox.checked) {
+          map.addLayer(redLayer);
+        } else {
+          map.removeLayer(redLayer);
+        }
+      });
+
+      blueCheckbox.addEventListener('change', function() {
+        if (blueCheckbox.checked) {
+          map.addLayer(blueLayer);
+        } else {
+          map.removeLayer(blueLayer);
+        }
+      });
+
+      return container;
+    }
+  });
+
+  map.addControl(new customControl());
 };
 document.head.appendChild(script);
 
