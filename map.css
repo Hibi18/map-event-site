@@ -1,7 +1,3 @@
-.leaflet-control-zoom {
-  top: 50px; /* 上から50pxに調整 */
-}
-
 /* ポップアップ内の文字サイズを大きくする */
 .leaflet-popup-content {
     font-size: 18px; /* 文字サイズを大きくする */
