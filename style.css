@@ -1,5 +1,5 @@
 /* 共通スタイル */
-body {
+html, body {
   background-color: #FFFFFF; 
   margin: 0;
   font-family: Arial, sans-serif;
