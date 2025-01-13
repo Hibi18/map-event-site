@@ -1,5 +1,5 @@
 /* 共通スタイル */
-html, body {
+body {
   background-color: #FFFFFF; 
   margin: 0;
   font-family: Arial, sans-serif;
@@ -140,9 +140,7 @@ html, body {
 }
 
 .map {
-  position: relative;
-  width: 100%;
-  height: calc(100% - 90px); /* ヘッダー(50px)とバッジコンテナ(40px)を引く */
+  height: 500px;
 }
 
 /* イベント部分 */
