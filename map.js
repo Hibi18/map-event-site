@@ -136,7 +136,7 @@ script.onload = function() {
 
       var redLabel = document.createElement('label');
       redLabel.htmlFor = 'redPins';
-      redLabel.innerText = '赤ピン';
+      redLabel.innerText = '観光';
 
       var blueCheckbox = document.createElement('input');
       blueCheckbox.type = 'checkbox';
@@ -145,7 +145,7 @@ script.onload = function() {
 
       var blueLabel = document.createElement('label');
       blueLabel.htmlFor = 'bluePins';
-      blueLabel.innerText = '青ピン';
+      blueLabel.innerText = '防災';
 
       container.appendChild(redCheckbox);
       container.appendChild(redLabel);
