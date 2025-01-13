@@ -1,11 +1,3 @@
-/* CSSリセットを追加 */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-
 /* ポップアップ内の文字サイズを大きくする */
 .leaflet-popup-content {
     font-size: 18px; /* 文字サイズを大きくする */
