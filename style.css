@@ -140,8 +140,9 @@ body {
 }
 
 .map {
-  height: 500px;
-  background-color: #EEE;
+  position: relative;
+  width: 100%;
+  height: calc(100% - 90px); /* ヘッダー(50px)とバッジコンテナ(40px)を引く */
 }
 
 /* イベント部分 */
