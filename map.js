@@ -32,7 +32,7 @@ script.onload = function() {
   }).setView([35.613110, 140.113622], 12);
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     minZoom: 4 //最小ズームを設定
   }).addTo(map);
 
