@@ -179,9 +179,51 @@ script.onload = function() {
   });
 
   map.addControl(new customControl());
+
+  // 津波浸水ハザードマップのタイルレイヤー
+  const tsunamiLayer = L.tileLayer(
+    'https://disaportaldata.gsi.go.jp/raster/04_tsunami_newlegend_data/{z}/{x}/{y}.png',
+    {
+      attribution: '© 国土地理院',
+      opacity: 0.7, // 透明度
+      minZoom: 7,
+      maxZoom: 16
+    }
+  );
+
+  // 津波ハザードマップ表示切り替えボタン
+  const tsunamiButton = L.Control.extend({
+    options: { position: 'topright' },
+
+    onAdd: function(map) {
+      var buttonContainer = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
+      buttonContainer.style.backgroundColor = 'white';
+      buttonContainer.style.padding = '10px';
+
+      var button = document.createElement('button');
+      button.innerText = '津波ハザードマップ';
+      button.style.cursor = 'pointer';
+
+      button.addEventListener('click', function() {
+        if (map.hasLayer(tsunamiLayer)) {
+          map.removeLayer(tsunamiLayer);
+          button.innerText = '津波ハザードマップ';
+        } else {
+          map.addLayer(tsunamiLayer);
+          button.innerText = '津波マップ非表示';
+        }
+      });
+
+      buttonContainer.appendChild(button);
+      return buttonContainer;
+    }
+  });
+
+  map.addControl(new tsunamiButton());
 };
 document.head.appendChild(script);
 
+// その他の機能（バッジ関連など）は変更なし
 // ランダムなバッジを選ぶ
 function getRandomBadge() {
   const badgeIcons = [
