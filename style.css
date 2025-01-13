@@ -136,7 +136,7 @@ body {
 
 /* マップ部分 */
 .map-container {
-  padding: 20px;
+  padding: 0;
 }
 
 .map {
