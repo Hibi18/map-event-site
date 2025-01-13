@@ -185,7 +185,7 @@ script.onload = function() {
     'https://disaportaldata.gsi.go.jp/raster/04_tsunami_newlegend_data/{z}/{x}/{y}.png',
     {
       attribution: '© 国土地理院',
-      opacity: 0.7, // 透明度
+      opacity: 0.9, // 透明度
       minZoom: 7,
       maxZoom: 16
     }
