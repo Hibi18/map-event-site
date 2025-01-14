@@ -191,39 +191,50 @@ script.onload = function() {
     }
   );
 
-  // 津波ハザードマップ表示切り替えボタン
-  const tsunamiButton = L.Control.extend({
-    options: { position: 'topright' },
+// 津波ハザードマップのカスタムコントロール
+var tsunamiControl = L.Control.extend({
+  options: { position: 'topright' },
 
-    onAdd: function(map) {
-      var buttonContainer = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
-      buttonContainer.style.backgroundColor = 'white';
-      buttonContainer.style.padding = '10px';
+  onAdd: function(map) {
+    var container = L.DomUtil.create('div', 'leaflet-bar leaflet-control leaflet-control-custom');
+    container.style.backgroundColor = 'white';
+    container.style.padding = '10px';
 
-      var button = document.createElement('button');
-      button.innerText = '津波ハザードマップ';
-      button.style.cursor = 'pointer';
+      // 津波ハザードマップのチェックボックス
+      var tsunamiCheckbox = document.createElement('input');
+      tsunamiCheckbox.type = 'checkbox';
+      tsunamiCheckbox.id = 'tsunamiMap';
+      tsunamiCheckbox.checked = false;
 
-      button.addEventListener('click', function() {
-        if (map.hasLayer(tsunamiLayer)) {
-          map.removeLayer(tsunamiLayer);
-          button.innerText = '津波ハザードマップ';
-        } else {
+      var tsunamiLabel = document.createElement('label');
+      tsunamiLabel.htmlFor = 'tsunamiMap';
+      tsunamiLabel.innerText = '津波ハザードマップ';
+
+      // チェックボックスをコンテナに追加
+      container.appendChild(tsunamiCheckbox);
+      container.appendChild(tsunamiLabel);
+
+      // イベントリスナー
+      L.DomEvent.disableClickPropagation(container);
+      tsunamiCheckbox.addEventListener('change', function() {
+        if (tsunamiCheckbox.checked) {
           map.addLayer(tsunamiLayer);
-          button.innerText = '津波マップ非表示';
+        } else {
+          map.removeLayer(tsunamiLayer);
         }
       });
 
-      buttonContainer.appendChild(button);
-      return buttonContainer;
+      return container;
     }
   });
 
-  map.addControl(new tsunamiButton());
+  // マップに津波ハザードマップ用のコントロールを追加
+  map.addControl(new tsunamiControl());
+
 };
 document.head.appendChild(script);
 
-// その他の機能（バッジ関連など）は変更なし
+// その他の機能（バッジ関連など）
 // ランダムなバッジを選ぶ
 function getRandomBadge() {
   const badgeIcons = [
