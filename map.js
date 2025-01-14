@@ -208,7 +208,7 @@ var tsunamiControl = L.Control.extend({
 
       var tsunamiLabel = document.createElement('label');
       tsunamiLabel.htmlFor = 'tsunamiMap';
-      tsunamiLabel.innerText = '津波ハザードマップ';
+      tsunamiLabel.innerText = '津波';
 
       // チェックボックスをコンテナに追加
       container.appendChild(tsunamiCheckbox);
