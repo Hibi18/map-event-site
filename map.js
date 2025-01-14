@@ -191,6 +191,18 @@ script.onload = function() {
     }
   );
 
+  // 洪水浸水想定区域のタイルレイヤー
+  const floodLayer = L.tileLayer(
+    'https://disaportaldata.gsi.go.jp/raster/01_flood_l2_shinsuishin_data/{z}/{x}/{y}.png',
+    {
+      attribution: '© 国土地理院',
+      opacity: 0.9, // 透明度
+      minZoom: 7,
+      maxZoom: 16
+    }
+  );
+
+  
 // 津波ハザードマップのカスタムコントロール
 var tsunamiControl = L.Control.extend({
   options: { position: 'topright' },
@@ -210,9 +222,22 @@ var tsunamiControl = L.Control.extend({
       tsunamiLabel.htmlFor = 'tsunamiMap';
       tsunamiLabel.innerText = '津波';
 
+      // 洪水ハザードマップのチェックボックス
+      var floodCheckbox = document.createElement('input');
+      floodCheckbox.type = 'checkbox';
+      floodCheckbox.id = 'floodMap';
+      floodCheckbox.checked = false;
+
+      var floodLabel = document.createElement('label');
+      floodLabel.htmlFor = 'floodMap';
+      floodLabel.innerText = '洪水ハザードマップ';
+
       // チェックボックスをコンテナに追加
       container.appendChild(tsunamiCheckbox);
       container.appendChild(tsunamiLabel);
+      container.appendChild(document.createElement('br'));
+      container.appendChild(floodCheckbox);
+      container.appendChild(floodLabel);
 
       // イベントリスナー
       L.DomEvent.disableClickPropagation(container);
@@ -221,6 +246,14 @@ var tsunamiControl = L.Control.extend({
           map.addLayer(tsunamiLayer);
         } else {
           map.removeLayer(tsunamiLayer);
+        }
+      });
+
+      floodCheckbox.addEventListener('change', function() {
+        if (floodCheckbox.checked) {
+          map.addLayer(floodLayer);
+        } else {
+          map.removeLayer(floodLayer);
         }
       });
 
