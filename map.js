@@ -132,20 +132,6 @@ script.onload = function() {
   }
 
 　// 以下の内容を消去
-
-  const redLayer = L.layerGroup(redPins).addTo(map);
-  const blueLayer = L.layerGroup(bluePins).addTo(map);
-
-  // 初期表示で範囲内のピンを表示
-  updateMarkers(map, markers.filter(marker => marker.icon === redIcon), redLayer);
-  updateMarkers(map, markers.filter(marker => marker.icon === blueIcon), blueLayer);
-
-  // マップ移動時に範囲内のピンを更新
-  map.on('moveend', () => {
-    updateMarkers(map, markers.filter(marker => marker.icon === redIcon), redLayer);
-    updateMarkers(map, markers.filter(marker => marker.icon === blueIcon), blueLayer);
-  });
-
 　// 以上は消してもいい？
 
   // カスタムコントロールの追加
