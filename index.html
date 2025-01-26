@@ -95,40 +95,48 @@
     });
 
     // CSISジオコーダAPIを利用して検索
-    function searchLocation(query) {
-      const url = `https://geocode.csis.u-tokyo.ac.jp/cgi-bin/simple_geocode.cgi?addr=${encodeURIComponent(query)}&charset=UTF8&geosys=world`;
-      
-      fetch(url)
-        .then(response => response.text())
-        .then(data => {
-          // XMLをパース
-          const parser = new DOMParser();
-          const xml = parser.parseFromString(data, "application/xml");
+function searchLocation(query) {
+  const url = `https://geocode.csis.u-tokyo.ac.jp/cgi-bin/simple_geocode.cgi?addr=${encodeURIComponent(query)}&charset=UTF8&geosys=world`;
 
-          // 緯度・経度を抽出
-          const latitude = xml.querySelector("latitude")?.textContent;
-          const longitude = xml.querySelector("longitude")?.textContent;
-          
-          if (!latitude || !longitude) {
-            alert('検索結果が見つかりません');
-            return;
-          }
+  fetch(url)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTPエラー: ${response.status}`);
+      }
+      return response.text();
+    })
+    .then(data => {
+      console.log("レスポンスデータ:", data); // デバッグ用
 
-          const lat = parseFloat(latitude);
-          const lng = parseFloat(longitude);
+      // XMLをパース
+      const parser = new DOMParser();
+      const xml = parser.parseFromString(data, "application/xml");
 
-          // マップを該当位置に移動
-          map.setView([lat, lng], 15);
+      // 緯度・経度を抽出
+      const latitude = xml.querySelector("latitude")?.textContent;
+      const longitude = xml.querySelector("longitude")?.textContent;
 
-          // ピンを追加
-          L.marker([lat, lng]).addTo(map)
-            .bindPopup(`<b>${query}</b><br>緯度: ${lat}, 経度: ${lng}`).openPopup();
-        })
-        .catch(error => {
-          console.error('エラー:', error);
-          alert('検索中にエラーが発生しました');
-        });
-    }
+      if (!latitude || !longitude) {
+        alert("検索結果が見つかりません");
+        return;
+      }
+
+      const lat = parseFloat(latitude);
+      const lng = parseFloat(longitude);
+
+      // マップを該当位置に移動
+      map.setView([lat, lng], 15);
+
+      // ピンを追加
+      L.marker([lat, lng]).addTo(map)
+        .bindPopup(`<b>${query}</b><br>緯度: ${lat}, 経度: ${lng}`).openPopup();
+    })
+    .catch(error => {
+      console.error("エラー:", error);
+      alert("検索中にエラーが発生しました");
+    });
+}
+
 
     // 検索ボタンのクリックイベント
     document.getElementById('search-button').addEventListener('click', () => {
