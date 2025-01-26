@@ -151,6 +151,12 @@ script.onload = function() {
   updateMarkers(map, markers.filter(marker => marker.icon === redIcon), redLayer);
   updateMarkers(map, markers.filter(marker => marker.icon === blueIcon), blueLayer);
 
+  // マップ移動時に範囲内のピンを更新
+  map.on('moveend', () => {
+    updateMarkers(map, markers.filter(marker => marker.icon === redIcon), redLayer);
+    updateMarkers(map, markers.filter(marker => marker.icon === blueIcon), blueLayer);
+  });
+
   // カスタムコントロールの追加
   var customControl = L.Control.extend({
     options: { position: 'topright' },
