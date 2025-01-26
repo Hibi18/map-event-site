@@ -144,8 +144,8 @@ script.onload = function() {
       `);
   });
 
-  var redLayer = L.layerGroup(redPins).addTo(map);
-  var blueLayer = L.layerGroup(bluePins).addTo(map);
+  const redLayer = L.layerGroup(redPins).addTo(map);
+  const blueLayer = L.layerGroup(bluePins).addTo(map);
 
   // 初期表示で範囲内のピンを表示
   updateMarkers(map, markers.filter(marker => marker.icon === redIcon), redLayer);
