@@ -7,19 +7,6 @@
   <title>ぼうそうV - マップ画面</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-    }
-
-    #header-container {
-      background-color: #0082CA;
-      color: white;
-      padding: 10px;
-      text-align: center;
-      font-size: 1.2rem;
-    }
-
     .search-box {
       position: relative;
       background: white;
@@ -63,7 +50,7 @@
 </head>
 <body>
   <!-- ヘッダー -->
-  <div id="header-container">ぼうそうV - マップ画面</div>
+  <div id="header-container"></div>
 
   <!-- 検索ボックス -->
   <div class="search-box">
@@ -80,38 +67,10 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 
+  <!-- マップスクリプト -->
+  <script src="map.js"></script>
+
   <script>
-    let map;
-
-    // マップ初期化
-    window.addEventListener('load', () => {
-      map = L.map('map', {
-        minZoom: 7
-      }).setView([35.613110, 140.113622], 12);
-
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-        minZoom: 7
-      }).addTo(map);
-
-      // カスタムレイヤーの設定
-      const tsunamiLayer = L.tileLayer(
-        'https://disaportaldata.gsi.go.jp/raster/04_tsunami_newlegend_data/{z}/{x}/{y}.png',
-        { opacity: 0.7, attribution: '© 国土地理院', minZoom: 7 }
-      );
-
-      const floodLayer = L.tileLayer(
-        'https://disaportaldata.gsi.go.jp/raster/01_flood_l2_shinsuishin_data/{z}/{x}/{y}.png',
-        { opacity: 0.7, attribution: '© 国土地理院', minZoom: 7 }
-      );
-
-      // レイヤーコントロールの追加
-      const layerControl = L.control.layers(null, {
-        "津波ハザードマップ": tsunamiLayer,
-        "洪水ハザードマップ": floodLayer
-      }).addTo(map);
-    });
-
     // CSISジオコーダAPIを利用して検索
     function searchLocation(query) {
       const url = `https://geocode.csis.u-tokyo.ac.jp/cgi-bin/simple_geocode.cgi?addr=${encodeURIComponent(query)}&charset=UTF8&geosys=world`;
@@ -133,8 +92,12 @@
           const lat = parseFloat(latitude);
           const lng = parseFloat(longitude);
 
+          const map = L.map('map'); // map.jsで初期化されたマップを取得
+
+          // マップを該当位置に移動
           map.setView([lat, lng], 15);
 
+          // ピンを追加
           L.marker([lat, lng]).addTo(map)
             .bindPopup(`<b>${query}</b><br>緯度: ${lat}, 経度: ${lng}`).openPopup();
         })
