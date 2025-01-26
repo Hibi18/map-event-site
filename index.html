@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#0082CA">
   <title>ぼうそうV - マップ画面</title>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="style.css">
   <style>
     body {
       margin: 0;
@@ -15,9 +15,9 @@
     #header-container {
       background-color: #0082CA;
       color: white;
-      text-align: center;
       padding: 10px;
-      font-size: 1.5em;
+      text-align: center;
+      font-size: 1.2rem;
     }
 
     .search-box {
@@ -55,59 +55,9 @@
       background: #005f9c;
     }
 
-    .map-container {
-      position: relative;
-      height: 80vh;
-    }
-
     #map {
-      height: 100%;
-    }
-
-    #badge-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      padding: 10px;
-      background: #f9f9f9;
-      border-top: 1px solid #ddd;
-    }
-
-    .badge {
-      margin: 5px;
-    }
-
-    .badge img {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    }
-
-    .message-box {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: white;
-      padding: 20px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-      border-radius: 8px;
-      text-align: center;
-    }
-
-    .message-box button {
-      margin-top: 10px;
-      padding: 10px 20px;
-      background: #0082CA;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    .message-box button:hover {
-      background: #005f9c;
+      width: 100%;
+      height: 80vh;
     }
   </style>
 </head>
@@ -123,13 +73,13 @@
 
   <!-- マップ部分 -->
   <main class="map-container">
-    <div id="map" class="map"></div>
+    <div id="map"></div>
   </main>
 
-  <!-- バッジコンテナ -->
-  <div id="badge-container"></div>
-
+  <!-- Leafletライブラリ -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
   <script>
     let map;
 
@@ -143,6 +93,23 @@
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
         minZoom: 7
       }).addTo(map);
+
+      // カスタムレイヤーの設定
+      const tsunamiLayer = L.tileLayer(
+        'https://disaportaldata.gsi.go.jp/raster/04_tsunami_newlegend_data/{z}/{x}/{y}.png',
+        { opacity: 0.7, attribution: '© 国土地理院', minZoom: 7 }
+      );
+
+      const floodLayer = L.tileLayer(
+        'https://disaportaldata.gsi.go.jp/raster/01_flood_l2_shinsuishin_data/{z}/{x}/{y}.png',
+        { opacity: 0.7, attribution: '© 国土地理院', minZoom: 7 }
+      );
+
+      // レイヤーコントロールの追加
+      const layerControl = L.control.layers(null, {
+        "津波ハザードマップ": tsunamiLayer,
+        "洪水ハザードマップ": floodLayer
+      }).addTo(map);
     });
 
     // CSISジオコーダAPIを利用して検索
@@ -152,7 +119,6 @@
       fetch(url)
         .then(response => response.text())
         .then(data => {
-          // XMLをパース
           const parser = new DOMParser();
           const xml = parser.parseFromString(data, "application/xml");
 
@@ -160,7 +126,7 @@
           const longitude = xml.querySelector("longitude")?.textContent;
 
           if (!latitude || !longitude) {
-            alert("検索結果が見つかりません");
+            alert('検索結果が見つかりません');
             return;
           }
 
@@ -168,30 +134,32 @@
           const lng = parseFloat(longitude);
 
           map.setView([lat, lng], 15);
+
           L.marker([lat, lng]).addTo(map)
             .bindPopup(`<b>${query}</b><br>緯度: ${lat}, 経度: ${lng}`).openPopup();
         })
         .catch(error => {
-          console.error("エラー:", error);
-          alert("検索中にエラーが発生しました");
+          console.error('エラー:', error);
+          alert('検索中にエラーが発生しました');
         });
     }
 
-    // 検索イベント
+    // 検索ボタンのクリックイベント
     document.getElementById('search-button').addEventListener('click', () => {
       const query = document.getElementById('search-input').value.trim();
       if (!query) {
-        alert("住所や建物名を入力してください");
+        alert('住所や建物名を入力してください');
         return;
       }
       searchLocation(query);
     });
 
+    // Enter キーで検索を実行
     document.getElementById('search-input').addEventListener('keypress', (e) => {
       if (e.key === 'Enter') {
         const query = document.getElementById('search-input').value.trim();
         if (!query) {
-          alert("住所や建物名を入力してください");
+          alert('住所や建物名を入力してください');
           return;
         }
         searchLocation(query);
