@@ -25,55 +25,6 @@ document.head.appendChild(link);
 // leaflet
 var script = document.createElement('script');
 script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
-
-// CSVからピンを読み込む関数を追加
-function loadPinsFromCSV(map, redIcon, blueIcon) {
-  Papa.parse("pins.csv", {
-    download: true,
-    header: true,
-    complete: function(results) {
-      const data = results.data;
-      const redPins = [];
-      const bluePins = [];
-
-      data.forEach(row => {
-        const lat = parseFloat(row.latitude);
-        const lng = parseFloat(row.longitude);
-        const name = row.name;
-        const description = row.description;
-        const type = row.type;
-        const suggestions = row.suggestions.split('|');
-
-        const icon = type === '防災' ? blueIcon : redIcon;
-
-        const marker = L.marker([lat, lng], { icon: icon }).bindPopup(`
-          <div>
-            <h3>${name}</h3>
-            <p>${description}</p>
-            <button onclick="handleCheckIn('${name}', '${encodeURIComponent(JSON.stringify(suggestions))}')">チェックイン</button>
-          </div>
-        `);
-
-        if (type === '防災') {
-          bluePins.push(marker);
-        } else {
-          redPins.push(marker);
-        }
-      });
-
-      const redLayer = L.layerGroup(redPins).addTo(map);
-      const blueLayer = L.layerGroup(bluePins).addTo(map);
-
-      // マップ移動時にピンを更新
-      map.on('moveend', () => {
-        updateMarkers(map, redPins, redLayer);
-        updateMarkers(map, bluePins, blueLayer);
-      });
-    }
-  });
-}
-
-// leaflet のロード完了後にマップを初期化
 script.onload = function() {
   // マップの初期状態
   var map = L.map('map', {
@@ -102,9 +53,7 @@ script.onload = function() {
     shadowSize: [41, 41]
   });
 
-  // ピンのCSVからの読み込み
-  loadPinsFromCSV(map, redIcon, blueIcon);
-};
+
   // マーカーの設定
   // 現在の表示範囲内のピンのみ表示
   function updateMarkers(map, markers, layerGroup) {
