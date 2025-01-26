@@ -25,6 +25,55 @@ document.head.appendChild(link);
 // leaflet
 var script = document.createElement('script');
 script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+
+// CSVからピンを読み込む関数
+function loadPinsFromCSV(map, redIcon, blueIcon) {
+  Papa.parse("pins.csv", {
+    download: true,
+    header: true,
+    complete: function(results) {
+      const data = results.data;
+      const redPins = [];
+      const bluePins = [];
+
+      data.forEach(row => {
+        const lat = parseFloat(row.latitude);
+        const lng = parseFloat(row.longitude);
+        const name = row.name;
+        const description = row.description;
+        const type = row.type;
+        const suggestions = row.suggestions.split('|');
+
+        const icon = type === '防災' ? blueIcon : redIcon;
+
+        const marker = L.marker([lat, lng], { icon: icon }).bindPopup(`
+          <div>
+            <h3>${name}</h3>
+            <p>${description}</p>
+            <button onclick="handleCheckIn('${name}', '${encodeURIComponent(JSON.stringify(suggestions))}')">チェックイン</button>
+          </div>
+        `);
+
+        if (type === '防災') {
+          bluePins.push(marker);
+        } else {
+          redPins.push(marker);
+        }
+      });
+
+      const redLayer = L.layerGroup(redPins).addTo(map);
+      const blueLayer = L.layerGroup(bluePins).addTo(map);
+
+      // マップ移動時にピンを更新
+      map.on('moveend', () => {
+        updateMarkers(map, redPins, redLayer);
+        updateMarkers(map, bluePins, blueLayer);
+      });
+    }
+  });
+}
+
+// leaflet のロード完了後にマップを初期化
 script.onload = function() {
   // マップの初期状態
   var map = L.map('map', {
@@ -53,6 +102,10 @@ script.onload = function() {
     shadowSize: [41, 41]
   });
 
+  // ピンのCSVからの読み込み
+  loadPinsFromCSV(map, redIcon, blueIcon);
+};
+
   // マーカーの設定
   // 現在の表示範囲内のピンのみ表示
   function updateMarkers(map, markers, layerGroup) {
@@ -77,72 +130,8 @@ script.onload = function() {
       }
     });
   }
-  
-  var markers = [
-    {
-      position: [35.71891888, 139.91070346],
-      content: '大洲防災公園',
-      content_detail: '市川市にある緊急時に役立つ防災公園です。',
-      suggestion: [
-        '緊急時にカマドになるベンチを確認してみましょう',
-        '多目的広場を訪れてみましょう'
-      ],
-      icon: blueIcon
-    },
-    {
-      position: [35.6337679, 140.1168127],
-      content: '千草台公民館',
-      content_detail: '千葉市稲毛区にある避難所の1つです。',
-      suggestion: [
-        'ここまでの経路を確認してみましょう。',
-        '近くにある他の避難所を探してみましょう。'
-      ],
-      icon: blueIcon
-    },
-    {
-      position: [35.632896, 139.880394],
-      content: 'ディズニーリゾート',
-      content_detail: '東京ディズニーリゾートは夢の国として知られています。',
-      suggestion: [
-        'ディズニーリゾート内で安全な避難ルートを確認しましょう。',
-        '防災設備の位置を確認してみましょう。'
-      ],
-      icon: redIcon
-    },
-    {
-      position: [35.7636035, 140.3859353],
-      content: '成田空港第一ターミナル',
-      content_detail: '千葉県の空の玄関口です。',
-      suggestion: [
-        '避難経路の確認をしてみましょう',
-        '消火器の場所を確認しましょう'
-      ],
-      icon: redIcon
-    }
-  ];
 
-  // マーカーの追加とポップアップ設定
-  var redPins = markers.filter(marker => marker.icon === redIcon).map(marker => {
-    return L.marker(marker.position, { icon: marker.icon })
-      .bindPopup(`
-        <div>
-          <h3>${marker.content}</h3>
-          <p>${marker.content_detail}</p>
-          <button onclick="handleCheckIn('${marker.content}', '${encodeURIComponent(JSON.stringify(marker.suggestion))}')">チェックイン</button>
-        </div>
-      `);
-  });
-
-  var bluePins = markers.filter(marker => marker.icon === blueIcon).map(marker => {
-    return L.marker(marker.position, { icon: marker.icon })
-      .bindPopup(`
-        <div>
-          <h3>${marker.content}</h3>
-          <p>${marker.content_detail}</p>
-          <button onclick="handleCheckIn('${marker.content}', '${encodeURIComponent(JSON.stringify(marker.suggestion))}')">チェックイン</button>
-        </div>
-      `);
-  });
+　// 以下の内容を消去
 
   const redLayer = L.layerGroup(redPins).addTo(map);
   const blueLayer = L.layerGroup(bluePins).addTo(map);
@@ -156,6 +145,8 @@ script.onload = function() {
     updateMarkers(map, markers.filter(marker => marker.icon === redIcon), redLayer);
     updateMarkers(map, markers.filter(marker => marker.icon === blueIcon), blueLayer);
   });
+
+　// 以上は消してもいい？
 
   // カスタムコントロールの追加
   var customControl = L.Control.extend({
