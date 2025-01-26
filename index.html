@@ -3,11 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#0082CA"> <!-- ステータスバーの背景色を指定 -->
+  <meta name="theme-color" content="#0082CA">
   <title>ぼうそうV - マップ画面</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
   <style>
-    /* 検索ボックスのスタイル */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    #header-container {
+      background-color: #0082CA;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      font-size: 1.5em;
+    }
+
     .search-box {
       position: relative;
       background: white;
@@ -43,42 +55,81 @@
       background: #005f9c;
     }
 
-    @media (max-width: 600px) {
-      .search-box {
-        flex-direction: column;
-        align-items: stretch;
-      }
+    .map-container {
+      position: relative;
+      height: 80vh;
+    }
 
-      .search-box input,
-      .search-box button {
-        width: 100%;
-        margin-bottom: 5px;
-      }
+    #map {
+      height: 100%;
+    }
+
+    #badge-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 10px;
+      background: #f9f9f9;
+      border-top: 1px solid #ddd;
+    }
+
+    .badge {
+      margin: 5px;
+    }
+
+    .badge img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .message-box {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .message-box button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background: #0082CA;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .message-box button:hover {
+      background: #005f9c;
     }
   </style>
 </head>
 <body>
   <!-- ヘッダー -->
-  <div id="header-container"></div>
+  <div id="header-container">ぼうそうV - マップ画面</div>
 
   <!-- 検索ボックス -->
   <div class="search-box">
     <input type="text" id="search-input" placeholder="住所や建物名を入力">
     <button id="search-button">検索</button>
   </div>
-  
-  <!-- マップ部分の内容を追加 -->
+
+  <!-- マップ部分 -->
   <main class="map-container">
     <div id="map" class="map"></div>
-    <script src="map.js"></script>
-
-    <!-- バッジコンテナ -->
-    <div id="badge-container"></div> 
   </main>
 
-  <!-- PapaParseライブラリの読み込み -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+  <!-- バッジコンテナ -->
+  <div id="badge-container"></div>
 
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script>
     let map;
 
@@ -95,73 +146,57 @@
     });
 
     // CSISジオコーダAPIを利用して検索
-function searchLocation(query) {
-  const url = `https://geocode.csis.u-tokyo.ac.jp/cgi-bin/simple_geocode.cgi?addr=${encodeURIComponent(query)}&charset=UTF8&geosys=world`;
-  
-  console.log("リクエストURL:", url); // リクエスト確認
+    function searchLocation(query) {
+      const url = `https://geocode.csis.u-tokyo.ac.jp/cgi-bin/simple_geocode.cgi?addr=${encodeURIComponent(query)}&charset=UTF8&geosys=world`;
 
-  fetch(url)
-    .then(response => {
-      console.log("HTTPステータス:", response.status); // ステータス確認
-      return response.text();
-    })
-    .then(data => {
-      console.log("レスポンスデータ:", data); // レスポンス内容を出力
+      fetch(url)
+        .then(response => response.text())
+        .then(data => {
+          // XMLをパース
+          const parser = new DOMParser();
+          const xml = parser.parseFromString(data, "application/xml");
 
-      // XMLをパース
-      const parser = new DOMParser();
-      const xml = parser.parseFromString(data, "application/xml");
+          const latitude = xml.querySelector("latitude")?.textContent;
+          const longitude = xml.querySelector("longitude")?.textContent;
 
-      // 緯度・経度を抽出
-      const latitude = xml.querySelector("latitude")?.textContent;
-      const longitude = xml.querySelector("longitude")?.textContent;
+          if (!latitude || !longitude) {
+            alert("検索結果が見つかりません");
+            return;
+          }
 
-      if (!latitude || !longitude) {
-        alert("検索結果が見つかりません");
-        return;
-      }
+          const lat = parseFloat(latitude);
+          const lng = parseFloat(longitude);
 
-      const lat = parseFloat(latitude);
-      const lng = parseFloat(longitude);
+          map.setView([lat, lng], 15);
+          L.marker([lat, lng]).addTo(map)
+            .bindPopup(`<b>${query}</b><br>緯度: ${lat}, 経度: ${lng}`).openPopup();
+        })
+        .catch(error => {
+          console.error("エラー:", error);
+          alert("検索中にエラーが発生しました");
+        });
+    }
 
-      // マップを該当位置に移動
-      map.setView([lat, lng], 15);
-
-      // ピンを追加
-      L.marker([lat, lng]).addTo(map)
-        .bindPopup(`<b>${query}</b><br>緯度: ${lat}, 経度: ${lng}`).openPopup();
-    })
-    .catch(error => {
-      console.error("エラー詳細:", error); // エラー内容を出力
-      alert("検索中にエラーが発生しました");
-    });
-}
-
-
-
-
-    // 検索ボタンのクリックイベント
+    // 検索イベント
     document.getElementById('search-button').addEventListener('click', () => {
       const query = document.getElementById('search-input').value.trim();
       if (!query) {
-        alert('住所や建物名を入力してください');
+        alert("住所や建物名を入力してください");
         return;
       }
       searchLocation(query);
     });
 
-    // Enter キーで検索を実行
     document.getElementById('search-input').addEventListener('keypress', (e) => {
       if (e.key === 'Enter') {
         const query = document.getElementById('search-input').value.trim();
         if (!query) {
-          alert('住所や建物名を入力してください');
+          alert("住所や建物名を入力してください");
           return;
         }
         searchLocation(query);
       }
     });
   </script>
-  <script src="script.js"></script>
 </body>
 </html>
