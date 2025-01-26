@@ -54,6 +54,30 @@ script.onload = function() {
   });
 
   // マーカーの設定
+  // 現在の表示範囲内のピンのみ表示
+  function updateMarkers(map, markers, layerGroup) {
+    // 現在のマップの表示範囲を取得
+    const bounds = map.getBounds();
+
+    // レイヤーをクリア
+    layerGroup.clearLayers();
+
+    // 範囲内のマーカーを追加
+    markers.forEach(marker => {
+      if (bounds.contains(marker.position)) {
+        const markerInstance = L.marker(marker.position, { icon: marker.icon })
+          .bindPopup(`
+            <div>
+              <h3>${marker.content}</h3>
+              <p>${marker.content_detail}</p>
+              <button onclick="handleCheckIn('${marker.content}', '${encodeURIComponent(JSON.stringify(marker.suggestion))}')">チェックイン</button>
+            </div>
+          `);
+        layerGroup.addLayer(markerInstance);
+      }
+    });
+  }
+  
   var markers = [
     {
       position: [35.71891888, 139.91070346],
