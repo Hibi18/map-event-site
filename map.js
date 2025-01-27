@@ -53,6 +53,22 @@ script.onload = function() {
     shadowSize: [41, 41]
   });
 
+  // 既存の `markers` を `pins.js` から読み込み済みで使用
+markers.forEach(markerData => {
+  const marker = L.marker(markerData.position, { icon: markerData.icon })
+    .bindPopup(`
+      <div>
+        <h3>${markerData.content}</h3>
+        <p>${markerData.content_detail}</p>
+        <button onclick="handleCheckIn('${markerData.content}', '${encodeURIComponent(JSON.stringify(markerData.suggestion))}')">チェックイン</button>
+      </div>
+    `);
+
+  // 地図にマーカーを追加
+  marker.addTo(map);
+});
+
+
     
 
   // マーカーの設定
