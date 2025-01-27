@@ -55,8 +55,8 @@ script.onload = function() {
 
   // 既存の `markers` を `pins.js` から読み込み済みで使用
 markers.forEach(markerData => {
-  const iconObject = markerData.icon === "blueIcon" ? blueIcon : redIcon;
-  const marker = L.marker(markerData.position, { icon: iconObject })
+  const icon = markerData.icon === "blueIcon" ? blueIcon : redIcon;
+  const marker = L.marker(markerData.position, { icon: icon })
     .bindPopup(`
       <div>
         <h3>${markerData.content}</h3>
