@@ -72,7 +72,7 @@ markers.forEach(markerData => {
 
   // マーカーの設定
   // 現在の表示範囲内のピンのみ表示
-  function updateMarkers(map, markers, layerGroup) {
+  function updateMarkers(map, markers, layerGroup, filterType) {
     // 現在のマップの表示範囲を取得
     const bounds = map.getBounds();
 
@@ -80,20 +80,20 @@ markers.forEach(markerData => {
     layerGroup.clearLayers();
 
     // 範囲内のマーカーを追加
-    markers.forEach(marker => {
-      if (bounds.contains(marker.position)) {
-        const markerInstance = L.marker(marker.position, { icon: marker.icon })
-          .bindPopup(`
-            <div>
-              <h3>${marker.content}</h3>
-              <p>${marker.content_detail}</p>
-              <button onclick="handleCheckIn('${marker.content}', '${encodeURIComponent(JSON.stringify(marker.suggestion))}')">チェックイン</button>
-            </div>
-          `);
-        layerGroup.addLayer(markerInstance);
-      }
+    markers
+    .filter(marker => bounds.contains(marker.position) && marker.icon === filterType)
+    .forEach(marker => {
+      const markerInstance = L.marker(marker.position, { icon: marker.icon })
+        .bindPopup(`
+          <div>
+            <h3>${marker.content}</h3>
+            <p>${marker.content_detail}</p>
+            <button onclick="handleCheckIn('${marker.content}', '${encodeURIComponent(JSON.stringify(marker.suggestion))}')">チェックイン</button>
+          </div>
+        `);
+      layerGroup.addLayer(markerInstance);
     });
-  }
+}
 
 
 
@@ -170,6 +170,7 @@ markers.forEach(markerData => {
 
       redCheckbox.addEventListener('change', function() {
         if (redCheckbox.checked) {
+          updateMarkers(map, markers, redLayer, redIcon);
           map.addLayer(redLayer);
         } else {
           map.removeLayer(redLayer);
@@ -178,6 +179,7 @@ markers.forEach(markerData => {
 
       blueCheckbox.addEventListener('change', function() {
         if (blueCheckbox.checked) {
+          updateMarkers(map, markers, blueLayer, blueIcon);
           map.addLayer(blueLayer);
         } else {
           map.removeLayer(blueLayer);
