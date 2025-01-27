@@ -83,14 +83,15 @@ markers.forEach(markerData => {
     markers
     .filter(marker => bounds.contains(marker.position) && marker.icon === filterType)
     .forEach(marker => {
-      const markerInstance = L.marker(marker.position, { icon: marker.icon })
-        .bindPopup(`
-          <div>
-            <h3>${marker.content}</h3>
-            <p>${marker.content_detail}</p>
-            <button onclick="handleCheckIn('${marker.content}', '${encodeURIComponent(JSON.stringify(marker.suggestion))}')">チェックイン</button>
-          </div>
-        `);
+      const markerInstance = L.marker(marker.position, {
+        icon: filterType === "redIcon" ? redIcon : blueIcon // アイコンの割り当て
+      }).bindPopup(`
+        <div>
+          <h3>${marker.content}</h3>
+          <p>${marker.content_detail}</p>
+          <button onclick="handleCheckIn('${marker.content}', '${encodeURIComponent(JSON.stringify(marker.suggestion))}')">チェックイン</button>
+        </div>
+      `);
       layerGroup.addLayer(markerInstance);
     });
 }
