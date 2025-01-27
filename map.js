@@ -53,21 +53,6 @@ script.onload = function() {
     shadowSize: [41, 41]
   });
 
-  // pins.jsからデータを読み込み
-  pins.forEach(pin => {
-    const icon = pin.type === '防災' ? blueIcon : redIcon;
-
-  const marker = L.marker(pin.position, { icon: icon }).bindPopup(`
-    <div>
-      <h3>${pin.content}</h3>
-      <p>${pin.content_detail}</p>
-      <button onclick="handleCheckIn('${pin.content}', '${encodeURIComponent(JSON.stringify(pin.suggestion))}')">チェックイン</button>
-    </div>
-  `);
-
-    marker.addTo(map);
-});
-
     
 
   // マーカーの設定
