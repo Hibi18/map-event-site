@@ -10,7 +10,7 @@ var markers = [
         icon: "blueIcon"
     },
     {
-        position: [35.181446, 136.906398],
+        position: [35.1080368, 136.8853546],
         content: '名古屋市港防災センター',
         content_detail: '震度7の地震体験や煙避難体験ができる防災体験施設です',
         suggestion: [
@@ -50,7 +50,7 @@ var markers = [
         icon: "redIcon"
     },
     {
-        position: [35.6585805, 139.796123],
+        position: [35.6353483, 139.7941225],
         content: 'そなエリア東京',
         content_detail: '首都直下地震を想定した体験ができる無料施設',
         suggestion: [
@@ -60,7 +60,7 @@ var markers = [
         icon: "blueIcon"
     }, 
     {
-        position: [35.741568, 139.744973],
+        position: [35.7450089, 139.7445797],
         content: '東京都北区防災センター（地震の科学館）',
         content_detail: '震度7の地震体験や煙避難体験ができます',
         suggestion: [
@@ -70,7 +70,7 @@ var markers = [
         icon: "blueIcon"
     },
     {
-        position: [35.665193, 139.750611],
+        position: [35.6656253, 139.7438756],
         content: '気象庁 気象科学館',
         content_detail: '自然災害に関する展示や体験が充実しています',
         suggestion: [
@@ -80,7 +80,7 @@ var markers = [
         icon: "blueIcon"
     },
     {
-        position: [35.474691, 139.617516],
+        position: [35.4712074, 139.6179736],
         content: '横浜市民防災センター',
         content_detail: '地震シミュレーターや火災シミュレーターがあります',
         suggestion: [
@@ -90,7 +90,7 @@ var markers = [
         icon: "blueIcon"
     },
     {
-        position: [34.6937378, 135.5019295],
+        position: [34.6434276, 135.5102615],
         content: 'あべのタスカル 大阪市立阿倍野防災センター',
         content_detail: '地震や火災のシミュレーション体験が可能です',
         suggestion: [
@@ -110,7 +110,7 @@ var markers = [
         icon: "redIcon"
     },
     {
-        position: [35.652832, 139.839478],
+        position: [35.5476839, 139.7787882],
         content: '羽田空港',
         content_detail: '東京都にある国内外への玄関口です',
         suggestion: [
@@ -119,7 +119,7 @@ var markers = [
         icon: "redIcon"
     },
     {
-        position: [35.689407, 139.700306],
+        position: [35.4431119, 139.6460918],
         content: '横浜中華街',
         content_detail: '日本最大の中華街です',
         suggestion: [
@@ -129,7 +129,7 @@ var markers = [
         icon: "redIcon"
     },
     {
-        position: [34.669358, 135.500729],
+        position: [34.6656768, 135.4323185],
         content: 'ユニバーサル・スタジオ・ジャパン',
         content_detail: '映画の世界を体験できるテーマパークです',
         suggestion: [
@@ -139,7 +139,7 @@ var markers = [
         icon: "redIcon"
     },
     {
-        position: [34.685087, 135.805],
+        position: [34.6850327, 135.8386219],
         content: '奈良公園',
         content_detail: '広大な公園で、自由に歩き回る鹿が有名です。',
         suggestion: [
