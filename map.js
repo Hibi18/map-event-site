@@ -125,8 +125,8 @@ markers.forEach(markerData => {
   const blueLayer = L.layerGroup(bluePins).addTo(map);
 
   // 初期表示で範囲内のピンを表示
-  updateMarkers(map, markers.filter(marker => marker.icon === redIcon), redLayer);
-  updateMarkers(map, markers.filter(marker => marker.icon === blueIcon), blueLayer);
+  updateMarkers(map, markers.filter(marker => marker.icon === "redIcon"), redLayer);
+  updateMarkers(map, markers.filter(marker => marker.icon === "blueIcon"), blueLayer);
 
   // マップ移動時に範囲内のピンを更新
   map.on('moveend', () => {
