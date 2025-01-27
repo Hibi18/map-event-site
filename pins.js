@@ -98,5 +98,54 @@ var markers = [
             '展示物を見学してみましょう'
         ],
         icon: "blueIcon"
+    },
+    {
+        position: [35.6585805, 139.7454329],
+        content: '東京タワー',
+        content_detail: '高さ333メートルの電波塔で、東京のシンボル的存在です',
+        suggestion: [
+            '近くの避難所を確認してみましょう',
+            '消火器を探してみましょう'
+        ],
+        icon: "redIcon"
+    },
+    {
+        position: [35.652832, 139.839478],
+        content: '羽田空港',
+        content_detail: '東京都にある国内外への玄関口です',
+        suggestion: [
+            '近くの避難所を確認してみましょう'
+        ],
+        icon: "redIcon"
+    },
+    {
+        position: [35.689407, 139.700306],
+        content: '横浜中華街',
+        content_detail: '日本最大の中華街です',
+        suggestion: [
+            '近くの避難所を確認してみましょう',
+            '防災設備を探してみましょう'
+        ],
+        icon: "redIcon"
+    },
+    {
+        position: [34.669358, 135.500729],
+        content: 'ユニバーサル・スタジオ・ジャパン',
+        content_detail: '映画の世界を体験できるテーマパークです',
+        suggestion: [
+            '災害時はスタッフの指示に従いましょう',
+            '防災設備を探してみましょう'
+        ],
+        icon: "redIcon"
+    },
+    {
+        position: [34.685087, 135.805],
+        content: '奈良公園',
+        content_detail: '広大な公園で、自由に歩き回る鹿が有名です。',
+        suggestion: [
+            '近くの避難所までの経路を確認しましょう',
+            '避難所を探してみましょう'
+        ],
+        icon: "redIcon"
     }
 ];
