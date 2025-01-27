@@ -170,19 +170,17 @@ markers.forEach(markerData => {
 
       redCheckbox.addEventListener('change', function() {
         if (redCheckbox.checked) {
-          updateMarkers(map, markers, redLayer, redIcon);
-          map.addLayer(redLayer);
+          updateMarkers(map, markers.filter(marker => marker.icon === "redIcon"), redLayer);
         } else {
-          map.removeLayer(redLayer);
+          redLayer.clearLayers();
         }
       });
 
       blueCheckbox.addEventListener('change', function() {
         if (blueCheckbox.checked) {
-          updateMarkers(map, markers, blueLayer, blueIcon);
-          map.addLayer(blueLayer);
+          updateMarkers(map, markers.filter(marker => marker.icon === "blueIcon"), blueLayer);
         } else {
-          map.removeLayer(blueLayer);
+          blueLayer.clearLayers();
         }
       });
 
