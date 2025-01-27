@@ -53,35 +53,37 @@ script.onload = function() {
     shadowSize: [41, 41]
   });
 
-    
+  let showRedPins = true; // 観光ピンを表示するかどうか
+  let showBluePins = true; // 防災ピンを表示するかどうか
 
   // マーカーの設定
   // 現在の表示範囲内のピンのみ表示
   function updateMarkers(map, markers, layerGroup, filterType) {
-    // 現在のマップの表示範囲を取得
     const bounds = map.getBounds();
-
-    // レイヤーをクリア
     layerGroup.clearLayers();
 
-    // 範囲内のマーカーを追加
-    markers
-    .filter(marker => bounds.contains(marker.position) && marker.icon === filterType)
-    .forEach(marker => {
-      const markerInstance = L.marker(marker.position, {
-        icon: filterType === "redIcon" ? redIcon : blueIcon // アイコンの割り当て
-      }).bindPopup(`
-        <div>
-          <h3>${marker.content}</h3>
-          <p>${marker.content_detail}</p>
-          <button onclick="handleCheckIn('${marker.content}', '${encodeURIComponent(JSON.stringify(marker.suggestion))}')">チェックイン</button>
-        </div>
-      `);
-      layerGroup.addLayer(markerInstance);
+    markers.forEach(marker => {
+      const isRedPin = marker.icon === "redIcon";
+      const isBluePin = marker.icon === "blueIcon";
+
+      // チェックボックスの状態を考慮
+      if (
+        bounds.contains(marker.position) &&
+        ((filterType === "redIcon" && showRedPins && isRedPin) ||
+          (filterType === "blueIcon" && showBluePins && isBluePin))
+      ) {
+        const iconInstance = filterType === "redIcon" ? redIcon : blueIcon;
+        const markerInstance = L.marker(marker.position, { icon: iconInstance }).bindPopup(`
+          <div>
+            <h3>${marker.content}</h3>
+            <p>${marker.content_detail}</p>
+            <button onclick="handleCheckIn('${marker.content}', '${encodeURIComponent(JSON.stringify(marker.suggestion))}')">チェックイン</button>
+          </div>
+        `);
+        layerGroup.addLayer(markerInstance);
+      }
     });
-}
-
-
+  }
 
 
   // マーカーの追加とポップアップ設定
@@ -116,9 +118,19 @@ script.onload = function() {
   
   // マップ移動時に範囲内のピンを更新
   map.on('moveend', () => {
-    updateMarkers(map, markers, redLayer, "redIcon");
-    updateMarkers(map, markers, blueLayer, "blueIcon");
-});
+    if (showRedPins) {
+      updateMarkers(map, markers.filter(marker => marker.icon === "redIcon"), redLayer, "redIcon");
+    } else {
+      redLayer.clearLayers();
+    }
+
+    if (showBluePins) {
+      updateMarkers(map, markers.filter(marker => marker.icon === "blueIcon"), blueLayer, "blueIcon");
+    } else {
+      blueLayer.clearLayers();
+    }
+  });
+    
 
 
   // カスタムコントロールの追加
@@ -156,22 +168,25 @@ script.onload = function() {
 
       L.DomEvent.disableClickPropagation(container);
 
-      redCheckbox.addEventListener('change', function() {
-        if (redCheckbox.checked) {
-          updateMarkers(map, markers, redLayer, "redIcon");
+      // チェックボックスのイベントリスナーで状態を更新
+      redCheckbox.addEventListener('change', function () {
+        showRedPins = redCheckbox.checked; // 状態を更新
+        if (showRedPins) {
+          updateMarkers(map, markers.filter(marker => marker.icon === "redIcon"), redLayer, "redIcon");
         } else {
           redLayer.clearLayers();
         }
       });
 
-      blueCheckbox.addEventListener('change', function() {
-        if (blueCheckbox.checked) {
-          updateMarkers(map, markers, blueLayer, "blueIcon");
+      blueCheckbox.addEventListener('change', function () {
+        showBluePins = blueCheckbox.checked; // 状態を更新
+        if (showBluePins) {
+          updateMarkers(map, markers.filter(marker => marker.icon === "blueIcon"), blueLayer, "blueIcon");
         } else {
           blueLayer.clearLayers();
         }
       });
-
+        
       return container;
     }
   });
