@@ -173,7 +173,7 @@ markers.forEach(markerData => {
 
       redCheckbox.addEventListener('change', function() {
         if (redCheckbox.checked) {
-          updateMarkers(map, markers.filter(marker => marker.icon === "redIcon"), redLayer);
+          updateMarkers(map, markers, redLayer, "redIcon");
         } else {
           redLayer.clearLayers();
         }
@@ -181,7 +181,7 @@ markers.forEach(markerData => {
 
       blueCheckbox.addEventListener('change', function() {
         if (blueCheckbox.checked) {
-          updateMarkers(map, markers.filter(marker => marker.icon === "blueIcon"), blueLayer);
+          updateMarkers(map, markers, blueLayer, "blueIcon");
         } else {
           blueLayer.clearLayers();
         }
