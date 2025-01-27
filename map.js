@@ -99,8 +99,8 @@ markers.forEach(markerData => {
 
 
   // マーカーの追加とポップアップ設定
-  var redPins = markers.filter(marker => marker.icon === redIcon).map(marker => {
-    return L.marker(marker.position, { icon: marker.icon })
+  var redPins = markers.filter(marker => marker.icon === "redIcon").map(marker => {
+    return L.marker(marker.position, { icon: redIcon })
       .bindPopup(`
         <div>
           <h3>${marker.content}</h3>
@@ -110,8 +110,8 @@ markers.forEach(markerData => {
       `);
   });
 
-  var bluePins = markers.filter(marker => marker.icon === blueIcon).map(marker => {
-    return L.marker(marker.position, { icon: marker.icon })
+  var bluePins = markers.filter(marker => marker.icon === "blueIcon").map(marker => {
+    return L.marker(marker.position, { icon: blueIcon })
       .bindPopup(`
         <div>
           <h3>${marker.content}</h3>
