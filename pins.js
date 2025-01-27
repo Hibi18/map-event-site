@@ -38,5 +38,15 @@ var markers = [
             '消火器の場所を確認しましょう'
         ],
         icon: "redIcon"
+    },
+    {
+        position: [35.4056432, 140.0539067],
+        content: '東京ドイツ村',
+        content_detail: '花と緑のテーマパーク',
+        suggestion: [
+            '近くの避難場所を確認しましょう',
+            '消火器の場所を確認しましょう'
+        ],
+        icon: "redIcon"
     }
 ];
