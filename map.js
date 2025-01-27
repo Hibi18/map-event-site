@@ -123,13 +123,13 @@ script.onload = function() {
   const blueLayer = L.layerGroup(bluePins).addTo(map);
 
   // 初期表示で範囲内のピンを表示
-  updateMarkers(map, pins.filter(pin => pin.type === '観光'), redLayer);
-  updateMarkers(map, pins.filter(pin => pin.type === '防災'), blueLayer);
+  updateMarkers(map, markers.filter(marker => marker.icon === redIcon), redLayer);
+  updateMarkers(map, markers.filter(marker => marker.icon === blueIcon), blueLayer);
 
   // マップ移動時に範囲内のピンを更新
   map.on('moveend', () => {
-    updateMarkers(map, pins.filter(pin => pin.type === '観光'), redLayer);
-    updateMarkers(map, pins.filter(pin => pin.type === '防災'), blueLayer);
+    updateMarkers(map, markers.filter(marker => marker.icon === redIcon), redLayer);
+    updateMarkers(map, markers.filter(marker => marker.icon === blueIcon), blueLayer);
   });
   // カスタムコントロールの追加
   var customControl = L.Control.extend({
