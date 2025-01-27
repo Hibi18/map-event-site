@@ -7,7 +7,7 @@ var markers = [
             '緊急時にカマドになるベンチを確認してみましょう',
             '多目的広場を訪れてみましょう'
         ],
-        icon: blueIcon
+        icon: "blueIcon"
     },
     {
         position: [35.6337679, 140.1168127],
@@ -17,7 +17,7 @@ var markers = [
             'ここまでの経路を確認してみましょう。',
             '近くにある他の避難所を探してみましょう。'
         ],
-        icon: blueIcon
+        icon: "blueIcon"
     },
     {
         position: [35.632896, 139.880394],
@@ -27,7 +27,7 @@ var markers = [
             'ディズニーリゾート内で安全な避難ルートを確認しましょう。',
             '防災設備の位置を確認してみましょう。'
         ],
-        icon: redIcon
+        icon: "redIcon"
     },
     {
         position: [35.7636035, 140.3859353],
@@ -37,6 +37,6 @@ var markers = [
             '避難経路の確認をしてみましょう',
             '消火器の場所を確認しましょう'
         ],
-        icon: redIcon
+        icon: "redIcon"
     }
 ];
