@@ -108,7 +108,7 @@
     font-size: 35px;
     position: absolute;
     top: 0;
-    right: calc(100% + 30px);
+    left: -60px;
 }
 .schedule_listitem_morning .schedule_time {
     color: #fc87b6;
