@@ -2,7 +2,7 @@
 .timeline {
   position: relative;
   padding-left: 0; /* タイムラインの余白 */
-  border-left: 3px solid #65BBE9; /* 縦線 */
+  border-left: 3px solid #94d4f2; /* 縦線 */
   margin-top: 20px;
   margin-left: 40px;
 }
