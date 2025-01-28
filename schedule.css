@@ -17,7 +17,7 @@
 .timeline-marker {
   position: absolute;
   top: 0;
-  left: -12.2px; 
+  left: -12.1px; 
   width: 15px; /* 丸の直径 */
   height: 15px; /* 丸の直径 */
   background-color: #0068b6; /* 丸の色 */
@@ -50,4 +50,41 @@
   font-size: 14px;
   color: #666;
   line-height: 1.5;
+}
+
+/* タブコンテナ */
+.tab-container {
+  max-width: 600px;
+  margin: 20px auto; /* ヘッダーの下に間隔を作る */
+}
+
+/* タブヘッダー */
+.tab-header {
+  display: flex;
+  border-bottom: 2px solid #ccc;
+  margin-bottom: 20px;
+}
+
+.tab-link {
+  flex: 1;
+  padding: 10px;
+  background: #f0f0f0;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  font-weight: bold;
+}
+
+.tab-link.active {
+  background: #0068b6;
+  color: white;
+}
+
+/* タブの内容 */
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
 }
