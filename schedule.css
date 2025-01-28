@@ -17,7 +17,7 @@
 .timeline-marker {
   position: absolute;
   top: 0;
-  left: -14px; 
+  left: -13px; 
   width: 15px; /* 丸の直径 */
   height: 15px; /* 丸の直径 */
   background-color: #0068b6; /* 丸の色 */
