@@ -62,7 +62,7 @@
 }
 .schedule_listitem:before {
     top: 5px;
-    left: 0;
+    left: -10px;
     width: 3px;
     background: #94d4f2;
     height: 100%;
@@ -108,7 +108,7 @@
     font-size: 35px;
     position: absolute;
     top: 0;
-    left: -60px;
+    right: calc(100% + 30px);
 }
 .schedule_listitem_morning .schedule_time {
     color: #fc87b6;
