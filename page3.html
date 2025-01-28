@@ -11,9 +11,68 @@
   <div id="header-container"></div>
 
 <!-- 本文 -->
-  <main class="contact-container">    
+  <main>
+    <!-- タブのコンテナ -->
+    <div class="tab-container">
+      <!-- タブのヘッダー -->
+      <div class="tab-header">
+        <button class="tab-link active" onclick="openTab(event, 'day1')">1日目</button>
+        <button class="tab-link" onclick="openTab(event, 'day2')">2日目</button>
+      </div>
+    
+      <!-- タブの内容 -->
+      <div id="day1" class="contact-container">
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <p class="time">8:30</p>
+              <h3 class="title">ジム</h3>
+              <p class="description">身体を動かすのが好きなので、朝の予定に余裕があるときはフレックスタイム制度を活用してジムに行っています。</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <p class="time">10:00</p>
+              <h3 class="title">自宅にて始業</h3>
+              <p class="description">メールチェック・スケジュール確認。</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <p class="time">11:00</p>
+              <h3 class="title">会議（オンラインMTG）</h3>
+              <p class="description">案件の進め方やスケジュールの調整を行います。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="day2" class="tab-content">
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <p class="time">12:00</p>
+              <h3 class="title">お昼ご飯</h3>
+              <p class="description">丸の内でランチ</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <p class="time">15:00</p>
+              <h3 class="title">東京駅</h3>
+              <p class="description">お土産の購入</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>     
   </main>
 
-  <script src="script.js"></script>
+  <script src="schedule.js"></script>
 </body>
 </html>
