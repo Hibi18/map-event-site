@@ -2,7 +2,7 @@
 .timeline {
   position: relative;
   padding-left: 0; /* タイムラインの余白 */
-  border-left: 3px solid #A5C9C1; /* 縦線 */
+  border-left: 3px solid #00001C; /* 縦線 */
   margin-top: 20px;
   margin-left: 40px;
 }
@@ -17,7 +17,7 @@
 .timeline-marker {
   position: absolute;
   top: 0;
-  left: -15px; /* タイムラインに揃える-10から-15にした*/
+  left: -13px; /* タイムラインに揃える-10から-15にした*/
   width: 20px; /* 丸の直径 */
   height: 20px; /* 丸の直径 */
   background-color: #0068b6; /* 丸の色 */
