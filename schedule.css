@@ -18,8 +18,8 @@
   position: absolute;
   top: 0;
   left: -14px; 
-  width: 20px; /* 丸の直径 */
-  height: 20px; /* 丸の直径 */
+  width: 15px; /* 丸の直径 */
+  height: 15px; /* 丸の直径 */
   background-color: #0068b6; /* 丸の色 */
   border: 3px solid #94d4f2; /* 丸の枠線 */
   border-radius: 50%; /* 丸にする */
