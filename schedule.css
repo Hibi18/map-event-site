@@ -1,3 +1,13 @@
+.sp_only {
+    display: none;
+}
+@media screen and (max-width: 900px) {
+    .sp_only {
+        display: inline;
+    }
+}
+
+
 /* フォント */
 .fw400 {
     font-family: 'A1ゴシック R', 'A1 Gothic R';
