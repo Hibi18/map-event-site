@@ -1,3 +1,19 @@
+// header.html を動的に読み込むスクリプト
+fetch('header.html')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Failed to fetch header.html');
+    }
+    return response.text();
+  })
+  .then(data => {
+    document.getElementById('header-container').innerHTML = data;
+  })
+  .catch(error => {
+    console.error('Error loading header:', error);
+  });
+
+// タブ切り替えの関数
 function openTab(event, tabId) {
   // すべてのタブ内容を非表示にする
   const tabContents = document.querySelectorAll('.tab-content');
@@ -13,4 +29,3 @@ function openTab(event, tabId) {
   // クリックされたタブリンクをアクティブにする
   event.currentTarget.classList.add('active');
 }
-
