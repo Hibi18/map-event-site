@@ -1,3 +1,14 @@
+/* フォント */
+.fw400 {
+    font-family: 'A1ゴシック R', 'A1 Gothic R';
+}
+.fw500 {
+    font-family: 'A1ゴシック M', 'A1 Gothic M';
+}
+.fw700 {
+    font-family: 'A1ゴシック B', 'A1 Gothic B';
+}
+
 /* schedule */
 .interview_schedule {
     margin-top: 140px;
