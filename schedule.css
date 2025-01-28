@@ -1,8 +1,8 @@
 /* タイムライン全体 */
 .timeline {
   position: relative;
-  padding-left: 20px; /* タイムラインの余白 */
-  border-left: 3px solid #ccc; /* 縦線 */
+  padding-left: 30px; /* タイムラインの余白 */
+  border-left: 3px solid #ED1A3D; /* 縦線 */
   margin-top: 20px;
   margin-left: 30px;
 }
