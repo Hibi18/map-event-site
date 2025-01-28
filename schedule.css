@@ -1,359 +1,52 @@
-.sp_only {
-    display: none;
-}
-@media screen and (max-width: 900px) {
-    .sp_only {
-        display: inline;
-    }
-}
-
-
-/* フォント */
-.fw400 {
-    font-family: 'A1ゴシック R', 'A1 Gothic R';
-}
-.fw500 {
-    font-family: 'A1ゴシック M', 'A1 Gothic M';
-}
-.fw700 {
-    font-family: 'A1ゴシック B', 'A1 Gothic B';
+/* タイムライン全体 */
+.timeline {
+  position: relative;
+  padding-left: 50px; /* タイムラインの余白 */
+  border-left: 3px solid #ccc; /* 縦線 */
+  margin-top: 20px;
 }
 
-/* schedule */
-.interview_schedule {
-    margin-top: 140px;
+/* タイムラインの項目 */
+.timeline-item {
+  position: relative;
+  margin-bottom: 30px; /* 項目間の間隔 */
 }
-.schedule_ttl_wrap {
-    text-align: center;
+
+/* タイムポイント（丸） */
+.timeline-marker {
+  position: absolute;
+  top: 0;
+  left: -10px; /* タイムラインに揃える */
+  width: 20px; /* 丸の直径 */
+  height: 20px; /* 丸の直径 */
+  background-color: #0068b6; /* 丸の色 */
+  border: 3px solid #94d4f2; /* 丸の枠線 */
+  border-radius: 50%; /* 丸にする */
 }
-.schedule_illust {
-    margin-bottom: 7px;
+
+/* 各項目の内容 */
+.timeline-content {
+  margin-left: 30px; /* タイムラインからの余白 */
 }
-.schedule_wrap {
-    margin-top: 120px;
+
+/* 時間 */
+.time {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 5px;
 }
-.schedule_list {
-    float: left;
+
+/* 見出し */
+.title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
 }
-.schedule_diagram_wrap {
-    width: 42%;
-    float: right;
-}
-.schedule_diagram_img {
-    width: 100%;
-    height: 0;
-    padding-top: 131%;
-}
-.schedule_listitem {
-    min-height: 170px;
-    margin-left: 210px;
-    padding-left: 30px;
-    padding-bottom: 70px;
-    position: relative;
-}
-.schedule_listitem.present {
-    padding-bottom: 0;
-}
-.schedule_listitem:before,
-.schedule_listitem:after {
-    content: '';
-    display: block;
-    position: absolute;
-}
-.schedule_listitem:before {
-    top: 5px;
-    left: -10px;
-    width: 3px;
-    background: #94d4f2;
-    height: 100%;
-}
-.schedule_listitem_morning::before {
-    background: #fc87b6;
-}
-.schedule_listitem_noon::before {
-    background: #0dd5f2;
-}
-.schedule_listitem_night::before {
-    background: #eeea64;
-}
-.schedule_listitem.present:before {
-    background: url(/recruit/new-grad/interview_schedule/image/common/bg_dot.svg) repeat-y;
-    background-size: 100% auto;
-    width: 5px;
-    left: -1px;
-}
-.schedule_listitem:after {
-    left: -17px;
-    top: 5px;
-    background-color: #0068b6;
-    width: 17px;
-    height: 17px;
-    border-radius: 100%;
-    border: 3px solid #94d4f2;
-}
-.schedule_listitem_morning::after {
-    border: 3px solid #fc87b6;
-}
-.schedule_listitem_noon::after {
-    border: 3px solid #0dd5f2;
-}
-.schedule_listitem_night::after {
-    border: 3px solid #eeea64;
-}
-.schedule_listitem:nth-last-child(1)::before {
-    content: none;
-}
-.schedule_time {
-    color: #94d4f2;
-    font-size: 35px;
-    position: absolute;
-    top: 0;
-    right: calc(100% + 30px);
-}
-.schedule_listitem_morning .schedule_time {
-    color: #fc87b6;
-}
-.schedule_listitem_noon .schedule_time {
-    color: #0dd5f2;
-}
-.schedule_listitem_night .schedule_time {
-    color: #eeea64;
-}
-.schedule_ttl {
-    font-size: 28px;
-}
-.schedule_ttl_dot {
-    font-size: 30px;
-    color: #0dd5f3;
-    position: relative;
-}
-.schedule_ttl_dot::before,
-.schedule_ttl_dot::after {
-    content: '';
-    width: 35%;
-    height: 5px;
-    background: url(/recruit/new-grad/interview_schedule/image/nakatogawa_masahiro/dot_line.svg) repeat-x;
-    background-size: auto 100%;
-    position: absolute;
-}
-.schedule_ttl_dot::before {
-    top: 50%;
-    left: -10px;
-}
-.schedule_ttl_dot::after {
-    top: 50%;
-    right: 0;
-}
-.schedule_txt {
-    font-size: 16px;
-    line-height: 1.666;
-    margin-top: 7px;
-}
-.schedule_diagram {
-    width: 100%;
-    max-width: 504px;
-}
-.schedule_listitem_speech {
-    padding-left: 50px;
-}
-.schedule_listitem_speech::after {
-    top: 55px;
-}
-.schedule_listitem_speech .schedule_time {
-    font-size: 50px;
-    top: 30px;
-}
-.schedule_listitem_morning_img,
-.schedule_listitem_noon_img,
-.schedule_listitem_night_img {
-    position: absolute;
-    top: calc(100% + 10px);
-    right: 0;
-}
-span + .schedule_listitem_moon_img {
-    top: calc(100% + 10px);
-}
-.schedule_listitem_moon_img {
-    position: absolute;
-    top: 0;
-    right: 0;
-}
-.schedule_listitem_speech_inner {
-    padding: 40px 35px 50px;
-    border-radius: 30px;
-    background: #1689cd;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    position: relative;
-}
-.schedule_listitem_speech_inner::before {
-    content: '';
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 17px 32px 17px 0;
-    border-color: transparent #1689cd transparent transparent;
-    position: absolute;
-    top: 44px;
-    right: 100%;
-}
-.schedule_listitem_speech .schedule_ttl {
-    padding-top: 0;
-    font-size: 32px;
-    color: #aae0fa;
-}
-.schedule_listitem_speech .schedule_txt {
-    font-size: 18px;
-    line-height: 1.8;
-    margin-top: 14px;
-}
-.schedule_listitem_speech_txt {
-    flex: 1;
-}
-.schedule_img {
-    width: 225px;
-    margin-left: 30px;
-}
-.schedule_img_note {
-    margin-top: 8px;
-    font-size: 14px;
-}
-@media screen and (max-width: 900px) {
-    .interview_schedule {
-        margin-top: 1.85em;
-    }
-    .schedule_ttl_dot::before,
-    .schedule_ttl_dot::after {
-        width: 25%;
-        height: 3px;
-    }
-    .schedule_illust {
-        width: 0.44em;
-    }
-    .schedule_wrap {
-        margin-top: 0.8em;
-        position: relative;
-    }
-    .schedule_list {
-        float: none;
-        width: 100%;
-    }
-    .schedule_listitem {
-        min-height: auto;
-        margin-left: 0.4em;
-        padding-left: 0.45em;
-        padding-bottom: 0.65em;
-    }
-    .schedule_listitem::before {
-        height: 110%;
-    }
-    .schedule_listitem:after {
-        left: -4px;
-        top: 3px;
-        width: 10px;
-        height: 10px;
-    }
-    .schedule_listitem_morning::after {
-        border: 2px solid #fc87b6;
-    }
-    .schedule_listitem_noon::after {
-        border: 2px solid #0dd5f2;
-    }
-    .schedule_listitem_night::after {
-        border: 2px solid #eeea64;
-    }
-    .schedule_listitem:before {
-        width: 2px;
-    }
-    .schedule_listitem.present {
-        padding-bottom: 7.1em;
-    }
-    .schedule_listitem.present:before {
-        width: 3px;
-    }
-    .schedule_time {
-        position: relative;
-        top: auto;
-        right: auto;
-    }
-    .schedule_time {
-        font-size: 0.3em;
-    }
-    .schedule_ttl {
-        font-size: 0.32em;
-        margin-top: 0.45em;
-    }
-    .schedule_txt {
-        font-size: 0.28em;
-        margin-top: 0.8em;
-    }
-    .schedule_listitem_speech {
-        padding-left: 0.4em;
-    }
-    .schedule_listitem_speech::after {
-        top: 10px;
-    }
-    .schedule_listitem_speech .schedule_time {
-        font-size: 0.38em;
-        top: auto;
-    }
-    .schedule_listitem_morning_img,
-    .schedule_listitem_noon_img,
-    .schedule_listitem_night_img {
-        top: 0;
-        left: -3.8em;
-    }
-    .schedule_listitem_morning_img,
-    .schedule_listitem_noon_img,
-    .schedule_listitem_night_img {
-        width: 1.73em;
-    }
-    .schedule_listitem_speech .schedule_listitem_noon_img {
-        width: 1.3656em;
-        left: -2.9em;
-    }
-    .schedule_listitem_moon_img {
-        width: 1.23em;
-        top: 0;
-        left: -3.8em;
-    }
-    .schedule_listitem_speech_inner {
-        margin-top: 0.4em;
-        padding: 0.55em 0.4em 0.6em;
-        border-radius: 15px;
-        display: block;
-    }
-    .schedule_listitem_speech_inner::before {
-        border-width: 0 0.15em 0.27em 0.15em;
-        border-color: transparent transparent #1689cd transparent;
-        top: auto;
-        left: 0.34em;
-        right: auto;
-        bottom: 100%;
-    }
-    .schedule_listitem_speech .schedule_ttl {
-        font-size: 0.36em;
-    }
-    .schedule_listitem_speech .schedule_txt {
-        font-size: 0.28em;
-    }
-    .schedule_img {
-        width: auto;
-        margin-top: 0.5em;
-        margin-left: 0;
-    }
-    .schedule_listitem:nth-last-child(1) .schedule_ttl {
-        margin-top: -1.5em;
-    }
-    .schedule_listitem:nth-last-child(1) .schedule_ttl_mt0 {
-        margin-top: 0;
-    }
-    span + .schedule_listitem_moon_img {
-        top: 0;
-    }
-    .schedule_img_note {
-        margin-top: 0.5em;
-        font-size: 0.26em;
-    }
+
+/* 説明文 */
+.description {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.5;
 }
