@@ -1,10 +1,10 @@
 /* タイムライン全体 */
 .timeline {
   position: relative;
-  padding-left: 0; /* タイムラインの余白 */
-  border-left: 3px solid #00AE95; /* 縦線 */
+  padding-left: -5; /* タイムラインの余白 */
+  border-left: 3px solid #0072BC; /* 縦線 */
   margin-top: 20px;
-  margin-left: 60px;
+  margin-left: 40px;
 }
 
 /* タイムラインの項目 */
