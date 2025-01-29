@@ -32,5 +32,13 @@ function openTab(event, tabId) {
   targetContent.style.display = 'block'; // 表示をブロックにする
 
   // クリックされたタブリンクをアクティブにする
+  if (event) {
   event.currentTarget.classList.add('active');
+  }
 }
+
+// **初期状態で1日目を表示**
+document.addEventListener("DOMContentLoaded", function () {
+  openTab(null, 'day1'); // 1日目を表示
+  document.querySelector('.tab-link').classList.add('active'); // 1日目のタブをアクティブにする
+});
