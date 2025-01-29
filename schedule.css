@@ -63,7 +63,6 @@
   display: flex;
   justify-content: center;
   margin: 0; /* 枠線と一体化するための調整 */
-  border-bottom: 2px solid #0082CA; /* タブヘッダーの下枠線 */
 }
 
 .tab-link {
