@@ -85,7 +85,8 @@
 
 /* ホバー時のスタイル */
 .tab-link:hover {
-  background-color: #d6d6d6;
+  background-color: #0082CA;
+  color: white;
 }
 
 /* 最後のタブの区切り線を非表示 */
