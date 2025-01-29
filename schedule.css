@@ -61,28 +61,44 @@
 /* タブヘッダー */
 .tab-header {
   display: flex;
-  border-bottom: 2px solid #ccc;
-  margin-bottom: 20px;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
 }
 
 .tab-link {
-  flex: 1;
-  padding: 10px;
-  background: #f0f0f0;
-  border: none;
-  cursor: pointer;
-  text-align: center;
+  padding: 10px 20px;
+  font-size: 16px;
   font-weight: bold;
+  color: white;
+  background-color: #0082CA;
+  border: 2px solid #0082CA;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .tab-link.active {
-  background: #0068b6;
-  color: white;
+  background-color: white;
+  color: #0082CA;
 }
 
+/* ホバー時のスタイル */
+.tab-link:hover {
+  background-color: #005a99;
+  border-color: #005a99;
+}
+
+
 /* タブの内容 */
+/* タブの内容を囲む枠線 */
 .tab-content {
-  display: none;
+  border: 2px solid #0082CA;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px;
+  background-color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .tab-content.active {
