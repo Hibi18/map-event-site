@@ -20,7 +20,7 @@
   left: -12.1px; 
   width: 15px; /* 丸の直径 */
   height: 15px; /* 丸の直径 */
-  background-color: #0068b6; /* 丸の色 */
+  background-color: #0082CA; /* 丸の色 */
   border: 3px solid #94d4f2; /* 丸の枠線 */
   border-radius: 50%; /* 丸にする */
 }
@@ -34,7 +34,7 @@
 .time {
   font-size: 16px;
   font-weight: bold;
-  color: #333;
+  color: white;
   margin-bottom: 5px;
 }
 
@@ -48,7 +48,7 @@
 /* 説明文 */
 .description {
   font-size: 14px;
-  color: #666;
+  color: white;
   line-height: 1.5;
 }
 
