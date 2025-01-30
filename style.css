@@ -422,3 +422,15 @@ body {
 .plan a:hover {
   text-decoration: underline;
 }
+
+.filter-dropdown {
+  display: none; /* 初期状態では非表示 */
+  margin-top: 10px;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 200px;
+}
+
