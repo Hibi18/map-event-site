@@ -73,7 +73,6 @@
   color: black;
   background-color: #e0e0e0; /* 非アクティブ時の背景色 */
   border: none;
-  border-right: 1px solid #0082CA; /* タブの区切り線 */
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
   border-radius: 10px 10px 0 0;
