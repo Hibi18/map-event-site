@@ -1,3 +1,23 @@
+/* 旅行プランのタイトルと説明文 */
+.plan-header {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.plan-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #0082CA;
+  margin-bottom: 10px;
+}
+
+.plan-description {
+  font-size: 16px;
+  color: #333;
+  line-height: 1.5;
+}
+
+
 /* タイムライン全体 */
 .timeline {
   position: relative;
