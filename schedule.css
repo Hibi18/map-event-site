@@ -62,7 +62,7 @@
 .tab-header {
   display: flex;
   margin-left: 50px;
-  margin: 0; /* 枠線と一体化するための調整 */
+  margin-bottom: 0;
   border-radius: 10px 10px 0 0;
 }
 
@@ -76,12 +76,14 @@
   border-right: 1px solid #0082CA; /* タブの区切り線 */
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
+  border-radius: 10px 10px 0 0;
 }
 
 .tab-link.active {
   background-color: #0082CA; /* アクティブ時の背景色 */
   color: white;
   border-bottom: none; /* 下枠線を消して一体化 */
+  border-radius: 10px 10px 0 0;
 }
 
 /* ホバー時のスタイル */
