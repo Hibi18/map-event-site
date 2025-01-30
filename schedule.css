@@ -61,8 +61,9 @@
 /* タブヘッダー */
 .tab-header {
   display: flex;
-  justify-content: center;
+  margin-left: 50px;
   margin: 0; /* 枠線と一体化するための調整 */
+  border-radius: 10px 10px 0 0;
 }
 
 .tab-link {
