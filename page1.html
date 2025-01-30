@@ -3,7 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ぼうそうV - 旅行プラン１</title>
+  <meta name="theme-color" content="#0082CA">
+  <title>ぼうそうV - 広島旅行プラン１</title>
+  <meta name="location" content="広島"> <!-- 都道府県タグを追加 -->
+  <meta name="season" content="夏"> <!-- 季節タグを追加 -->
+  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="schedule.css">
 </head>
 <body>
@@ -11,116 +15,77 @@
   <div id="header-container"></div>
 
 <!-- 本文 -->
-  <main class="contact-container">  
-    <!-- schedule -->
-		<div class="interview_schedule">
-			<div class="schedule_ttl_wrap">
-				<img class="schedule_illust" src="/recruit/new-grad/interview_schedule/image/common/schedule_illust.png?v=1" width="48" alt="">
-				<h2 class="interview_ttl schedule_ttl schedule_ttl_dot fw700">一日のスケジュール</h2>
-			</div>
-			<div class="schedule_wrap clearfix">
-				<ul class="schedule_list">
-					<li class="schedule_listitem schedule_listitem_morning">
-						<p class="schedule_time">8:30<img class="schedule_listitem_morning_img" src="/recruit/new-grad/interview_schedule/image/common/schedule_listitem_morning_img.png" width="64" alt=""></p>
-						<div>
-							<h3 class="schedule_ttl">ジム</h3>
-							<p class="schedule_txt fw400">身体を動かすのが好きなので、朝の予定に余裕があるときはフレックスタイム制度を活用してジムに行っています。<br>
-								朝に身体を動かすと目も覚めてすっきり一日過ごせます。</p>
-						</div>
-					</li>
-					<li class="schedule_listitem schedule_listitem_morning">
-						<p class="schedule_time">10:00</p>
-						<div>
-							<h3 class="schedule_ttl">自宅にて始業</h3>
-							<p class="schedule_txt fw400">メールチェック・スケジュール確認。</p>									</div>
-					</li>
-					<li class="schedule_listitem schedule_listitem_morning">
-						<p class="schedule_time">10:30</p>
-						<div>
-							<h3 class="schedule_ttl">担当内ミーティング（オンラインMTG）</h3>
-							<p class="schedule_txt fw400">自身の取り組んでいる案件の進め方やスケジュールについて上司と意識合わせ。</p>
-						</div>
-					</li>
-					<li class="schedule_listitem schedule_listitem_morning schedule_listitem_speech">
-						<p class="schedule_time">11:00</p>
-						<div class="schedule_listitem_speech_inner">
-							<div>
-								<h3 class="schedule_ttl">協業先との打ち合わせ<br class="sp_only">（オンラインMTG）</h3>
-								<p class="schedule_txt fw400">プロジェクトが大きくなると、NTT東日本以外の他企業と協業して提案を進めることも。ここでは教育ソリューションプロジェクトを一緒に進める協業先の他企業と打ち合わせ。こうした打ち合わせの中から最新のトレンドを把握し、自身のスキルアップにも繋げています。</p>
-							</div>
-							<img class="schedule_img" src="/recruit/new-grad/interview_schedule/image/komine_kentaro/schedule_listitem_1.jpg?v=2" alt="">
-						</div>
-					</li>
-					<li class="schedule_listitem schedule_listitem_noon">
-						<p class="schedule_time">12:00<img class="schedule_listitem_noon_img" src="/recruit/new-grad/interview_schedule/image/common/schedule_listitem_noon_img.png" width="62" alt=""></p>
-						<div>
-							<h3 class="schedule_ttl">昼食</h3>
-							<p class="schedule_txt fw400">在宅で昼食。オフィスに出勤しているときは同僚社員とランチを取ることも。</p>
-						</div>
-					</li>
-					<li class="schedule_listitem schedule_listitem_noon">
-						<p class="schedule_time">13:00</p>
-						<div>
-							<h3 class="schedule_ttl">自宅からお客様先へ移動</h3>
-						</div>
-					</li>
-					<li class="schedule_listitem schedule_listitem_noon schedule_listitem_speech">
-						<p class="schedule_time">14:00</p>
-						<div class="schedule_listitem_speech_inner">
-							<div>
-								<h3 class="schedule_ttl">担当自治体様へのご提案</h3>
-								<p class="schedule_txt fw400">教育委員会様へ教育ソリューションの提案。2-3年後の教育現場のビジョンを描きつつ、その実現に向けた課題をお客様と整理していきます。営業担当だけでなくシステムエンジニアなどNTT東日本内のリソースを最大限使うことはもちろん、協業先の他社とも連携することで、教育現場全体を変えていけるような包括的な提案を心がけています。</p>
-							</div>
-							<img class="schedule_img" src="/recruit/new-grad/interview_schedule/image/komine_kentaro/schedule_listitem_2.jpg?v=1" alt="">
-						</div>
-					</li>
-					<li class="schedule_listitem schedule_listitem_noon">
-						<p class="schedule_time">15:00</p>
-						<div>
-							<h3 class="schedule_ttl">お客様先からオフィスに移動</h3>
-						</div>
-					</li>
-					<li class="schedule_listitem schedule_listitem_noon schedule_listitem_speech">
-						<p class="schedule_time">16:00</p>
-						<div class="schedule_listitem_speech_inner">
-							<div class="schedule_listitem_speech_txt">
-								<h3 class="schedule_ttl">若手社員同士のミーティング <br>＠オフィス</h3>
-								<p class="schedule_txt fw400">入社1-3年目社員で定期的に行っている業務相談会。サポーター社員として後輩社員からの仕事の相談を受けつつ、フランクに交流できる機会の1つです。半年に1度は千葉事業部の若手社員の交流を目的としたレクリエーションイベントを行っており、この時間でその計画を練っていくことも。前回のレクリエーションはeスポーツを行いました。</p>
-							</div>
-							<div class="schedule_img">
-								<img src="/recruit/new-grad/interview_schedule/image/komine_kentaro/schedule_listitem_3.png" width="100%" alt="">
-								<p class="schedule_img_note fw400">レクリエーションの様子</p>
-							</div>
-						</div>
-					</li>
-					<li class="schedule_listitem schedule_listitem_noon">
-						<p class="schedule_time">17:00</p>
-						<div>
-							<h3 class="schedule_ttl">提案の振り返り、上司への報告・フィードバック</h3>
-							<p class="schedule_txt fw400">お客様先への提案内容を振り返りつつ、次回の提案に向けた課題の整理やスケジューリングを<br>上司や先輩と相談しながら実施。</p>
-						</div>
-					</li>
-					<li class="schedule_listitem schedule_listitem_night">
-						<p class="schedule_time">18:30<img class="schedule_listitem_night_img" src="/recruit/new-grad/interview_schedule/image/common/schedule_listitem_night_img.png" width="64" alt=""></p>
-						<div>
-							<h3 class="schedule_ttl">メールチェック・終業</h3>
-						</div>
-					</li>
-					<li class="schedule_listitem schedule_listitem_night">
-						<p class="schedule_time"><span>19:00</span><img class="schedule_listitem_moon_img" src="/recruit/new-grad/interview_schedule/image/common/schedule_listitem_moon_img.png" width="43" alt=""></p>
-						<div>
-							<h3 class="schedule_ttl schedule_ttl_mt0">サウナ</h3>
-							<p class="schedule_txt fw400">
-								先輩社員に連れて行っていただいたことをきっかけに、社会人1年目からサウナにハマっています。<br>
-								「ととのう」瞬間は格別です。
-							</p>
-						</div>
-					</li>
-				</ul>
-			</div>
-		</div>
+  <main>
+    <!-- 旅行プランのタイトルと説明文 -->
+    <section class="plan-header">
+      <h1 class="plan-title">広島旅行プラン</h1>
+      <p class="plan-description">
+        広島での楽しい1泊2日の旅行プランをご紹介します。観光名所を巡りながら、美味しい食事やリラックスできるスポットを満喫しましょう！
+      </p>
+    </section>
+    
+    <!-- タブのコンテナ -->
+    <div class="tab-container">
+      <!-- タブのヘッダー -->
+      <div class="tab-header">
+        <button class="tab-link active" onclick="openTab(event, 'day1')">1日目</button>
+        <button class="tab-link" onclick="openTab(event, 'day2')">2日目</button>
+      </div>
+    
+      <!-- タブの内容 -->
+      <div id="day1" class="tab-content contact-container active" style="display: block;">
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <p class="time">8:30</p>
+              <h3 class="title">ジム</h3>
+              <p class="description">身体を動かすのが好きなので、朝の予定に余裕があるときはフレックスタイム制度を活用してジムに行っています。</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <p class="time">10:00</p>
+              <h3 class="title">自宅にて始業</h3>
+              <p class="description">メールチェック・スケジュール確認。</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <p class="time">11:00</p>
+              <h3 class="title">会議（オンラインMTG）</h3>
+              <p class="description">案件の進め方やスケジュールの調整を行います。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="day2" class="tab-content">
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <p class="time">12:00</p>
+              <h3 class="title">お昼ご飯</h3>
+              <p class="description">丸の内でランチ</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <p class="time">15:00</p>
+              <h3 class="title">東京駅</h3>
+              <p class="description">お土産の購入</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>     
   </main>
 
+  <script src="schedule.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
