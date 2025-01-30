@@ -405,3 +405,20 @@ body {
 .filter-button:hover {
   background-color: #CCCCCC; /* ホバー時の色 */
 }
+
+.plan {
+  margin: 20px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.plan a {
+  text-decoration: none;
+  color: #0082CA;
+}
+
+.plan a:hover {
+  text-decoration: underline;
+}
