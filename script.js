@@ -124,3 +124,28 @@ function displayPlans(filteredPlans) {
     planContainer.innerHTML = "<p>該当するプランが見つかりませんでした。</p>";
   }
 }
+
+document.getElementById('location-button').addEventListener('click', function () {
+  toggleDropdown('location-filter');
+});
+
+document.getElementById('season-button').addEventListener('click', function () {
+  toggleDropdown('season-filter');
+});
+
+document.getElementById('theme-button').addEventListener('click', function () {
+  toggleDropdown('theme-filter');
+});
+
+function toggleDropdown(dropdownId) {
+  const dropdown = document.getElementById(dropdownId);
+  // 他のプルダウンを閉じる
+  document.querySelectorAll('.filter-dropdown').forEach(el => {
+    if (el.id !== dropdownId) {
+      el.style.display = 'none';
+    }
+  });
+
+  // 現在のプルダウンを開閉
+  dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+}
