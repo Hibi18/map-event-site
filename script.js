@@ -78,8 +78,8 @@ document.querySelectorAll('.filter-button').forEach(button => {
 // 都道府県で絞り込む関数
 function fetchPlansByLocation(location) {
   const plans = [
-    { name: "沖縄旅行プラン", url: "page1.html", location: "沖縄" },
-    { name: "北海道旅行プラン", url: "page2.html", location: "北海道" },
+    { name: "広島旅行プラン", url: "page1.html", location: "広島" },
+    { name: "栃木旅行プラン", url: "page2.html", location: "栃木" },
     { name: "東京旅行プラン", url: "page3.html", location: "東京" }
   ];
 
@@ -93,9 +93,9 @@ function fetchPlansByLocation(location) {
 // 季節で絞り込む関数
 function fetchPlansBySeason(season) {
   const plans = [
-    { name: "沖縄旅行プラン", url: "page1.html", season: "8月" },
-    { name: "北海道旅行プラン", url: "page2.html", season: "12月" },
-    { name: "東京旅行プラン", url: "page3.html", season: "7月" }
+    { name: "広島旅行プラン", url: "page1.html", season: "夏" },
+    { name: "栃木旅行プラン", url: "page2.html", season: "秋" },
+    { name: "東京旅行プラン", url: "page3.html", season: "冬" }
   ];
 
   const filteredPlans = plans.filter(plan => plan.season === season);
