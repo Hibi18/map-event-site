@@ -63,15 +63,14 @@
           <path d="M9 4v13" />
           <path d="M15 7v13" />
         </svg>
-        都道府県から選ぶ
+        <span class="selected-option">都道府県から選ぶ</span>
       </button>
-      <select id="location-filter" class="filter-dropdown">
-        <option value="">都道府県を選択</option>
-        <option value="東京">東京</option>
-        <option value="広島">広島</option>
-        <option value="栃木">栃木</option>
-        <option value="京都">京都</option>
-      </select>
+      <ul id="location-filter" class="filter-dropdown">
+        <li data-value="東京">東京</li>
+        <li data-value="広島">広島</li>
+        <li data-value="栃木">栃木</li>
+        <li data-value="京都">京都</li>
+      </ul>
 
       <!-- 季節選択ボタン -->
       <button class="filter-button" id="season-button">
@@ -84,16 +83,15 @@
           <path d="M11 15h1" />
           <path d="M12 15v3" />
         </svg>
-        季節から選ぶ
+        <span class="selected-option">季節から選ぶ</span>
       </button>
-      <select id="season-filter" class="filter-dropdown">
-      <option value="">季節を選択</option>
-        <option value="1月">1月</option>
-        <option value="2月">2月</option>
-        <option value="3月">3月</option>
-        <option value="8月">8月</option>
-        <option value="12月">12月</option>
-      </select>
+      <ul id="season-filter" class="filter-dropdown">
+        <li data-value="1月">1月</li>
+        <li data-value="2月">2月</li>
+        <li data-value="3月">3月</li>
+        <li data-value="8月">8月</li>
+        <li data-value="12月">12月</li>
+      </ul>
 
       <!-- テーマ選択ボタン -->
       <button class="filter-button" id="theme-button">
@@ -102,15 +100,23 @@
           <path d="M7.5 7.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
           <path d="M3 6v5.172a2 2 0 0 0 .586 1.414l7.71 7.71a2.41 2.41 0 0 0 3.408 0l5.592 -5.592a2.41 2.41 0 0 0 0 -3.408l-7.71 -7.71a2 2 0 0 0 -1.414 -.586h-5.172a3 3 0 0 0 -3 3z" />
         </svg>
-        テーマから選ぶ
+        <span class="selected-option">テーマから選ぶ</span>
       </button>
-      <select id="theme-filter" class="filter-dropdown">
-        <option value="">テーマを選択</option>
-        <option value="自然">自然</option>
-        <option value="温泉">温泉</option>
-        <option value="グルメ">グルメ</option>
-        <option value="歴史">歴史</option>
-      </select> 
+      <ul id="theme-filter" class="filter-dropdown">
+        <li data-value="自然">自然</li>
+        <li data-value="温泉">温泉</li>
+        <li data-value="グルメ">グルメ</li>
+        <li data-value="歴史">歴史</li>
+      </ul> 
+
+      <!-- 検索ボタン -->
+      <button id="search-button" class="search-button">検索</button>
+    </section>
+
+    <!-- 検索結果表示 -->
+    <section id="search-results" class="hidden">
+      <button id="back-button" class="back-button">戻る</button>
+      <div id="plan-list"></div>
     </section>
 
     <section class="plan-description">
