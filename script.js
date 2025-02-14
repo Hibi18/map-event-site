@@ -148,8 +148,3 @@ function displayPlans(filteredPlans) {
   }
 }
 
-// 初期状態ですべてのプランを表示
-
-document.addEventListener('DOMContentLoaded', function () {
-  displayPlans(plans);
-});
