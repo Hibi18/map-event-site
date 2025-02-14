@@ -78,10 +78,28 @@ function toggleDropdown(filterId, button) {
   // 選択肢クリック時にボタンのテキストを更新
   dropdown.querySelectorAll('li').forEach(item => {
     item.addEventListener('click', function () {
-      button.querySelector('.selected-option').textContent = item.textContent;
+      const selectedValue = item.getAttribute('data-value');
+      if (selectedValue === "reset") {
+        resetFilter(button); // 選択を解除
+      } else {
+        button.querySelector('.selected-option').textContent = item.textContent;
+      }
       dropdown.style.display = 'none';
     });
   });
+}
+
+// =============================
+// 選択を解除する関数
+// =============================
+function resetFilter(button) {
+  if (button.id === "location-button") {
+    button.querySelector('.selected-option').textContent = "都道府県から選ぶ";
+  } else if (button.id === "season-button") {
+    button.querySelector('.selected-option').textContent = "季節から選ぶ";
+  } else if (button.id === "theme-button") {
+    button.querySelector('.selected-option').textContent = "テーマから選ぶ";
+  }
 }
 
 // =============================
@@ -100,9 +118,9 @@ document.getElementById('search-button').addEventListener('click', function () {
 // 旅行プランデータ
 // =============================
 const plans = [
-  { name: "東京旅行", url: "page1.html", location: "東京", season: "8月", theme: "歴史" },
-  { name: "広島旅行", url: "page2.html", location: "広島", season: "12月", theme: "グルメ" },
-  { name: "栃木旅行", url: "page3.html", location: "栃木", season: "秋", theme: "温泉" },
+  { name: "広島旅行", url: "page1.html", location: "広島", season: "夏", theme: "歴史" },
+  { name: "栃木旅行", url: "page2.html", location: "栃木", season: "秋", theme: "自然" },
+  { name: "東京旅行", url: "page3.html", location: "東京", season: "冬", theme: "グルメ" },
   { name: "京都旅行", url: "page4.html", location: "京都", season: "春", theme: "自然" }
 ];
 
@@ -144,9 +162,6 @@ function displayPlans(filteredPlans) {
   } else {
     planList.innerHTML = "<p>該当するプランが見つかりませんでした。</p>";
   }
-
-  // フィルター画面を隠す
-  document.querySelector('.plan-filters').style.display = 'none';
 }
 
 // =============================
