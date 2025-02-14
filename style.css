@@ -424,13 +424,15 @@ body {
 }
 
 .filter-dropdown {
-  display: none; /* 初期状態では非表示 */
-  margin-top: 10px;
-  padding: 8px;
+  display: none;
+  position: absolute; /* 絶対位置指定でボタンの下に表示 */
+  width: auto;
+  margin-top: 5px; /* ボタンとの間に少し余白を作る */
+  padding: 5px;
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  width: 100%;
-  max-width: 200px;
+  background-color: white;
+  z-index: 10; /* ボタンより前面に表示 */
 }
 
