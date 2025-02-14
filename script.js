@@ -53,83 +53,81 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+// =============================
 // フィルター選択ボタンのクリックイベント（プルダウンを表示する）
-
-document.getElementById('location-button').addEventListener('click', function () {
-  toggleDropdown('location-filter');
-});
-
-document.getElementById('season-button').addEventListener('click', function () {
-  toggleDropdown('season-filter');
-});
-
-document.getElementById('theme-button').addEventListener('click', function () {
-  toggleDropdown('theme-filter');
+// =============================
+document.querySelectorAll('.filter-button').forEach(button => {
+  button.addEventListener('click', function () {
+    const filterId = this.nextElementSibling.id;
+    toggleDropdown(filterId, this);
+  });
 });
 
 // 指定されたプルダウンを開閉する関数
-function toggleDropdown(dropdownId) {
-  const dropdown = document.getElementById(dropdownId);
-  
-  // 他のプルダウンを閉じる
+function toggleDropdown(filterId, button) {
+  const dropdown = document.getElementById(filterId);
+
+  // 他のドロップダウンを閉じる
   document.querySelectorAll('.filter-dropdown').forEach(el => {
-    if (el.id !== dropdownId) {
-      el.style.display = 'none';
-    }
+    if (el !== dropdown) el.style.display = 'none';
   });
 
-  // 現在のプルダウンを開閉
+  // 開閉処理
   dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+
+  // 選択肢クリック時にボタンのテキストを更新
+  dropdown.querySelectorAll('li').forEach(item => {
+    item.addEventListener('click', function () {
+      button.querySelector('.selected-option').textContent = item.textContent;
+      dropdown.style.display = 'none';
+    });
+  });
 }
 
-// プルダウンで選択されたときにフィルタリングを実行
+// =============================
+// 検索ボタンの処理
+// =============================
+document.getElementById('search-button').addEventListener('click', function () {
+  const selectedLocation = document.getElementById('location-button').querySelector('.selected-option').textContent;
+  const selectedSeason = document.getElementById('season-button').querySelector('.selected-option').textContent;
+  const selectedTheme = document.getElementById('theme-button').querySelector('.selected-option').textContent;
 
-// 都道府県の選択
-document.getElementById('location-filter').addEventListener('change', function() {
-  const selectedLocation = this.value; // 選択された都道府県
-  if (selectedLocation) {
-    fetchPlansByLocation(selectedLocation); // 絞り込み関数を実行
-  }
-  this.style.display = 'none'; // 選択後にプルダウンを閉じる
+  const filters = { location: selectedLocation, season: selectedSeason, theme: selectedTheme };
+  fetchPlans(filters);
 });
 
-// 季節の選択
-document.getElementById('season-filter').addEventListener('change', function() {
-  const selectedSeason = this.value; // 選択された季節
-  if (selectedSeason) {
-    fetchPlansBySeason(selectedSeason); // 絞り込み関数を実行
-  }
-  this.style.display = 'none'; // 選択後にプルダウンを閉じる
-});
-
+// =============================
 // 旅行プランデータ
-
+// =============================
 const plans = [
-  { name: "広島旅行プラン", url: "page1.html", location: "広島", season: "夏" },
-  { name: "栃木旅行プラン", url: "page2.html", location: "栃木", season: "秋" },
-  { name: "東京旅行プラン", url: "page3.html", location: "東京", season: "冬" },
-  { name: "京都旅行プラン", url: "page4.html", location: "春", season: "京都" }
+  { name: "東京旅行", url: "page1.html", location: "東京", season: "8月", theme: "歴史" },
+  { name: "広島旅行", url: "page2.html", location: "広島", season: "12月", theme: "グルメ" },
+  { name: "栃木旅行", url: "page3.html", location: "栃木", season: "秋", theme: "温泉" },
+  { name: "京都旅行", url: "page4.html", location: "京都", season: "春", theme: "自然" }
 ];
 
-// フィルタリング関数
+// =============================
+// フィルター検索処理
+// =============================
+function fetchPlans(filters) {
+  const filteredPlans = plans.filter(plan =>
+    (filters.location === "都道府県から選ぶ" || plan.location === filters.location) &&
+    (filters.season === "季節から選ぶ" || plan.season === filters.season) &&
+    (filters.theme === "テーマから選ぶ" || plan.theme === filters.theme)
+  );
 
-// 都道府県で絞り込む
-function fetchPlansByLocation(location) {
-  const filteredPlans = plans.filter(plan => plan.location === location);
   displayPlans(filteredPlans);
 }
 
-// 季節で絞り込む
-function fetchPlansBySeason(season) {
-  const filteredPlans = plans.filter(plan => plan.season === season);
-  displayPlans(filteredPlans);
-}
-
-// 絞り込まれたプランを表示する
-
+// =============================
+// 絞り込まれたプランを表示
+// =============================
 function displayPlans(filteredPlans) {
-  const planContainer = document.querySelector('.plan-container');
-  planContainer.innerHTML = ""; // 既存のコンテンツをクリア
+  const searchResults = document.getElementById('search-results');
+  const planList = document.getElementById('plan-list');
+
+  planList.innerHTML = ""; // 既存のプランをクリア
+  searchResults.classList.remove('hidden'); // 検索結果を表示
 
   if (filteredPlans.length > 0) {
     filteredPlans.forEach(plan => {
@@ -138,13 +136,24 @@ function displayPlans(filteredPlans) {
       planElement.innerHTML = `
         <a href="${plan.url}">
           <h2>${plan.name}</h2>
-          <p>都道府県: ${plan.location || ''} / 季節: ${plan.season || ''}</p>
+          <p>都道府県: ${plan.location || ''} / 季節: ${plan.season || ''} / テーマ: ${plan.theme || ''}</p>
         </a>
       `;
-      planContainer.appendChild(planElement);
+      planList.appendChild(planElement);
     });
   } else {
-    planContainer.innerHTML = "<p>該当するプランが見つかりませんでした。</p>";
+    planList.innerHTML = "<p>該当するプランが見つかりませんでした。</p>";
   }
+
+  // フィルター画面を隠す
+  document.querySelector('.plan-filters').style.display = 'none';
 }
+
+// =============================
+// 戻るボタンの処理
+// =============================
+document.getElementById('back-button').addEventListener('click', function () {
+  document.getElementById('search-results').classList.add('hidden'); // 検索結果を非表示
+  document.querySelector('.plan-filters').style.display = 'block'; // フィルター画面を再表示
+});
 
