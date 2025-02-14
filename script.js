@@ -53,60 +53,83 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// フィルター選択ボタンのクリックイベント
-document.querySelectorAll('.filter-button').forEach(button => {
-  button.addEventListener('click', event => {
-    const filterType = event.currentTarget.textContent.trim(); // ボタンのテキストを取得
+// フィルター選択ボタンのクリックイベント（プルダウンを表示する）
 
-    if (filterType === "都道府県から選ぶ") {
-      // 都道府県を指定するダイアログ（例: プロンプトで入力を受け付ける）
-      const location = prompt("都道府県を入力してください (例: 東京, 北海道):");
-
-      if (location) {
-        fetchPlansByLocation(location); // 都道府県で絞り込む
-      }
-    } else if (filterType === "季節から選ぶ") {
-      const season = prompt("季節を入力してください (例: 8月, 12月):");
-
-      if (season) {
-        fetchPlansBySeason(season); // 季節で絞り込む
-      }
-    }
-  });
+document.getElementById('location-button').addEventListener('click', function () {
+  toggleDropdown('location-filter');
 });
 
-// 都道府県で絞り込む関数
+document.getElementById('season-button').addEventListener('click', function () {
+  toggleDropdown('season-filter');
+});
+
+document.getElementById('theme-button').addEventListener('click', function () {
+  toggleDropdown('theme-filter');
+});
+
+// 指定されたプルダウンを開閉する関数
+function toggleDropdown(dropdownId) {
+  const dropdown = document.getElementById(dropdownId);
+  
+  // 他のプルダウンを閉じる
+  document.querySelectorAll('.filter-dropdown').forEach(el => {
+    if (el.id !== dropdownId) {
+      el.style.display = 'none';
+    }
+  });
+
+  // 現在のプルダウンを開閉
+  dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+}
+
+// プルダウンで選択されたときにフィルタリングを実行
+
+// 都道府県の選択
+document.getElementById('location-filter').addEventListener('change', function() {
+  const selectedLocation = this.value; // 選択された都道府県
+  if (selectedLocation) {
+    fetchPlansByLocation(selectedLocation); // 絞り込み関数を実行
+  }
+  this.style.display = 'none'; // 選択後にプルダウンを閉じる
+});
+
+// 季節の選択
+document.getElementById('season-filter').addEventListener('change', function() {
+  const selectedSeason = this.value; // 選択された季節
+  if (selectedSeason) {
+    fetchPlansBySeason(selectedSeason); // 絞り込み関数を実行
+  }
+  this.style.display = 'none'; // 選択後にプルダウンを閉じる
+});
+
+// 旅行プランデータ
+
+const plans = [
+  { name: "広島旅行プラン", url: "page1.html", location: "広島", season: "夏" },
+  { name: "栃木旅行プラン", url: "page2.html", location: "栃木", season: "秋" },
+  { name: "東京旅行プラン", url: "page3.html", location: "東京", season: "冬" },
+  { name: "京都旅行プラン", url: "page4.html", location: "春", season: "京都" }
+];
+
+// フィルタリング関数
+
+// 都道府県で絞り込む
 function fetchPlansByLocation(location) {
-  const plans = [
-    { name: "広島旅行プラン", url: "page1.html", location: "広島" },
-    { name: "栃木旅行プラン", url: "page2.html", location: "栃木" },
-    { name: "東京旅行プラン", url: "page3.html", location: "東京" }
-  ];
-
-  // 一致するプランをフィルタリング
   const filteredPlans = plans.filter(plan => plan.location === location);
-
-  // 一致するプランを表示
   displayPlans(filteredPlans);
 }
 
-// 季節で絞り込む関数
+// 季節で絞り込む
 function fetchPlansBySeason(season) {
-  const plans = [
-    { name: "広島旅行プラン", url: "page1.html", season: "夏" },
-    { name: "栃木旅行プラン", url: "page2.html", season: "秋" },
-    { name: "東京旅行プラン", url: "page3.html", season: "冬" }
-  ];
-
   const filteredPlans = plans.filter(plan => plan.season === season);
-
   displayPlans(filteredPlans);
 }
 
-// フィルタリング結果を表示する関数
+// 絞り込まれたプランを表示する
+
 function displayPlans(filteredPlans) {
   const planContainer = document.querySelector('.plan-container');
-  planContainer.innerHTML = ""; // 既存コンテンツをクリア
+  planContainer.innerHTML = ""; // 既存のコンテンツをクリア
 
   if (filteredPlans.length > 0) {
     filteredPlans.forEach(plan => {
@@ -125,27 +148,8 @@ function displayPlans(filteredPlans) {
   }
 }
 
-document.getElementById('location-button').addEventListener('click', function () {
-  toggleDropdown('location-filter');
+// 初期状態ですべてのプランを表示
+
+document.addEventListener('DOMContentLoaded', function () {
+  displayPlans(plans);
 });
-
-document.getElementById('season-button').addEventListener('click', function () {
-  toggleDropdown('season-filter');
-});
-
-document.getElementById('theme-button').addEventListener('click', function () {
-  toggleDropdown('theme-filter');
-});
-
-function toggleDropdown(dropdownId) {
-  const dropdown = document.getElementById(dropdownId);
-  // 他のプルダウンを閉じる
-  document.querySelectorAll('.filter-dropdown').forEach(el => {
-    if (el.id !== dropdownId) {
-      el.style.display = 'none';
-    }
-  });
-
-  // 現在のプルダウンを開閉
-  dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-}
