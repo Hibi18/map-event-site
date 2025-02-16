@@ -428,12 +428,17 @@ body {
 
 .selectMultiple {
   width: 80%; /* ボタンの横幅 */
+  max-width: 400px; /* ボタンの最大幅 */
+  margin-bottom: 10px; /* ボタン同士の間隔 */
+  text-align: center; /* 文字を中央揃え */
   position: relative;
   background: #FFFFFF;
-  padding: 10px;
+  padding: 15px; /* ボタンの上下左右の余白 */
   border-radius: 8px;
   cursor: pointer;
   border: 2px solid #0082CA;
+  display: flex;
+  justify-content: center;
 }
 
 .filter-button-icon {
