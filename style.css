@@ -374,27 +374,52 @@ body {
 /* 検索ボタン */
 .plan-filters {
   display: flex;
-  flex-direction: column; /* ボタンを縦に並べる */
-  align-items: center; /* 中央揃え */
-  margin-top: 20px; /* 上部に余白 */
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.selectMultiple {
+  position: relative;
+  width: 220px;
+  background: #ffffff;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 2px solid #0082CA;
+}
+
+.selectMultiple div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.selected-option {
+  color: #333;
+}
+
+.arrow {
+  width: 10px;
+  height: 10px;
+  border-left: 2px solid #0082CA;
+  border-bottom: 2px solid #0082CA;
+  transform: rotate(-45deg);
+  transition: transform 0.3s ease;
+}
+
+.selectMultiple.open .arrow {
+  transform: rotate(135deg);
 }
 
 .filter-button {
-  width: 80%; /* ボタンの横幅 */
-  max-width: 400px; /* ボタンの最大幅 */
-  padding: 15px; /* ボタンの上下左右の余白 */
-  margin-bottom: 10px; /* ボタン同士の間隔 */
-  font-size: 1.2rem; /* ボタン内の文字サイズ */
-  background-color: #FFFFFF; /* ボタンの背景色 */
-  color: #000000; /* ボタンの文字色 */
-  border: 1px solid #000000; /* 黒の枠線 */
-  border-radius: 8px; /* ボタンの角を丸める */
-  cursor: pointer; /* カーソルをポインタに変更 */
-  text-align: center; /* 文字を中央揃え */
-  display: flex; 
-  justify-content: flex-start; /* これを変更 */
-  align-items: center; 
-  gap: 10px; 
+  background: #0082CA;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  border: none;
 }
 
 .filter-button-icon {
@@ -424,15 +449,30 @@ body {
 }
 
 .filter-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid #0082CA;
   display: none;
-  position: absolute; /* 絶対位置指定でボタンの下に表示 */
-  width: auto;
-  margin-top: 5px; /* ボタンとの間に少し余白を作る */
-  padding: 5px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: white;
-  z-index: 10; /* ボタンより前面に表示 */
+  z-index: 10;
+}
+
+.filter-dropdown li {
+  padding: 10px;
+  cursor: pointer;
+  list-style: none;
+  transition: background 0.3s ease;
+}
+
+.filter-dropdown li:hover {
+  background: #0082CA;
+  color: white;
+}
+
+.hidden {
+  display: none;
 }
 
