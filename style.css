@@ -429,12 +429,11 @@ body {
 .selectMultiple {
   width: 80%; /* ボタンの横幅 */
   position: relative;
-  width: 220px;
   background: #0082CA;
   padding: 10px;
   border-radius: 8px;
   cursor: pointer;
-  border: 2px solid #0082CA;
+  border: 2px solid #000000;
 }
 
 .filter-button-icon {
