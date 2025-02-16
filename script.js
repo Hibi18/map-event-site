@@ -56,59 +56,45 @@ document.addEventListener('DOMContentLoaded', () => {
 // =============================
 // フィルター選択ボタンのクリックイベント（プルダウンを表示する）
 // =============================
-document.querySelectorAll('.filter-button').forEach(button => {
-  button.addEventListener('click', function () {
-    const filterId = this.nextElementSibling.id;
-    toggleDropdown(filterId, this);
+document.querySelectorAll('.selectMultiple').forEach(select => {
+  select.addEventListener('click', function (event) {
+    event.stopPropagation();
+    toggleDropdown(this);
   });
 });
 
-// 指定されたプルダウンを開閉する関数
-function toggleDropdown(filterId, button) {
-  const dropdown = document.getElementById(filterId);
-
-  // 他のドロップダウンを閉じる
-  document.querySelectorAll('.filter-dropdown').forEach(el => {
-    if (el !== dropdown) el.style.display = 'none';
+// プルダウン開閉処理
+function toggleDropdown(select) {
+  document.querySelectorAll('.selectMultiple').forEach(el => {
+    if (el !== select) el.classList.remove('open');
   });
-
-  // 開閉処理
-  dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-
-  // 選択肢クリック時にボタンのテキストを更新
-  dropdown.querySelectorAll('li').forEach(item => {
-    item.addEventListener('click', function () {
-      const selectedValue = item.getAttribute('data-value');
-      if (selectedValue === "reset") {
-        resetFilter(button); // 選択を解除
-      } else {
-        button.querySelector('.selected-option').textContent = item.textContent;
-      }
-      dropdown.style.display = 'none';
-    });
-  });
+  select.classList.toggle('open');
 }
 
-// =============================
-// 選択を解除する関数
-// =============================
-function resetFilter(button) {
-  if (button.id === "location-button") {
-    button.querySelector('.selected-option').textContent = "都道府県から選ぶ";
-  } else if (button.id === "season-button") {
-    button.querySelector('.selected-option').textContent = "季節から選ぶ";
-  } else if (button.id === "theme-button") {
-    button.querySelector('.selected-option').textContent = "テーマから選ぶ";
-  }
-}
+// 選択した値をボタンに反映
+document.querySelectorAll('.filter-dropdown li').forEach(item => {
+  item.addEventListener('click', function (event) {
+    event.stopPropagation();
+    const selectBox = this.closest('.selectMultiple');
+    const selectedOption = selectBox.querySelector('.selected-option');
+    
+    if (this.dataset.value === "reset") {
+      selectedOption.textContent = selectBox.id === "location-select" ? "都道府県から選ぶ" :
+                                   selectBox.id === "season-select" ? "季節から選ぶ" : 
+                                   "テーマから選ぶ";
+    } else {
+      selectedOption.textContent = this.textContent;
+    }
 
-// =============================
-// 検索ボタンの処理
-// =============================
+    selectBox.classList.remove('open');
+  });
+});
+
+// 検索処理
 document.getElementById('search-button').addEventListener('click', function () {
-  const selectedLocation = document.getElementById('location-button').querySelector('.selected-option').textContent;
-  const selectedSeason = document.getElementById('season-button').querySelector('.selected-option').textContent;
-  const selectedTheme = document.getElementById('theme-button').querySelector('.selected-option').textContent;
+  const selectedLocation = document.getElementById('location-select').querySelector('.selected-option').textContent;
+  const selectedSeason = document.getElementById('season-select').querySelector('.selected-option').textContent;
+  const selectedTheme = document.getElementById('theme-select').querySelector('.selected-option').textContent;
 
   const filters = { location: selectedLocation, season: selectedSeason, theme: selectedTheme };
   fetchPlans(filters);
@@ -124,9 +110,7 @@ const plans = [
   { name: "京都旅行", url: "page4.html", location: "京都", season: "春", theme: "自然" }
 ];
 
-// =============================
-// フィルター検索処理
-// =============================
+// 絞り込んだプランを表示
 function fetchPlans(filters) {
   const filteredPlans = plans.filter(plan =>
     (filters.location === "都道府県から選ぶ" || plan.location === filters.location) &&
@@ -137,31 +121,17 @@ function fetchPlans(filters) {
   displayPlans(filteredPlans);
 }
 
-// =============================
-// 絞り込まれたプランを表示
-// =============================
+// プラン表示
 function displayPlans(filteredPlans) {
-  const searchResults = document.getElementById('search-results');
   const planList = document.getElementById('plan-list');
+  planList.innerHTML = "";
 
-  planList.innerHTML = ""; // 既存のプランをクリア
-  searchResults.classList.remove('hidden'); // 検索結果を表示
+  filteredPlans.forEach(plan => {
+    const planElement = document.createElement('div');
+    planElement.innerHTML = `<a href="${plan.url}"><h2>${plan.name}</h2></a>`;
+    planList.appendChild(planElement);
+  });
 
-  if (filteredPlans.length > 0) {
-    filteredPlans.forEach(plan => {
-      const planElement = document.createElement('div');
-      planElement.className = 'plan';
-      planElement.innerHTML = `
-        <a href="${plan.url}">
-          <h2>${plan.name}</h2>
-          <p>都道府県: ${plan.location || ''} / 季節: ${plan.season || ''} / テーマ: ${plan.theme || ''}</p>
-        </a>
-      `;
-      planList.appendChild(planElement);
-    });
-  } else {
-    planList.innerHTML = "<p>該当するプランが見つかりませんでした。</p>";
-  }
+  document.getElementById('search-results').classList.remove('hidden');
 }
-
 
