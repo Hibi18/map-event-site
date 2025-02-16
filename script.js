@@ -164,11 +164,4 @@ function displayPlans(filteredPlans) {
   }
 }
 
-// =============================
-// 戻るボタンの処理
-// =============================
-document.getElementById('back-button').addEventListener('click', function () {
-  document.getElementById('search-results').classList.add('hidden'); // 検索結果を非表示
-  document.querySelector('.plan-filters').style.display = 'block'; // フィルター画面を再表示
-});
 
