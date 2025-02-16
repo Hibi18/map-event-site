@@ -426,6 +426,17 @@ body {
   justify-content: center;
 }
 
+.selectMultiple {
+  width: 80%; /* ボタンの横幅 */
+  position: relative;
+  width: 220px;
+  background: #ffffff;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 2px solid #0082CA;
+}
+
 .filter-button-icon {
   width: 24px; /* アイコンの幅 */
   height: 24px; /* アイコンの高さ */
@@ -478,14 +489,4 @@ body {
 
 .hidden {
   display: none;
-}
-
-.selectMultiple {
-  position: relative;
-  width: 220px;
-  background: #ffffff;
-  padding: 10px;
-  border-radius: 8px;
-  cursor: pointer;
-  border: 2px solid #0082CA;
 }
