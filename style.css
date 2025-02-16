@@ -417,12 +417,17 @@ body {
 }
 
 .filter-button {
-  background: #0082CA;
-  color: white;
-  padding: 10px;
+  width: 80%; /* ボタンの横幅 */
+  max-width: 400px; /* ボタンの最大幅 */
+  background-color: #FFFFFF; /* ボタンの背景色 */
+  color: #000000; /* ボタンの文字色 */
+  padding: 15px; /* ボタンの上下左右の余白 */
+  margin-bottom: 10px; /* ボタン同士の間隔 */
   border-radius: 8px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 1.2rem; /* ボタン内の文字サイズ */
+  text-align: center; /* 文字を中央揃え */
+  align-items: center;
   border: none;
 }
 
