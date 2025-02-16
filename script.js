@@ -126,11 +126,15 @@ function displayPlans(filteredPlans) {
   const planList = document.getElementById('plan-list');
   planList.innerHTML = "";
 
-  filteredPlans.forEach(plan => {
-    const planElement = document.createElement('div');
-    planElement.innerHTML = `<a href="${plan.url}"><h2>${plan.name}</h2></a>`;
-    planList.appendChild(planElement);
-  });
+  if (filteredPlans.length > 0) {
+    filteredPlans.forEach(plan => {
+      const planElement = document.createElement('div');
+      planElement.innerHTML = `<a href="${plan.url}"><h2>${plan.name}</h2></a>`;
+      planList.appendChild(planElement);
+    });
+  } else {
+    planList.innerHTML = `<p style="color: red; text-align: center;">該当するプランが見つかりませんでした。</p>`;
+  }
 
   document.getElementById('search-results').classList.remove('hidden');
 }
