@@ -480,3 +480,12 @@ body {
   display: none;
 }
 
+.selectMultiple {
+  position: relative;
+  width: 220px;
+  background: #ffffff;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 2px solid #0082CA;
+}
