@@ -377,17 +377,10 @@ body {
   flex-wrap: wrap;
   gap: 10px;
   margin-bottom: 20px;
+  justify-content: center;
 }
 
-.selectMultiple {
-  position: relative;
-  width: 220px;
-  background: #ffffff;
-  padding: 10px;
-  border-radius: 8px;
-  cursor: pointer;
-  border: 2px solid #0082CA;
-}
+
 
 .selectMultiple div {
   display: flex;
