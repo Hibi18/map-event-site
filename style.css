@@ -427,8 +427,10 @@ body {
   cursor: pointer;
   font-size: 1.2rem; /* ボタン内の文字サイズ */
   text-align: center; /* 文字を中央揃え */
+  display: flex;
   align-items: center;
   border: none;
+  justify-content: center;
 }
 
 .filter-button-icon {
