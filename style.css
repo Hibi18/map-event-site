@@ -412,6 +412,10 @@ body {
   transform: rotate(135deg);
 }
 
+.selectMultiple.open .filter-dropdown {
+  display: block !important; /* プルダウンを開く */
+}
+
 .filter-button {
   background: #0082CA;
   color: white;
