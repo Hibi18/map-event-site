@@ -389,7 +389,8 @@ body {
 }
 
 .selected-option {
-  color: #333;
+  color: #0082CA;
+  padding-left: 20px;
 }
 
 .arrow {
