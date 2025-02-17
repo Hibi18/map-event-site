@@ -444,8 +444,7 @@ body {
   cursor: pointer;
   border: 2px solid #0082CA;
   display: flex;
-  justify-content: flex-start;
-  padding-left: 30px;
+  justify-content: center;
 }
 
 .filter-button-icon {
