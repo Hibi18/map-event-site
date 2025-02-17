@@ -389,8 +389,7 @@ body {
 }
 
 .selected-option {
-  color: #0082CA;
-  padding-left: 20px;
+  color: #333;
 }
 
 .arrow {
@@ -428,7 +427,9 @@ body {
   display: flex;
   align-items: center;
   border: none;
-  justify-content: center;
+  justify-content: flex-start;
+  padding-left: 30px;
+  position: relative;
 }
 
 .selectMultiple {
