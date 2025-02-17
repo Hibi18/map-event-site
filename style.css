@@ -400,8 +400,8 @@ body {
   transform: rotate(-45deg);
   transition: transform 0.3s ease;
   position: absolute; /* 位置指定 */
-  right: 15px; /* 右端から15px */
-  top: 50%; /* 上下中央揃え */
+  right: 20px; /* 右端から15px */
+  top: 30%; /* 上下中央揃え */
   transform-origin: center;
 }
 
