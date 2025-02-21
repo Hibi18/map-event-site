@@ -417,7 +417,7 @@ body {
 
 /* ボタンのデザイン */
 .filter-button {
-  width: 90%; /* ボタンの横幅 */
+  width: 80%; /* ボタンの横幅 */
   max-width: 400px; /* ボタンの最大幅 */
   background-color: #FFFFFF; /* ボタンの背景色 */
   color: #000000; /* ボタンの文字色 */
@@ -512,7 +512,7 @@ body {
 
 /* 検索ボタン */
 .search-button {
-  width: 100%; /* ボタンの横幅 */
+  width: 90%; /* ボタンの横幅 */
   max-width: 400px; /* ボタンの最大幅 */
   background-color: #0082CA; /* 背景色（青） */
   color: #FFFFFF; /* 文字色（白） */
