@@ -386,7 +386,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  width: 100%; /* gapを削除 */
+  gap: 15px;
 }
 
 .selected-option {
