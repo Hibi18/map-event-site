@@ -415,6 +415,7 @@ body {
   display: block !important; /* プルダウンを開く */
 }
 
+/* ボタンのデザイン */
 .filter-button {
   width: 80%; /* ボタンの横幅 */
   max-width: 400px; /* ボタンの最大幅 */
@@ -425,12 +426,11 @@ body {
   border-radius: 8px;
   cursor: pointer;
   font-size: 1.2rem; /* ボタン内の文字サイズ */
-  text-align: left; /* 文字を中央揃え */
+  text-align: left;
   display: flex;
-  align-items: center;
+  align-items: center; /* アイコンとテキストを中央揃え */
   border: none;
-  justify-content: flex-start;
-  padding-left: 30px;
+  justify-content: flex-start; /* 左詰め */
   position: relative;
 }
 
@@ -440,7 +440,6 @@ body {
   max-width: 400px; /* ボタンの最大幅 */
   margin-bottom: 10px; /* ボタン同士の間隔 */
   position: relative;
-  text-align: left; /* 文字を中央揃え */
   background: #FFFFFF;
   padding: 15px; /* ボタンの上下左右の余白 */
   border-radius: 8px;
@@ -449,6 +448,7 @@ body {
   display: flex;
   align-items: center;  /* アイコンとテキストの位置を揃える */
   justify-content: flex-start; /* 左詰め */
+  gap: 15px; /* アイコンとテキストの間隔を統一 */
 }
 
 .filter-button-icon {
