@@ -385,8 +385,7 @@ body {
 .selectMultiple div {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  gap: 15px;
+  justify-content: space-between;
 }
 
 .selected-option {
