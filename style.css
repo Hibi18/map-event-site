@@ -385,8 +385,7 @@ body {
 .selectMultiple div {
   display: flex;
   align-items: center;
-  width: 100%;
-  position: relative;
+  justify-content: space-between;
 }
 
 .selected-option {
@@ -441,13 +440,14 @@ body {
   max-width: 400px; /* ボタンの最大幅 */
   margin-bottom: 10px; /* ボタン同士の間隔 */
   position: relative;
+  text-align: left; /* 文字を中央揃え */
   background: #FFFFFF;
   padding: 15px; /* ボタンの上下左右の余白 */
   border-radius: 8px;
   cursor: pointer;
   border: 2px solid #0082CA;
   display: flex;
-  align-items: center; /* アイコン・文字を中央揃え */
+  justify-content: center;
 }
 
 .filter-button-icon {
@@ -455,7 +455,6 @@ body {
   height: 24px; /* アイコンの高さ */
   margin-left: 15px; /* ボタンの左端から15pxの位置 */
   margin-right: 15px; /* アイコンとテキストの間隔 */
-  flex-shrink: 0; /* サイズを固定して縮まないようにする */
 }
 
 .filter-button:hover {
