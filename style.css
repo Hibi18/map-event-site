@@ -509,3 +509,27 @@ body {
 .hidden {
   display: none;
 }
+
+/* 検索ボタン */
+.search-button {
+  width: 80%; /* ボタンの横幅 */
+  max-width: 400px; /* 最大幅 */
+  background-color: #0082CA; /* 背景色（青） */
+  color: #FFFFFF; /* 文字色（白） */
+  padding: 15px; /* 余白 */
+  margin-bottom: 10px; /* ボタン同士の間隔 */
+  border-radius: 8px; /* 角を丸く */
+  cursor: pointer;
+  font-size: 1.2rem; /* 文字サイズ */
+  text-align: center; /* 文字を中央揃え */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+/* 検索ボタンのホバー時 */
+.search-button:hover {
+  background-color: #006bb3; /* 少し濃い青 */
+}
