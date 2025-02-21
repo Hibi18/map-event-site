@@ -512,9 +512,9 @@ body {
 
 /* 検索ボタン */
 .search-button {
-  width: 89%; /* ボタンの横幅 */
+  width: 88%; /* ボタンの横幅 */
   max-width: 400px; /* ボタンの最大幅 */
-  background-color: #000000; /* 背景色（青） */
+  background-color: #0082CA; /* 背景色（青） */
   color: #FFFFFF; /* 文字色（白） */
   padding: 15px; /* 余白 */
   margin-bottom: 10px; /* ボタン同士の間隔 */
