@@ -445,9 +445,10 @@ body {
   padding: 15px; /* ボタンの上下左右の余白 */
   border-radius: 8px;
   cursor: pointer;
-  border: 2px solid #0082CA;
+  border: 2px solid #000000;
   display: flex;
-  justify-content: center;
+  align-items: center;  /* アイコンとテキストの位置を揃える */
+  justify-content: flex-start; /* 左詰め */
 }
 
 .filter-button-icon {
