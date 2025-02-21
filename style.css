@@ -385,7 +385,7 @@ body {
 .selectMultiple div {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between; /* 変更 */
   gap: 15px;
   width: 100%;
 }
@@ -447,7 +447,7 @@ body {
   padding: 15px; /* ボタンの上下左右の余白 */
   border-radius: 8px;
   cursor: pointer;
-  border: 2px solid #0082CA;
+  border: 2px solid #000000;
   display: flex;
   align-items: center;  /* アイコンとテキストの位置を揃える */
   justify-content: flex-start; /* 左詰め */
