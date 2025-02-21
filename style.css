@@ -432,6 +432,7 @@ body {
   border: none;
   justify-content: flex-start; /* 左詰め */
   position: relative;
+  padding-left: 30px;
 }
 
 /* フィルターボタンの基本スタイル */
@@ -448,7 +449,7 @@ body {
   display: flex;
   align-items: center;  /* アイコンとテキストの位置を揃える */
   justify-content: flex-start; /* 左詰め */
-  gap: 15px; /* アイコンとテキストの間隔を統一 */
+  text-align: left; /* 文字を中央揃え */
 }
 
 .filter-button-icon {
