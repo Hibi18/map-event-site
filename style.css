@@ -456,6 +456,7 @@ body {
   height: 24px; /* アイコンの高さ */
   margin-left: 15px; /* ボタンの左端から15pxの位置 */
   margin-right: 15px; /* アイコンとテキストの間隔 */
+  flex-shrink: 0; /* アイコンが小さくならないように */
 }
 
 .filter-button:hover {
