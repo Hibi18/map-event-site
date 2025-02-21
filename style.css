@@ -385,11 +385,14 @@ body {
 .selectMultiple div {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  width: 100%;
+  position: relative;
 }
 
 .selected-option {
   color: #333;
+  text-align: left;
+  font-weight: bold;
 }
 
 .arrow {
@@ -432,11 +435,11 @@ body {
   position: relative;
 }
 
+/* フィルターボタンの基本スタイル */
 .selectMultiple {
   width: 80%; /* ボタンの横幅 */
   max-width: 400px; /* ボタンの最大幅 */
   margin-bottom: 10px; /* ボタン同士の間隔 */
-  text-align: left; /* 文字を中央揃え */
   position: relative;
   background: #FFFFFF;
   padding: 15px; /* ボタンの上下左右の余白 */
@@ -444,12 +447,15 @@ body {
   cursor: pointer;
   border: 2px solid #0082CA;
   display: flex;
-  justify-content: center;
+  align-items: center; /* アイコン・文字を中央揃え */
 }
 
 .filter-button-icon {
   width: 24px; /* アイコンの幅 */
   height: 24px; /* アイコンの高さ */
+  margin-left: 15px; /* ボタンの左端から15pxの位置 */
+  margin-right: 15px; /* アイコンとテキストの間隔 */
+  flex-shrink: 0; /* サイズを固定して縮まないようにする */
 }
 
 .filter-button:hover {
@@ -483,10 +489,11 @@ body {
   border: 1px solid #0082CA;
   display: none;
   z-index: 10;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .filter-dropdown li {
-  padding: 10px;
+  padding: 10px 15px;
   cursor: pointer;
   list-style: none;
   transition: background 0.3s ease;
