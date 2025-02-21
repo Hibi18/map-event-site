@@ -417,7 +417,7 @@ body {
 
 /* ボタンのデザイン */
 .filter-button {
-  width: 80%; /* ボタンの横幅 */
+  width: 90%; /* ボタンの横幅 */
   max-width: 400px; /* ボタンの最大幅 */
   background-color: #FFFFFF; /* ボタンの背景色 */
   color: #000000; /* ボタンの文字色 */
