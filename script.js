@@ -145,6 +145,10 @@ function displayPlans(filteredPlans) {
   document.getElementById('search-results').classList.remove('hidden');
 }
 
+document.addEventListener('DOMContentLoaded', function () {
+    displayAllPlans();  // ページを開いたら全プランを表示
+});
+
 // すべてのプランを「おすすめのプランの下」に表示する関数
 function displayAllPlans() {
     const planContainer = document.getElementById('all-plan-list');
