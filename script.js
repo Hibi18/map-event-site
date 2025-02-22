@@ -140,7 +140,7 @@ function displayPlans(filteredPlans) {
       planContainer.appendChild(planElement);
     });
   } else {
-    planContainer.innerHTML = "<p>該当するプランが見つかりませんでした。</p>";
+    planContainer.innerHTML = `<p style="color: red; text-align: center;">該当するプランが見つかりませんでした。</p>`;
   }
   document.getElementById('search-results').classList.remove('hidden');
 }
