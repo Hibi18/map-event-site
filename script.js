@@ -145,3 +145,20 @@ function displayPlans(filteredPlans) {
   document.getElementById('search-results').classList.remove('hidden');
 }
 
+// すべてのプランを「おすすめのプランの下」に表示する関数
+function displayAllPlans() {
+    const planContainer = document.getElementById('all-plan-list');
+    planContainer.innerHTML = "";  // 初期化
+
+    plans.forEach(plan => {
+        const planElement = document.createElement('div');
+        planElement.className = 'plan';
+        planElement.innerHTML = `
+            <a href="${plan.url}">
+                <img src="${plan.img}" alt="${plan.name}" class="plan-image">
+                <h3>${plan.name}</h3>
+            </a>
+        `;
+        planContainer.appendChild(planElement);
+    });
+}
