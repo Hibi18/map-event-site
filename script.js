@@ -106,8 +106,7 @@ document.getElementById('search-button').addEventListener('click', function () {
 const plans = [
   { name: "広島旅行", url: "page1.html", image: "assets/page1hiroshima.jpg", location: "広島", season: "夏", theme: "歴史" },
   { name: "栃木旅行", url: "page2.html", image: "assets/page2tochigi.jpg", location: "栃木", season: "秋", theme: "自然" },
-  { name: "東京旅行", url: "page3.html", image: "assets/page3tokyo.jpg", location: "東京", season: "冬", theme: "グルメ" },
-  { name: "京都旅行", url: "page4.html", image: "assets/page4kyoto.jpg", location: "京都", season: "春", theme: "自然" }
+  { name: "東京旅行", url: "page3.html", image: "assets/page3tokyo.jpg", location: "東京", season: "冬", theme: "グルメ" }
 ];
 
 // 絞り込んだプランを表示
