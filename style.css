@@ -533,3 +533,12 @@ body {
 .search-button:hover {
   background-color: #006bb3; /* 少し濃い青 */
 }
+
+.plan-image {
+  width: 90%; /* 横幅 */
+  max-width: 400px; /* 最大幅を設定 */
+  height: auto; /* 縦横比を維持 */
+  border-radius: 8px; /* 角を丸める */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 影をつける */
+  transition: transform 0.3s ease;
+}
