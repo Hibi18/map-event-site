@@ -469,7 +469,7 @@ body {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  background-color: #f9f9f9;
+  background-color: #ffffff;
 }
 
 .plan a {
@@ -540,4 +540,8 @@ body {
   height: auto; /* 縦横比を維持 */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 影をつける */
   transition: transform 0.3s ease;
+}
+
+.plan-image:hover {
+  transform: scale(1.05); /* ホバー時に拡大 */
 }
