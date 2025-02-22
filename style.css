@@ -466,7 +466,7 @@ body {
 
 .plan {
   margin: 20px 0;
-  padding: 0;
+  padding: 10px;
   background-color: #ffffff;
 }
 
@@ -540,6 +540,3 @@ body {
   transition: transform 0.3s ease;
 }
 
-.plan-image:hover {
-  transform: scale(1.05); /* ホバー時に拡大 */
-}
