@@ -104,10 +104,6 @@ document.getElementById('search-button').addEventListener('click', function () {
 // 旅行プランデータ
 // =============================
 
-document.addEventListener('DOMContentLoaded', function () {
-    displayAllPlans();  // ページを開いたら全プランを表示
-});
-
 const plans = [
   { name: "広島旅行", url: "page1.html", image: "assets/page1hiroshima.jpg", location: "広島", season: "夏", theme: "歴史" },
   { name: "栃木旅行", url: "page2.html", image: "assets/page2tochigi.jpg", location: "栃木", season: "秋", theme: "自然" },
@@ -150,21 +146,4 @@ function displayPlans(filteredPlans) {
   document.getElementById('search-results').classList.remove('hidden');
 }
 
-
-// すべてのプランを「おすすめのプランの下」に表示する関数
-function displayAllPlans() {
-    const planContainer = document.getElementById('all-plan-list');
-    planContainer.innerHTML = "";  // 初期化
-
-    plans.forEach(plan => {
-        const planElement = document.createElement('div');
-        planElement.className = 'plan';
-        planElement.innerHTML = `
-            <a href="${plan.url}">
-                <img src="${plan.img}" alt="${plan.name}" class="plan-image">
-                <h3>${plan.name}</h3>
-            </a>
-        `;
-        planContainer.appendChild(planElement);
-    });
 }
