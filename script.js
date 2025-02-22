@@ -104,10 +104,10 @@ document.getElementById('search-button').addEventListener('click', function () {
 // 旅行プランデータ
 // =============================
 const plans = [
-  { name: "広島旅行", url: "page1.html", location: "広島", season: "夏", theme: "歴史" },
-  { name: "栃木旅行", url: "page2.html", location: "栃木", season: "秋", theme: "自然" },
-  { name: "東京旅行", url: "page3.html", location: "東京", season: "冬", theme: "グルメ" },
-  { name: "京都旅行", url: "page4.html", location: "京都", season: "春", theme: "自然" }
+  { name: "広島旅行", url: "page1.html", image: "assets/page1hiroshima.jpg", location: "広島", season: "夏", theme: "歴史" },
+  { name: "栃木旅行", url: "page2.html", image: "assets/page2tochigi.jpg", location: "栃木", season: "秋", theme: "自然" },
+  { name: "東京旅行", url: "page3.html", image: "assets/page3tokyo.jpg", location: "東京", season: "冬", theme: "グルメ" },
+  { name: "京都旅行", url: "page4.html", image: "assets/page4kyoto.jpg", location: "京都", season: "春", theme: "自然" }
 ];
 
 // 絞り込んだプランを表示
@@ -121,21 +121,28 @@ function fetchPlans(filters) {
   displayPlans(filteredPlans);
 }
 
-// プラン表示
+
+// 絞り込まれたプランを表示する（画像付き）
 function displayPlans(filteredPlans) {
-  const planList = document.getElementById('plan-list');
-  planList.innerHTML = "";
+  const planContainer = document.getElementById("plan-list");
+  planContainer.innerHTML = ""; // 既存のコンテンツをクリア
 
   if (filteredPlans.length > 0) {
     filteredPlans.forEach(plan => {
-      const planElement = document.createElement('div');
-      planElement.innerHTML = `<a href="${plan.url}"><h2>${plan.name}</h2></a>`;
-      planList.appendChild(planElement);
+      const planElement = document.createElement("div");
+      planElement.className = "plan";
+
+      // 画像付きのリンクを作成
+      planElement.innerHTML = `
+        <a href="${plan.url}">
+          <img src="${plan.image}" alt="${plan.name}" class="plan-image">
+        </a>
+      `;
+      planContainer.appendChild(planElement);
     });
   } else {
-    planList.innerHTML = `<p style="color: red; text-align: center;">該当するプランが見つかりませんでした。</p>`;
+    planContainer.innerHTML = "<p>該当するプランが見つかりませんでした。</p>";
   }
-
   document.getElementById('search-results').classList.remove('hidden');
 }
 
