@@ -145,5 +145,3 @@ function displayPlans(filteredPlans) {
   }
   document.getElementById('search-results').classList.remove('hidden');
 }
-
-}
