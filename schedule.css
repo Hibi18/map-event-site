@@ -132,3 +132,19 @@
 .tab-content.active {
   display: block;
 }
+
+/* 画像関連 */
+img {
+  width: 80%;
+  max-width: 600px;
+  display: block;
+  margin: 10px auto;
+  border-radius: 8px;
+}
+
+.credit {
+  font-size: 0.9em;
+  color: #666;
+  text-align: center;
+  margin-bottom: 20px;
+}
