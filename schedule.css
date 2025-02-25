@@ -135,7 +135,7 @@
 
 /* 画像関連 */
 img {
-  width: 80%;
+  width: 100%;
   max-width: 600px;
   display: block;
   margin: 10px auto;
