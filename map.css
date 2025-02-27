@@ -43,7 +43,7 @@
 
 /* マップのスタイル */
 #map {
-    height: 100vh;
+    height: 70vh;
     width: 100vw;
     margin-bottom: 0; /* これを追加 */
     margin: -20px;
