@@ -41,6 +41,10 @@
     background-color: #0056b3;
 }
 
+html, body {
+    overflow: hidden;
+}
+
 /* マップのスタイル */
 #map {
     height: 84vh;
