@@ -43,9 +43,10 @@
 
 /* マップのスタイル */
 #map {
-    height: 500px;
-    width: 100%;
+    height: 84vh;
+    width: 100vw;
     margin-bottom: 0; /* これを追加 */
+    margin: -20px;
 }
 
 /* バナーのスタイル */
