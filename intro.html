@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0082CA"> <!-- ステータスバーの背景色を指定 -->
+  <title>SecureTrip - ようこそ</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: black;
+      color: white;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    #intro {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background-color: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 1;
+      transition: opacity 1.5s ease-in-out;
+    }
+
+    #intro.fade-out {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    #logo {
+      font-size: 2rem;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    #main-content {
+      display: none;
+      padding: 50px;
+      background-color: white;
+      color: black;
+      height: 100vh;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: black;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 1.2rem;
+    }
+
+    .btn:hover {
+      background-color: gray;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 最初のロゴ画面 -->
+  <div id="intro">
+      <h1 id="logo">ぼうそうV へようこそ！</h1>
+  </div>
+
+  <!-- 説明ページ -->
+  <div id="main-content">
+      <h2>ぼうそうVとは？</h2>
+      <p>このサイトでは、地図を使ってぼうそう地域の情報を提供しています。</p>
+      <a href="map.html" class="btn">マップを開く</a>
+  </div>
+
+  <script>
+    // 3秒後にフェードアウトして説明ページを表示
+    setTimeout(() => {
+      document.getElementById("intro").classList.add("fade-out");
+      setTimeout(() => {
+        document.getElementById("intro").style.display = "none";
+        document.getElementById("main-content").style.display = "block";
+      }, 1500);
+    }, 3000);
+  </script>
+
+</body>
+</html>
