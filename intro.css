@@ -72,3 +72,26 @@
     .btn:hover {
       background-color: gray;
     }
+
+    #site-intro, #problem-solution, #features, #impact {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        text-align: left;
+    }
+
+    #site-intro h2, #problem-solution h2, #features h2, #impact h2 {
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+        text-alige: center;
+    }
+
+    strong {
+        font-weight: bold;
+        background-color: rgba(255, 102, 0, 0.1);
+        padding: 2px 5px;
+        border-radius: 5px;
+    }
+
+
+
