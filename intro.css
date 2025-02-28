@@ -1,0 +1,80 @@
+* {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #0082CA;
+      color: white;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    #intro {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background-color: #0082CA;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 1;
+      transition: opacity 1.5s ease-in-out;
+    }
+
+    .intro-title {
+      text-align: center;
+      font-size: 4rem; /* 元のサイズより大きく */
+      font-weight: bold;
+      position: relative;
+      animation: fadeIn 2s ease-in-out;
+      margin-top: -80px;
+    }
+
+    .intro-subtitle {
+      display: block;
+      font-size: 1.4rem; /* サブタイトルのフォントサイズを適切に */
+      font-weight: normal;
+      color: #ffffff;
+      margin-bottom: 10px;
+    }
+
+    #intro.fade-out {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    #main-content {
+      display: none;
+      background-color: white;
+      color: black;
+      height: 100vh;
+    }
+
+    #header-container {
+      display: none;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: black;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 1.2rem;
+    }
+
+    .btn:hover {
+      background-color: gray;
+    }
