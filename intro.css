@@ -82,6 +82,7 @@
         font-size: 1.8rem;
         margin-bottom: 10px;
         text-alige: center;
+        display: block;
     }
 
     #problem-solution h2, #features h2, #impact h2 {
