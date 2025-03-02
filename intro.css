@@ -129,5 +129,14 @@
         display: block;
     }
 
-
+    #site-intro::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -10%;
+        width: 120%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(0, 123, 255, 0.05) 30%, transparent 70%);
+        z-index: -1;
+    }
 
