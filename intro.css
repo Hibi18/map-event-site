@@ -77,13 +77,18 @@
         max-width: 800px;
         margin: 20px auto;
         padding: 20px;
-        text-align: left;
     }
 
-    #site-intro h2, #problem-solution h2, #features h2, #impact h2 {
+    #site-intro h2 {
         font-size: 1.8rem;
         margin-bottom: 10px;
         text-alige: center;
+    }
+
+    #problem-solution h2, #features h2, #impact h2 {
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+        text-alige: left;
     }
 
     p {
