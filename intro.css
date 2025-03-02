@@ -121,4 +121,13 @@
         background-color: #005fa3;
     }
 
+    /* 画像のデザイン調整 */
+    .intro-image {
+        width: 100%;
+        max-width: 800px;
+        margin-top: 20px;
+        display: block;
+    }
+
+
 
