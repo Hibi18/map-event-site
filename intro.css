@@ -48,14 +48,14 @@
     }
 
     #main-content {
-      display: none;
+      display: block;
       background-color: white;
       color: black;
       height: 100vh;
     }
 
     #header-container {
-      display: none;
+      display: block;
     }
 
     .btn {
