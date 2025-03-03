@@ -79,16 +79,49 @@
 
   <script src="script.js"></script>
   <script>
-    // 3秒後にフェードアウトして説明ページを表示
-    setTimeout(() => {
-      document.getElementById("intro").classList.add("fade-out");
-      setTimeout(() => {
-        document.getElementById("intro").style.display = "none";
-        document.getElementById("main-content").style.display = "block";
+  document.addEventListener("DOMContentLoaded", () => {
+    const intro = document.getElementById("intro");
+    const mainContent = document.getElementById("main-content");
+    const headerContainer = document.getElementById("header-container");
 
-        document.getElementById("header-container").style.display = "block";
-      }, 1500);
+    if (!intro || !mainContent || !headerContainer) {
+        console.error("エラー: 必要な要素が見つかりません。");
+        return;
+    }
+
+    // イントロのフェードアウト処理
+    setTimeout(() => {
+        intro.classList.add("fade-out");
+
+        setTimeout(() => {
+            intro.style.display = "none";
+            mainContent.style.display = "block";
+            headerContainer.style.display = "block";
+
+            // メインコンテンツをスムーズに表示
+            setTimeout(() => {
+                mainContent.classList.add("visible");
+            }, 100);
+        }, 1500);
     }, 3000);
-  </script>
+
+    // スクロール時のフェードインアニメーション
+    const fadeElements = document.querySelectorAll(".fade-in-up, .delay");
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+            }
+        });
+    }, { threshold: 0.2 });
+
+    fadeElements.forEach(element => {
+        observer.observe(element);
+    });
+
+});
+</script>
+
 </body>
 </html>
