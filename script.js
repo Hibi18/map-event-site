@@ -198,3 +198,6 @@ window.addEventListener("load", function() {
   });
 });
 
+console.log("✅ JavaScript 読み込み完了");
+alert("✅ JavaScript 読み込み完了");
+
