@@ -146,8 +146,32 @@ function displayPlans(filteredPlans) {
   document.getElementById('search-results').classList.remove('hidden');
 }
 
-document.addEventListener("DOMContentLoaded", function() {
+fetch('header.html')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Failed to fetch header.html');
+    }
+    return response.text();
+  })
+  .then(data => {
+    document.getElementById('header-container').innerHTML = data;
+
+    // ここで `DOMContentLoaded` イベントを待たずに実行する
+    initializeIntersectionObserver();
+  })
+  .catch(error => {
+    console.error('Error loading header:', error);
+  });
+
+function initializeIntersectionObserver() {
+  console.log("✅ IntersectionObserver 初期化開始");
+
   const fadeSections = document.querySelectorAll(".fade-in-section");
+  console.log(`fade-in-section の数: ${fadeSections.length}`);
+
+  if (fadeSections.length === 0) {
+    console.warn("⚠ `fade-in-section` が見つかりません。HTML の読み込み順を確認してください。");
+  }
 
   const observer = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
@@ -159,45 +183,19 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }, { threshold: 0 });
 
-  fadeSections.forEach(section => {
-    observer.observe(section);
-  });
-});
+  fadeSections.forEach(section => observer.observe(section));
 
-window.addEventListener("load", function() {
-  console.log("JavaScript 読み込み完了");
-
-  const fadeSections = document.querySelectorAll(".fade-in-section");
-
-  console.log(`fade-in-section の数: ${fadeSections.length}`);
-
-  // 画面内にすでにある要素を判定する関数
+  // 最初から表示されている要素に `.show` を適用
   function isVisible(el) {
     const rect = el.getBoundingClientRect();
     return rect.top < window.innerHeight && rect.bottom >= 0;
   }
 
-  const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      console.log(`観測中: ${entry.target.id}, isIntersecting: ${entry.isIntersecting}`);
-      if (entry.isIntersecting) {
-        console.log(`アニメーション適用: ${entry.target.id}`);
-        entry.target.classList.add("show");
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0 });
-
   fadeSections.forEach(section => {
     if (isVisible(section)) {
       console.log(`最初から表示されているため、アニメーション適用: ${section.id}`);
-      section.classList.add("show"); // すでに表示されている要素は `.show` を適用
-    } else {
-      observer.observe(section); // まだ表示されていない要素は監視する
+      section.classList.add("show");
     }
   });
-});
-
-console.log("✅ JavaScript 読み込み完了");
-alert("✅ JavaScript 読み込み完了");
+}
 
