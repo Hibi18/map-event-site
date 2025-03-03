@@ -4,7 +4,7 @@
       color: black;
     }
 
-    main-content {
+    .main-content {
       display: block;
       background-color: white;
       color: black;
@@ -39,14 +39,14 @@
     #site-intro h2 {
         font-size: 1.8rem;
         margin-bottom: 10px;
-        text-alige: center;
+        text-align: center;
         display: block;
     }
 
     #problem-solution h2, #features h2, #impact h2 {
         font-size: 1.8rem;
         margin-bottom: 10px;
-        text-alige: left;
+        text-align: left;
     }
 
     p {
