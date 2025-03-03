@@ -47,7 +47,7 @@
       100% { opacity: 1; }
     }
 
-    #main-content {
+    main-content {
       display: block;
       background-color: white;
       color: black;
