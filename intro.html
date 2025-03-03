@@ -23,8 +23,8 @@
 
     <!-- サイト紹介 -->
     <section id="site-intro">
-      <h2>「防災」×「観光」</h2>
-      <p>
+      <h2 class="fade-in-up">「防災」×「観光」</h2>
+      <p class=""fade-in-up delay>
         旅をもっと<strong>豊かに</strong>、日常をもっと<strong>安全に</strong>。<br>
         楽しい旅行の計画に、<strong>もしも</strong>の備えを。<br>
       </p>
@@ -78,19 +78,5 @@
   </div>
 
   <script src="script.js"></script>
-
-  <script>
-    // 3秒後にフェードアウトして説明ページを表示
-    setTimeout(() => {
-      document.getElementById("intro").classList.add("fade-out");
-      setTimeout(() => {
-        document.getElementById("intro").style.display = "none";
-        document.getElementById("main-content").style.display = "block";
-
-        document.getElementById("header-container").style.display = "block";
-      }, 1500);
-    }, 3000);
-  </script>
-
 </body>
 </html>
