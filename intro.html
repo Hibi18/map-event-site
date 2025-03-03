@@ -23,8 +23,8 @@
 
     <!-- サイト紹介 -->
     <section id="site-intro">
-      <h2 class="fade-in-up">「防災」×「観光」</h2>
-      <p class=""fade-in-up delay>
+      <h2>「防災」×「観光」</h2>
+      <p>
         旅をもっと<strong>豊かに</strong>、日常をもっと<strong>安全に</strong>。<br>
         楽しい旅行の計画に、<strong>もしも</strong>の備えを。<br>
       </p>
@@ -78,48 +78,19 @@
   </div>
 
   <script src="script.js"></script>
+
   <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const intro = document.getElementById("intro");
-    const mainContent = document.getElementById("main-content");
-    const headerContainer = document.getElementById("header-container");
-
-    if (!intro || !mainContent || !headerContainer) {
-        console.error("エラー: 必要な要素が見つかりません。");
-        return;
-    }
-
-    // イントロのフェードアウト処理
+    // 3秒後にフェードアウトして説明ページを表示
     setTimeout(() => {
-        intro.classList.add("fade-out");
+      document.getElementById("intro").classList.add("fade-out");
+      setTimeout(() => {
+        document.getElementById("intro").style.display = "none";
+        document.getElementById("main-content").style.display = "block";
 
-        setTimeout(() => {
-            intro.style.display = "none";
-            mainContent.style.visibility = "visible"; // 初めから表示する
-            mainContent.style.opacity = "1"; // フェードイン
-            headerContainer.style.display = "block";
-
-        }, 1500);
+        document.getElementById("header-container").style.display = "block";
+      }, 1500);
     }, 3000);
-
-    // スクロール時のフェードインアニメーション
-    const fadeElements = document.querySelectorAll(".fade-in-up, .delay");
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add("visible");
-            }
-        });
-    }, { threshold: 0.2 });
-
-    fadeElements.forEach(element => {
-        observer.observe(element);
-    });
-
-});
-</script>
-
+  </script>
 
 </body>
 </html>
