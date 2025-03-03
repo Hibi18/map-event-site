@@ -84,9 +84,6 @@
         margin-bottom: 10px;
         text-alige: center;
         display: block;
-        opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 1s ease, transform 1s ease;
     }
 
     #problem-solution h2, #features h2, #impact h2 {
@@ -97,9 +94,6 @@
 
     p {
         font-size: 15px;
-        opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 1s ease 0.3s, transform 1s ease 0.3s;
     }
 
     .feature {
@@ -135,7 +129,3 @@
         display: block;
     }
 
-    .fade-in-up.visible, .delay.visible {
-        opacity: 1;
-        transform: scale(1);
-    }
