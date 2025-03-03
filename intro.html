@@ -95,13 +95,10 @@
 
         setTimeout(() => {
             intro.style.display = "none";
-            mainContent.style.display = "block";
+            mainContent.style.visibility = "visible"; // 初めから表示する
+            mainContent.style.opacity = "1"; // フェードイン
             headerContainer.style.display = "block";
 
-            // メインコンテンツをスムーズに表示
-            setTimeout(() => {
-                mainContent.classList.add("visible");
-            }, 100);
         }, 1500);
     }, 3000);
 
@@ -122,6 +119,7 @@
 
 });
 </script>
+
 
 </body>
 </html>
