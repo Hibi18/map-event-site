@@ -152,11 +152,12 @@ document.addEventListener("DOMContentLoaded", function() {
   const observer = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
+        console.log(`アニメーション開始: ${entry.target.id}`);
         entry.target.classList.add("show");
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.2 });
+  }, { threshold: 0 });
 
   fadeSections.forEach(section => {
     observer.observe(section);
