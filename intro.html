@@ -78,5 +78,17 @@
   </div>
 
   <script src="script.js"></script>
+  <script>
+    // 3秒後にフェードアウトして説明ページを表示
+    setTimeout(() => {
+      document.getElementById("intro").classList.add("fade-out");
+      setTimeout(() => {
+        document.getElementById("intro").style.display = "none";
+        document.getElementById("main-content").style.display = "block";
+
+        document.getElementById("header-container").style.display = "block";
+      }, 1500);
+    }, 3000);
+  </script>
 </body>
 </html>
