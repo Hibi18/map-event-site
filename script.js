@@ -1,7 +1,3 @@
-console.log("✅ `script.js` は実行されています");
-alert("✅ `script.js` は実行されています");
-
-
 // header.html を動的に読み込むスクリプト
 fetch('header.html')
   .then(response => {
