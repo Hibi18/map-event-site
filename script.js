@@ -146,29 +146,3 @@ function displayPlans(filteredPlans) {
   document.getElementById('search-results').classList.remove('hidden');
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    // イントロのフェードアウト処理
-    setTimeout(() => {
-        document.getElementById("intro").classList.add("fade-out");
-        setTimeout(() => {
-            document.getElementById("intro").style.display = "none";
-            document.getElementById("main-content").style.display = "block";
-            document.getElementById("header-container").style.display = "block";
-        }, 1500);
-    }, 3000);
-
-    // スクロール時のフェードインアニメーション
-    const fadeElements = document.querySelectorAll(".fade-in-up, .delay");
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add("visible");
-            }
-        });
-    }, { threshold: 0.2 });
-
-    fadeElements.forEach(element => {
-        observer.observe(element);
-    });
-});
