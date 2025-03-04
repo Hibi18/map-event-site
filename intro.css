@@ -251,6 +251,14 @@
         background: #000; /* マスクの色 */
     }
 
+    ._text-appear {
+        animation: textFadeIn 0s 0.5s forwards;
+    }
+
+    ._text-appear::before {
+        animation: textMaskSlide 1s forwards;
+    }
+
     .fade-in-section.show .title {
         animation: textFadeIn 0s 0.5s forwards;
     }
