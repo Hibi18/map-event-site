@@ -231,3 +231,45 @@
         transform: translateY(-100%);
         opacity: 0;
     }
+
+    .title {
+        position: relative;
+        display: inline-block;
+        color: transparent;
+    }
+
+    .title::before {
+        content: "";
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 100%; /* 初期位置（画面外） */
+    bottom: 0;
+    left: 0;
+    background: #000; /* マスクの色 */
+    }
+
+    .fade-in-section.show .title {
+        animation: textFadeIn 0s 0.5s forwards;
+    }
+
+    .fade-in-section.show .title::before {
+        animation: textMaskSlide 1s forwards;
+    }
+
+    @keyframes textFadeIn {
+        100% {
+            color: inherit; /* 文字の色を戻して表示 */
+        }
+    }
+
+    @keyframes textMaskSlide {
+        50% {
+            left: 0%;
+            right: 0%;
+        }
+        100% {
+            left: 100%;
+            right: 0%;
+        }
+    }
