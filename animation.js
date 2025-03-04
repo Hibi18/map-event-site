@@ -14,7 +14,7 @@ fetch('header.html')
   });
 
 document.addEventListener("DOMContentLoaded", function() {
-  console.log("✅ schedule.js: IntersectionObserver 初期化開始");
+  console.log("schedule.js: IntersectionObserver 初期化開始");
 
   const fadeSections = document.querySelectorAll(".fade-in-section");
 
@@ -29,19 +29,25 @@ document.addEventListener("DOMContentLoaded", function() {
       if (entry.isIntersecting) {
         console.log(`アニメーション開始: ${entry.target.id}`);
 
-        // ✅ フェードインアニメーションの適用
+        // フェードインアニメーションの適用
         entry.target.classList.add("show");
 
-        // ✅ 枠線アニメーションの適用（防災×観光）
+        // 枠線アニメーションの適用（防災×観光）
         const titleBox = entry.target.querySelector(".all_border_title");
         if (titleBox) {
           console.log(`枠線アニメーション適用: ${titleBox}`);
           titleBox.classList.add("_anime");
 
-          // ✅ 1.3秒後に `_disappear` クラスを追加し、線が流れながら消える
+          // 0.6秒後に `_disappear` クラスを追加し、線が流れながら消える
           setTimeout(() => {
             titleBox.classList.add("_disappear");
             console.log(`枠線アニメーション消去: ${titleBox}`);
+            
+            const titleText = entry.target.querySelector(".title");
+            if (titleText) {
+              titleText.classList.add("_text-appear");
+              console.log(`マスクと文字のアニメーション開始: ${titleText}`);
+            }   
           }, 600);
         }
 
@@ -52,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   fadeSections.forEach(section => observer.observe(section));
 
-  // ✅ 最初から表示されている要素に `.show` & `._anime` を適用
+  // 最初から表示されている要素に `.show` & `._anime` を適用
   function isVisible(el) {
     const rect = el.getBoundingClientRect();
     return rect.top < window.innerHeight && rect.bottom >= 0;
@@ -63,15 +69,21 @@ document.addEventListener("DOMContentLoaded", function() {
       console.log(`最初から表示されているため、アニメーション適用: ${section.id}`);
       section.classList.add("show");
 
-      // ✅ 枠線アニメーションの適用（最初から表示されている要素）
+      // 枠線アニメーションの適用（最初から表示されている要素）
       const titleBox = section.querySelector(".all_border_title");
       if (titleBox) {
         titleBox.classList.add("_anime");
 
-        // ✅ 1.3秒後に `_disappear` クラスを追加
+        // 0.6秒後に `_disappear` クラスを追加
         setTimeout(() => {
           titleBox.classList.add("_disappear");
           console.log(`枠線アニメーション消去: ${titleBox}`);
+          
+          const titleText = section.querySelector(".title");
+          if (titleText) {
+            titleText.classList.add("_text-appear");
+            console.log(`マスクと文字のアニメーション開始: ${titleText}`);
+          }
         }, 600);
       }
     }
