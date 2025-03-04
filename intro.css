@@ -135,7 +135,6 @@
         position: absolute;
         display: block;
         background-color: black;
-        opacity: 0; /* 最初は見えない */
     }
 
     /* 上の線 */
@@ -145,8 +144,7 @@
         width: 100%;
         height: 3px;
         transform: translateX(-101%);
-        transition: transform 0.4s ease, opacity 0.3s;
-        transition-delay: 0s;
+        transition: transform 0.4s 0.5s ease;
     }
 
     ._left_top_to_bottom {
@@ -155,8 +153,7 @@
         width: 3px;
         height: 100%;
         transform: translateY(-101%);
-        transition: transform 0.4s ease, opacity 0.3s;
-        transition-delay: 0.3s;
+        transition: transform 0.4s 0.7s ease;
     }
 
     ._right_bottom_to_left {
@@ -165,8 +162,7 @@
         width: 100%;
         height: 3px;
         transform: translateX(101%);
-        transition: transform 0.4s ease, opacity 0.3s;
-        transition-delay: 0.6s;
+        transition: transform 0.4s 0.9s ease;
     }
 
     ._right_bottom_to_top {
@@ -175,8 +171,7 @@
         width: 3px;
         height: 100%;
         transform: translateY(101%);
-        transition: transform 0.4s ease, opacity 0.3s;
-        transition-delay: 0.9s;
+        transition: transform 0.4s 1.1s ease;
     }
 
     /* スクロールで発火 */
@@ -186,28 +181,16 @@
 
     .fade-in-section.show .all_border_title ._left_top_to_right {
         transform: translateX(0);
-        opacity: 1;
     }
 
     .fade-in-section.show .all_border_title ._left_top_to_bottom {
         transform: translateY(0);
-        opacity: 1;
     }
 
     .fade-in-section.show .all_border_title ._right_bottom_to_left {
         transform: translateX(0);
-        opacity: 1;
     }
 
     .fade-in-section.show .all_border_title ._right_bottom_to_top {
         transform: translateY(0);
-        opacity: 1;
-    }
-
-    .fade-in-section.show .all_border_title._anime ._left_top_to_right,
-    .fade-in-section.show .all_border_title._anime ._left_top_to_bottom,
-    .fade-in-section.show .all_border_title._anime ._right_bottom_to_left,
-    .fade-in-section.show .all_border_title._anime ._right_bottom_to_top {
-        opacity: 0;
-        transition-delay: 1.2s; /* 動きが終わると線が消える */
     }
