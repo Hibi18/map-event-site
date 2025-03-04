@@ -1,4 +1,4 @@
-// header.html を動的に読み込むスクリプト
+// ✅ ヘッダーを動的に読み込むスクリプト
 fetch('header.html')
   .then(response => {
     if (!response.ok) {
@@ -28,7 +28,17 @@ document.addEventListener("DOMContentLoaded", function() {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         console.log(`アニメーション開始: ${entry.target.id}`);
+
+        // ✅ フェードインアニメーションの適用
         entry.target.classList.add("show");
+
+        // ✅ 枠線アニメーションの適用（防災×観光）
+        const titleBox = entry.target.querySelector(".all_border_title");
+        if (titleBox) {
+          console.log(`枠線アニメーション適用: ${titleBox}`);
+          titleBox.classList.add("_anime");
+        }
+
         observer.unobserve(entry.target);
       }
     });
@@ -36,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   fadeSections.forEach(section => observer.observe(section));
 
-  // 最初から表示されている要素に `.show` を適用
+  // ✅ 最初から表示されている要素に `.show` & `._anime` を適用
   function isVisible(el) {
     const rect = el.getBoundingClientRect();
     return rect.top < window.innerHeight && rect.bottom >= 0;
@@ -46,6 +56,12 @@ document.addEventListener("DOMContentLoaded", function() {
     if (isVisible(section)) {
       console.log(`最初から表示されているため、アニメーション適用: ${section.id}`);
       section.classList.add("show");
+
+      // ✅ 枠線アニメーションの適用（最初から表示されている要素）
+      const titleBox = section.querySelector(".all_border_title");
+      if (titleBox) {
+        titleBox.classList.add("_anime");
+      }
     }
   });
 });
