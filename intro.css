@@ -146,6 +146,7 @@
         height: 1.5px;
         transform: translateX(-100%);
         transition: transform 0.5s ease-out;
+        color: #0082CA;
     }
 
     ._left_top_to_bottom {
@@ -155,6 +156,7 @@
         height: 100%;
         transform: translateY(-100%);
         transition: transform 0.7s ease-out;
+        color: #0082CA;
     }
 
     ._right_bottom_to_left {
@@ -164,6 +166,7 @@
         height: 1.5px;
         transform: translateX(100%);
         transition: transform 0.9s ease-out;
+        color: #0082CA;
     }
 
     ._right_bottom_to_top {
@@ -173,6 +176,7 @@
         height: 100%;
         transform: translateY(100%);
         transition: transform 1.1s ease-out;
+        color: #0082CA;
     }
 
     /* スクロールで発火 */
