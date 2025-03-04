@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function() {
           // 枠線を消す
           setTimeout(() => {
             titleBox.classList.remove("_anime");
-          }, 1500);
+          }, 1800);
         }
 
         observer.unobserve(entry.target);
@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         setTimeout(() => {
           titleBox.classList.remove("_anime");
-        }, 1500);
+        }, 1800);
       }
     }
   });
