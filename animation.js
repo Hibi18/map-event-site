@@ -37,12 +37,17 @@ document.addEventListener("DOMContentLoaded", function() {
         if (titleBox) {
           console.log(`枠線アニメーション適用: ${titleBox}`);
           titleBox.classList.add("_anime");
+
+          // 枠線を消す
+          setTimeout(() => {
+            titleBox.classList.remove("_anime");
+          }, 1500);
         }
 
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0 });
+  }, { threshold: 0.5 });
 
   fadeSections.forEach(section => observer.observe(section));
 
@@ -61,6 +66,10 @@ document.addEventListener("DOMContentLoaded", function() {
       const titleBox = section.querySelector(".all_border_title");
       if (titleBox) {
         titleBox.classList.add("_anime");
+
+        setTimeout(() => {
+          titleBox.classList.remove("_anime");
+        }, 1500);
       }
     }
   });
