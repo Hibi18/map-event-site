@@ -1,4 +1,4 @@
-// ✅ ヘッダーを動的に読み込むスクリプト
+// ヘッダーを動的に読み込むスクリプト
 fetch('header.html')
   .then(response => {
     if (!response.ok) {
@@ -29,19 +29,14 @@ document.addEventListener("DOMContentLoaded", function() {
       if (entry.isIntersecting) {
         console.log(`アニメーション開始: ${entry.target.id}`);
 
-        // ✅ フェードインアニメーションの適用
+        // フェードインアニメーションの適用
         entry.target.classList.add("show");
 
-        // ✅ 枠線アニメーションの適用（防災×観光）
+        // 枠線アニメーションの適用（防災×観光）
         const titleBox = entry.target.querySelector(".all_border_title");
         if (titleBox) {
           console.log(`枠線アニメーション適用: ${titleBox}`);
           titleBox.classList.add("_anime");
-
-          // 枠線を消す
-          setTimeout(() => {
-            titleBox.classList.remove("_anime");
-          }, 1800);
         }
 
         observer.unobserve(entry.target);
@@ -66,10 +61,6 @@ document.addEventListener("DOMContentLoaded", function() {
       const titleBox = section.querySelector(".all_border_title");
       if (titleBox) {
         titleBox.classList.add("_anime");
-
-        setTimeout(() => {
-          titleBox.classList.remove("_anime");
-        }, 1800);
       }
     }
   });
