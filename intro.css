@@ -238,16 +238,17 @@
         color: transparent;
         transform: none;
         opacity: 1;
+        padding: 20px 40px;
     }
 
     .title::before {
         content: "";
         position: absolute;
         z-index: 1;
-        top: 0;
+        top: -10px;
         right: 100%; /* 初期位置（画面外） */
-        bottom: 0;
-        left: 0;
+        bottom: -10px;
+        left: -10px;
         background: #000; /* マスクの色 */
     }
 
