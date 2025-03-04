@@ -29,14 +29,20 @@ document.addEventListener("DOMContentLoaded", function() {
       if (entry.isIntersecting) {
         console.log(`アニメーション開始: ${entry.target.id}`);
 
-        // フェードインアニメーションの適用
+        // ✅ フェードインアニメーションの適用
         entry.target.classList.add("show");
 
-        // 枠線アニメーションの適用（防災×観光）
+        // ✅ 枠線アニメーションの適用（防災×観光）
         const titleBox = entry.target.querySelector(".all_border_title");
         if (titleBox) {
           console.log(`枠線アニメーション適用: ${titleBox}`);
           titleBox.classList.add("_anime");
+
+          // ✅ 1.3秒後に `_disappear` クラスを追加し、線が流れながら消える
+          setTimeout(() => {
+            titleBox.classList.add("_disappear");
+            console.log(`枠線アニメーション消去: ${titleBox}`);
+          }, 1300);
         }
 
         observer.unobserve(entry.target);
@@ -61,6 +67,12 @@ document.addEventListener("DOMContentLoaded", function() {
       const titleBox = section.querySelector(".all_border_title");
       if (titleBox) {
         titleBox.classList.add("_anime");
+
+        // ✅ 1.3秒後に `_disappear` クラスを追加
+        setTimeout(() => {
+          titleBox.classList.add("_disappear");
+          console.log(`枠線アニメーション消去: ${titleBox}`);
+        }, 1300);
       }
     }
   });
