@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function() {
           setTimeout(() => {
             titleBox.classList.add("_disappear");
             console.log(`枠線アニメーション消去: ${titleBox}`);
-          }, 1300);
+          }, 600);
         }
 
         observer.unobserve(entry.target);
@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function() {
         setTimeout(() => {
           titleBox.classList.add("_disappear");
           console.log(`枠線アニメーション消去: ${titleBox}`);
-        }, 1300);
+        }, 600);
       }
     }
   });
