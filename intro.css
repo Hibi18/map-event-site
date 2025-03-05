@@ -288,3 +288,52 @@
         }
     }
 
+    #scroll-down {
+        position: absolute;
+        bottom: 30px; /* 画面下部に配置、あとで変える */
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        cursor: pointer;
+    }
+
+    /* 矢印アイコン */
+    .arrow-down {
+        display: block;
+        width: 10px;
+        height: 38px;
+        margin: 0 auto;
+        animation: bounce 1.5s infinite;
+    }
+
+    /* 矢印の見た目 */
+    .arrow-down::after {
+        content: '';
+        display: block;
+        width: 8px;
+        height: 8px;
+        border-top: 2px solid white;
+        border-right: 2px solid white;
+        transform: rotate(135deg);
+    }
+
+    /* スクロールダウンのテキスト */
+    #scroll-title {
+        display: block;
+        color: white;
+        font-family: Helvetica Neue, Helvetica, Arial;
+        font-size: 14px;
+        font-weight: bold;
+        letter-spacing: 0.1em;
+        margin-top: 5px;
+    }
+
+    /* 矢印のアニメーション */
+    @keyframes bounce {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(10px);
+        }
+    }
