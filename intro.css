@@ -242,6 +242,9 @@
         color: transparent;
         transform: none;
         opacity: 1;
+        font-size: 40px;
+        font-weight: bold;
+        text-align: center;
     }
 
     .title::before {
