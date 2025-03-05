@@ -89,3 +89,22 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 });
+
+//「防災はなぜ必要？」のタイトルだけスクロールでアニメーションを適用
+document.addEventListener("DOMContentLoaded", function() {
+    const titleObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                console.log(`「防災はなぜ必要？」のアニメーション開始: ${entry.target.textContent}`);
+                entry.target.classList.add("active"); // クラスを追加してアニメーションを実行
+                titleObserver.unobserve(entry.target); // 一度実行したら監視を解除
+            }
+        });
+    }, { threshold: 0.5 }); // 50% 以上見えたらアニメーション開始
+
+    // 「防災はなぜ必要？」のタイトル（h2）を監視対象にする
+    const problemTitle = document.querySelector("#problem-solution h2");
+    if (problemTitle) {
+        titleObserver.observe(problemTitle);
+    }
+});
