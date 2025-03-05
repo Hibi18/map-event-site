@@ -42,10 +42,9 @@
         padding: 20px;
         position: relative;
         width: 100vw;
-        height: 90vh;
+        height: 80vh;
         text-align: center;
         align-items: center;
-        justify-content: center; /* 文字を中央に配置 */
         flex-direction: column;
         display: flex;
         background: url('assets/23489191_m.jpg') no-repeat center center/cover;
