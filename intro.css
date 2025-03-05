@@ -31,17 +31,40 @@
       background-color: gray;
     }
 
-    #site-intro, #problem-solution, #features, #impact {
+    #problem-solution, #features, #impact {
         max-width: 800px;
         margin: 20px auto;
         padding: 20px;
     }
 
+    #site-intro {
+        margin: 20px auto;
+        padding: 20px;
+        position: relative;
+        width: 100vw;
+        height: 90vh
+        text-align: center;
+        align-items: center;
+        justify-content: center; /* 文字を中央に配置 */
+        flex-direction: column;
+        display: flex;
+        background: url('assets/23489191_m.jpg') no-repeat center center/cover;
+    }
+
     #site-intro h2 {
+        position: relative;
+        z-index: 2;
         font-size: 1.8rem;
         margin-bottom: 10px;
         text-align: center;
+        color: white;
         display: block;
+    }
+
+    #site-intro p {
+        position: relative;
+        z-index: 2;
+        color: white;
     }
 
     #problem-solution h2, #features h2, #impact h2 {
@@ -50,7 +73,7 @@
         text-align: left;
     }
 
-    p {
+    #problem-solution p, #features p, #impact p {
         font-size: 15px;
     }
 
