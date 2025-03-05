@@ -119,7 +119,7 @@
     .fade-in-delay {
         opacity: 0;
         transform: translateY(20px);
-        transition: opacity 1s ease-out 0.3s, transform 1s ease-out 0.3s;
+        transition: opacity 1s ease-out 0.8s, transform 1s ease-out 0.8s;
     }
 
     .fade-in-zoom {
