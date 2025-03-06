@@ -72,8 +72,13 @@
         text-align: left;
     }
 
-    #problem-solution p, #features p, #impact p {
+    #features p, #impact p {
         font-size: 15px;
+    }
+
+    #problem-solution p {
+        font-size: 15px;
+        text-align: left;
     }
 
     .feature {
