@@ -17,8 +17,10 @@ document.addEventListener("DOMContentLoaded", function() {
   console.log("schedule.js: IntersectionObserver 初期化開始");
 
   const fadeSections = document.querySelectorAll(".fade-in-section");
-
+  const fadeImages = document.querySelectorAll(".intro-image");
+  
   console.log(`fade-in-section の数: ${fadeSections.length}`);
+  console.log(`fade-in 画像の数: ${fadeImages.length}`);
 
   if (fadeSections.length === 0) {
     console.warn("⚠ `fade-in-section` が見つかりません。HTML の読み込み順を確認してください。");
@@ -57,6 +59,20 @@ document.addEventListener("DOMContentLoaded", function() {
   }, { threshold: 0.5 });
 
   fadeSections.forEach(section => observer.observe(section));
+  fadeImages.forEach(image => observer.observe(image));
+
+  // 画像専用のもの
+  const imageObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        console.log(`画像アニメーション開始: ${entry.target.src}`);
+        entry.target.classList.add("show"); // 画像に `show` クラスを追加
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  fadeImages.forEach(image => imageObserver.observe(image));
 
   // 最初から表示されている要素に `.show` & `._anime` を適用
   function isVisible(el) {
