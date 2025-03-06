@@ -79,6 +79,7 @@
     #problem-solution p {
         font-size: 15px;
         text-align: left;
+        line-height: 1.9;
     }
 
     .feature {
