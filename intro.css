@@ -69,7 +69,6 @@
     #problem-solution h2, #features h2, #smart h2, #impact h2 {
         font-size: 1.8rem;
         margin-bottom: 10px;
-        text-align: left;
     }
 
     #features p, #smart p, #impact p {
