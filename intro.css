@@ -31,7 +31,7 @@
       background-color: gray;
     }
 
-    #problem-solution, #features, #impact {
+    #problem-solution, #smart, #features, #impact {
         max-width: 800px;
         margin: 20px auto;
         padding: 20px;
@@ -66,13 +66,13 @@
         color: white;
     }
 
-    #problem-solution h2, #features h2, #impact h2 {
+    #problem-solution h2, #features h2, #smart h2, #impact h2 {
         font-size: 1.8rem;
         margin-bottom: 10px;
         text-align: left;
     }
 
-    #features p, #impact p {
+    #features p, #smart p, #impact p {
         font-size: 15px;
     }
 
