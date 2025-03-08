@@ -71,7 +71,12 @@
         margin-bottom: 10px;
     }
 
-    #features p, #smart p, #impact p {
+    #features p, #impact p {
+        font-size: 15px;
+    }
+
+    #smart p {
+        line-height: 1.9;
         font-size: 15px;
     }
 
