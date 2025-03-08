@@ -404,3 +404,14 @@
             transform: translateX(100%);
         }
     }
+
+    /* 備えるはもっとスマートにのアニメーション */
+    .underline-before {
+        background: linear-gradient(#0082CA, #0082CA) 0 100% / 0 2px no-repeat;
+        transition: background 1.5s ease-in-out;
+        text-decoration: none;
+    }
+
+    .underline-after {
+        background-size: 100% 2px;
+    }
