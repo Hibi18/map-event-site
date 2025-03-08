@@ -122,4 +122,18 @@ document.addEventListener("DOMContentLoaded", function() {
     } else {
       console.error("❌ `#problem-solution .title-span` が見つかりません。");
     }
+
+    // 下線のアニメーションを追加
+    const underlineElements = document.querySelectorAll('.underline-before');
+
+    const underlineObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          console.log(`「${entry.target.textContent}」の下線アニメーション開始`);
+          entry.target.classList.add("underline-after"); // クラスを追加して下線を表示
+          underlineObserver.unobserve(entry.target); // 一度実行したら監視を解除
+        }
+      });
+    }, { threshold: 0.5 }); // 50% 以上見えたらアニメーション開始
+    underlineElements.forEach(element => underlineObserver.observe(element));
 });
