@@ -419,5 +419,15 @@
 
     .STmap-image {
         border-radius: 30px;
-        width: 60%;
+        width: 65%;
+    }
+
+    .ST-image {
+        border-radius: 30px;
+        width: 65%;
+    }
+
+    .STplan-image {
+        border-radius: 30px;
+        width: 65%;
     }
