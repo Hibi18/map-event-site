@@ -416,3 +416,8 @@
     .underline-after {
         background-size: 100% 3px;
     }
+
+    .STmap-image {
+        border-radius: 30px;
+        width: 60%;
+    }
