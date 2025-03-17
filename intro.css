@@ -446,20 +446,13 @@
         bottom: 0;
     }
 
-    .footer-line {
-        width: 80%;
-        height: 2px;
-        background-color: #ccc; /* 線の色 */
-    }
-
-
     .footer-container {
         max-width: 600px;
         margin: 0 auto;
     }
 
     .footer-logo {
-        width: 100px;
+        width: 120px;
         height: auto;
     }
 
