@@ -438,13 +438,20 @@
 
     /* フッター */
     footer {
-        background-color: #f8f8f8;
+        background-color: #fff;
         text-align: center;
         padding: 20px;
         font-family: Arial, sans-serif;
         position: relative;
         bottom: 0;
     }
+
+    .footer-line {
+        width: 80%;
+        height: 2px;
+        background-color: #ccc; /* 線の色 */
+    }
+
 
     .footer-container {
         max-width: 600px;
